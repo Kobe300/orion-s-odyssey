@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbel01ar6viod"]
+
+[ext_resource type="PackedScene" uid="uid://bjjnpvrm2l4bt" path="res://Scenes/player.tscn" id="1_0ag2h"]
+[ext_resource type="PackedScene" uid="uid://c3ne4oftpmcsl" path="res://Scenes/enemy.tscn" id="1_qcgho"]
+[ext_resource type="PackedScene" uid="uid://dvxuajbsqi51s" path="res://Scenes/enemy_spawner.tscn" id="2_ril5h"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 20)
+
+[node name="Player" parent="." instance=ExtResource("1_0ag2h")]
+
+[node name="Enemy Spawner" parent="." instance=ExtResource("2_ril5h")]
+
+[node name="Enemy" parent="." instance=ExtResource("1_qcgho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -300)

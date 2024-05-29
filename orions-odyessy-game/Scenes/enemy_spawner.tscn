@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvxuajbsqi51s"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_spawn.gd" id="1_8boxv"]
+
+[node name="Enemy Spawner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -300)
+script = ExtResource("1_8boxv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

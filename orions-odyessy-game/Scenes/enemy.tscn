@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3ne4oftpmcsl"]
+
+[ext_resource type="Script" path="res://Scripts/enemymovement.gd" id="1_k6r1f"]
+[ext_resource type="PackedScene" uid="uid://ybjg7y015wc2" path="res://3D Assets/enemy.gltf" id="2_f3fex"]
+[ext_resource type="PackedScene" uid="uid://coeuojqvc03sy" path="res://Scenes/after_burn_particles.tscn" id="3_rue1i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1txki"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["Enemies"]]
+script = ExtResource("1_k6r1f")
+
+[node name="enemy" parent="." instance=ExtResource("2_f3fex")]
+
+[node name="Particles" parent="." instance=ExtResource("3_rue1i")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("BoxShape3D_1txki")

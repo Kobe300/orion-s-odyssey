@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjjnpvrm2l4bt"]
+
+[ext_resource type="Script" path="res://Scripts/playermovement.gd" id="1_fhxh3"]
+[ext_resource type="PackedScene" uid="uid://d2gdqxunfjpgb" path="res://3D Assets/player.gltf" id="2_urut4"]
+[ext_resource type="PackedScene" uid="uid://coeuojqvc03sy" path="res://Scenes/after_burn_particles.tscn" id="3_jtaxo"]
+[ext_resource type="Texture2D" uid="uid://dee74abnkejff" path="res://2D Assets/crosshair1.png" id="4_y1oyw"]
+[ext_resource type="Texture2D" uid="uid://iwp1ew5pyv08" path="res://2D Assets/crosshair2.png" id="5_al2sc"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_fhxh3")
+
+[node name="player" parent="." instance=ExtResource("2_urut4")]
+
+[node name="Particles" parent="." instance=ExtResource("3_jtaxo")]
+
+[node name="gun0" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.08165e-12, -2.5)
+
+[node name="gun1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.08165e-12, -2.5)
+
+[node name="crosshair0" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.08165e-12, 2.08165e-12, -30)
+texture = ExtResource("4_y1oyw")
+
+[node name="crosshair1" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.08165e-12, 2.08165e-12, -100)
+texture = ExtResource("5_al2sc")
