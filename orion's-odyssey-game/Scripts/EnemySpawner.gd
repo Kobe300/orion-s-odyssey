@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var main = get_tree().current_scene
-var Enemy = load("res://Enemy.tscn")
+var Enemy = load("res://Scenes/Bullet.tscn")
 
 func spawn():
 	var enemy = Enemy.instantiate()

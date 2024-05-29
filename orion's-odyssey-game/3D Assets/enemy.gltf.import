@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c421jpgxqnv40"
-path="res://.godot/imported/enemy.gltf-fe1b1b8838abfaad83075fbb340dbfcb.scn"
+path="res://.godot/imported/enemy.gltf-4edd5366aca23f61c85dbc73f9f945e9.scn"
 
 [deps]
 
-source_file="res://Blender Imports/enemy.gltf"
-dest_files=["res://.godot/imported/enemy.gltf-fe1b1b8838abfaad83075fbb340dbfcb.scn"]
+source_file="res://3D Assets/enemy.gltf"
+dest_files=["res://.godot/imported/enemy.gltf-4edd5366aca23f61c85dbc73f9f945e9.scn"]
 
 [params]
 

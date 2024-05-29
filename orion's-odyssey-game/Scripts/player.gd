@@ -1,15 +1,15 @@
 extends CharacterBody3D
 
-const maxSpeed = 30
+const maxSpeed = 20
 const acceleration = 0.75
 var inputVector = Vector3()
 var origin_position = Vector3.ZERO # Original position of the character
 var cooldown = 0
 const COOLDOWN = 8
 
-@onready var guns = [$Gun0, $Gun1]
+@onready var guns = [$Gun0,$Gun1]
 @onready var main = get_tree().current_scene
-var Bullet = load("res://Bullet.tscn")
+var Bullet = load("res://Scenes/Bullet.tscn")
 
 func _physics_process(delta):
 	# Get the input vector based on user input
@@ -30,7 +30,7 @@ func _physics_process(delta):
 	rotation_degrees.x = velocity.y / 2
 	rotation_degrees.y = -velocity.x / 2
 	
-	#set_velocity(velocity)
+	#set_velocity(Vector3(0,0,maxSpeed)) #Moves the characters 
 	move_and_slide() # Move the character and handle collisions
 	
 	#Clamps Character to a set place with the screen

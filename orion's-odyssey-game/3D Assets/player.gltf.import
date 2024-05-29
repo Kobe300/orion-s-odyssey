@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://04ilmyp0wvsu"
-path="res://.godot/imported/player.gltf-61c45aa459a95b123d6358605348e75a.scn"
+path="res://.godot/imported/player.gltf-0dfeff852e4db025f39ebabacdf8f964.scn"
 
 [deps]
 
-source_file="res://Blender Imports/player.gltf"
-dest_files=["res://.godot/imported/player.gltf-61c45aa459a95b123d6358605348e75a.scn"]
+source_file="res://3D Assets/player.gltf"
+dest_files=["res://.godot/imported/player.gltf-0dfeff852e4db025f39ebabacdf8f964.scn"]
 
 [params]
 

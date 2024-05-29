@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2v8ekykeaslh"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://d26qlru81xouv" path="res://Sounds/laser.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://bx657njdn8ehp" path="res://Sounds/explosion.wav" id="3"]
+
+[sub_resource type="CapsuleMesh" id="1"]
+
+[sub_resource type="CapsuleShape3D" id="3"]
+radius = 0.939035
+height = 1.87807
+
+[node name="Bullet" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 3.06
+light_indirect_energy = 5.53
+omni_range = 8.5
+
+[node name="LightTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="EnemyExplode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
+volume_db = -11.107
+
+[node name="BulletSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2")
+volume_db = 13.981
+autoplay = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="LightTimer" to="." method="_on_LightTimer_timeout"]

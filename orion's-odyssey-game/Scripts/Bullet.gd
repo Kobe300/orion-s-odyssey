@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var velo = Vector3()
-var KillParticles = load("res://KillParticles.tscn")
+var KillParticles = load("res://Scenes/KillParticles.tscn")
 @onready var main = get_tree().current_scene
 @onready var explodeSound = $EnemyExplode
 
