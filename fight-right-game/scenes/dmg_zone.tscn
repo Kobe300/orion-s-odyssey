@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bexmm7veci34c"]
+[gd_scene load_steps=2 format=3 uid="uid://bexmm7veci34c"]
+
+[ext_resource type="Script" path="res://scripts/dmg_zone.gd" id="1_556t3"]
 
 [node name="Dmg_Zone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_556t3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

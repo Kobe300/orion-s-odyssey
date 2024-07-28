@@ -111,7 +111,7 @@ size = Vector2(77, 334.5)
 position = Vector2(0, -188)
 sprite_frames = SubResource("SpriteFrames_hy28e")
 autoplay = "default"
-frame_progress = 0.738024
+frame_progress = 0.494763
 
 [node name="Dmg_Zone" parent="." instance=ExtResource("2_fjedq")]
 
