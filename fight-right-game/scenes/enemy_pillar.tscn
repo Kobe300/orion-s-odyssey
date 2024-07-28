@@ -102,7 +102,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykeql"]
-size = Vector2(77, 312.5)
+size = Vector2(77, 334.5)
 
 [node name="Enemy_Pillar" type="Node2D"]
 
@@ -110,11 +110,10 @@ size = Vector2(77, 312.5)
 position = Vector2(0, -188)
 sprite_frames = SubResource("SpriteFrames_hy28e")
 autoplay = "default"
-frame_progress = 0.778638
+frame_progress = 0.895968
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, -163)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(3, 5.25)
+position = Vector2(3, -168.75)
 shape = SubResource("RectangleShape2D_ykeql")
