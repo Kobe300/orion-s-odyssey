@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://dyd5ysyn2pv5y"]
+
+[ext_resource type="Texture2D" uid="uid://b80eso1sy3cvt" path="res://assets/characters/pillar/FlyingObelisk_no_lightnings_no_letter.png" id="1_r5oq8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y55qk"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(0, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elskj"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(200, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ld61"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(400, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khda0"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(600, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ewm"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(800, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t22d4"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(1000, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thfdx"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(1200, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymoo4"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(1400, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb8cs"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(1600, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm71t"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(1800, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfq44"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(2000, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlkjf"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(2200, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m83x"]
+atlas = ExtResource("1_r5oq8")
+region = Rect2(2400, 0, 200, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hy28e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y55qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elskj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ld61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khda0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ewm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t22d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thfdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymoo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb8cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm71t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfq44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlkjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m83x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykeql"]
+size = Vector2(77, 312.5)
+
+[node name="Enemy_Pillar" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -188)
+sprite_frames = SubResource("SpriteFrames_hy28e")
+autoplay = "default"
+frame_progress = 0.778638
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -163)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 5.25)
+shape = SubResource("RectangleShape2D_ykeql")
