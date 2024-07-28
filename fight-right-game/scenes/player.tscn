@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cunfbj54yyhib"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
+[ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
 [ext_resource type="Texture2D" uid="uid://chhnwjogxpcx1" path="res://assets/characters/NightBorne/NightBorne.png" id="1_thv4f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y4jh"]
@@ -145,7 +145,7 @@ radius = 12.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_2h6oh")
+script = ExtResource("1_khwak")
 
 [node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
