@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyd5ysyn2pv5y"]
+[gd_scene load_steps=18 format=3 uid="uid://dyd5ysyn2pv5y"]
 
 [ext_resource type="Texture2D" uid="uid://b80eso1sy3cvt" path="res://assets/characters/pillar/FlyingObelisk_no_lightnings_no_letter.png" id="1_r5oq8"]
+[ext_resource type="PackedScene" uid="uid://bexmm7veci34c" path="res://scenes/dmg_zone.tscn" id="2_fjedq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y55qk"]
 atlas = ExtResource("1_r5oq8")
@@ -110,10 +111,10 @@ size = Vector2(77, 334.5)
 position = Vector2(0, -188)
 sprite_frames = SubResource("SpriteFrames_hy28e")
 autoplay = "default"
-frame_progress = 0.895968
+frame_progress = 0.738024
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Dmg_Zone" parent="." instance=ExtResource("2_fjedq")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dmg_Zone"]
 position = Vector2(3, -168.75)
 shape = SubResource("RectangleShape2D_ykeql")
