@@ -715,6 +715,8 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_xcmxt")
 
 [node name="Forest" type="TileMap"]
+position = Vector2(2, 0)
 tile_set = SubResource("TileSet_31yy0")
 rendering_quadrant_size = 32
 format = 2
+layer_0/tile_data = PackedInt32Array(65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0)

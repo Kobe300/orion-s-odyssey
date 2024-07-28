@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dllpsnga6epoc"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_2h6oh"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://chhnwjogxpcx1" path="res://assets/characters/NightBorne/NightBorne.png" id="1_thv4f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y4jh"]
