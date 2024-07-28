@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const WALKSPEED = 100.0
 const SPRINTSPPED = 250.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -300.0
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -19,7 +19,13 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		player_sprite.play("jump")
 		velocity.y = JUMP_VELOCITY
+
+	# Handle attack.
+	if Input.is_action_just_pressed("attack_1") and is_on_floor():
+		player_sprite.play("attack_1")
+
 
 	# Get the input direction and handle the movement/deceleration -1, 0, 1.
 	var direction = Input.get_axis("walk_left", "walk_right")
@@ -38,7 +44,8 @@ func _physics_process(delta):
 		else: 
 			player_sprite.play("run")
 	else:
-		player_sprite.play("jump")
+		player_sprite.play("falling")
+		
 	
 	
 	if direction:
