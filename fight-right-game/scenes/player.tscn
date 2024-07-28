@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cunfbj54yyhib"]
+[gd_scene load_steps=38 format=3 uid="uid://cunfbj54yyhib"]
 
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
 [ext_resource type="Texture2D" uid="uid://chhnwjogxpcx1" path="res://assets/characters/NightBorne/NightBorne.png" id="1_thv4f"]
@@ -51,6 +51,14 @@ region = Rect2(800, 160, 80, 80)
 atlas = ExtResource("1_thv4f")
 region = Rect2(880, 160, 80, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj7sp"]
+atlas = ExtResource("1_thv4f")
+region = Rect2(240, 320, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8ije"]
+atlas = ExtResource("1_thv4f")
+region = Rect2(320, 320, 80, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y4jh"]
 atlas = ExtResource("1_thv4f")
 region = Rect2(0, 0, 80, 80)
@@ -91,9 +99,17 @@ region = Rect2(640, 0, 80, 80)
 atlas = ExtResource("1_thv4f")
 region = Rect2(80, 240, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_os73s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6g8k"]
 atlas = ExtResource("1_thv4f")
 region = Rect2(160, 320, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tgo3"]
+atlas = ExtResource("1_thv4f")
+region = Rect2(240, 320, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3joa"]
+atlas = ExtResource("1_thv4f")
+region = Rect2(320, 320, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0120"]
 atlas = ExtResource("1_thv4f")
@@ -158,9 +174,20 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gogau")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj7sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ije")
+}],
+"loop": false,
+"name": &"falling",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -199,11 +226,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_hjjbe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_os73s")
+"texture": SubResource("AtlasTexture_h6g8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tgo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3joa")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -239,9 +272,8 @@ script = ExtResource("1_khwak")
 [node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_uysvw")
-animation = &"attack_1"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.77049
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
