@@ -5,6 +5,8 @@ const WALKSPEED = 100.0
 const SPRINTSPPED = 250.0
 const JUMP_VELOCITY = -200.0
 
+var PLAYER_HEALTH = 100.0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -46,3 +48,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPRINTSPPED)
 
 	move_and_slide()
+	
+
+func dmg_player(dmg) :
+	PLAYER_HEALTH -= dmg;
+	print("Health = " + str(PLAYER_HEALTH));
