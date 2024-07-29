@@ -9,8 +9,8 @@ extends State
 
 
 # Called when the node enters a state.
-#func Enter():
-	#return null
+func Enter():
+	parent.animations.play("Run")
 
 # Called when the node exit a state.
 func Exit():

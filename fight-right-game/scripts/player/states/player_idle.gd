@@ -10,6 +10,7 @@ extends State
 
 # Called when the node enters a state.
 func Enter() -> void:
+	parent.animations.play("Idle")
 	super()
 	parent.velocity.x = 0
 

@@ -11,6 +11,7 @@ extends State
 func Enter():
 	super()
 	parent.velocity.y = -JUMP_FORCE
+	parent.animations.play("Jump")
 
 # Called when the node exit a state.
 func Exit() -> void:

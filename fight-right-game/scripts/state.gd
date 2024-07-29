@@ -2,7 +2,7 @@
 class_name State
 extends Node
 
-@export var animation_name: String
+#@export var animation_name: String
 @export var MOVESPEED:  float = 250
 		#const SPRINTSPPED = 250.0
 @export var JUMP_FORCE: float = 300.0
@@ -16,7 +16,8 @@ var parent: Player
 
 # Called when the node enters a state.
 func Enter() -> void:
-	parent.animations.play(animation_name)
+	#parent.animations.play(animation_name)
+	pass
 
 # Called when the node exit a state.
 func Exit() -> void:

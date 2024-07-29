@@ -9,7 +9,7 @@ extends State
 
 # Called when the node enters a state.
 func Enter() -> void:
-	pass
+	parent.animations.play("Fall")
 
 # Called when the node exit a state.
 func Exit() -> void:

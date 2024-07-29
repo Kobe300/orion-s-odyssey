@@ -8,8 +8,8 @@ extends State
 @export var fall_state: State
 
 # Called when the node enters a state.
-#func Enter() -> void:
-	#pass
+func Enter() -> void:
+	parent.animations.play("Attack_1")
 
 # Called when the node exit a state.
 func Exit() -> void:
