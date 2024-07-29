@@ -1,9 +1,13 @@
-[gd_scene load_steps=40 format=3 uid="uid://cunfbj54yyhib"]
+[gd_scene load_steps=44 format=3 uid="uid://cunfbj54yyhib"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://chhnwjogxpcx1" path="res://assets/characters/NightBorne/NightBorne.png" id="1_thv4f"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
-[ext_resource type="Script" path="res://scripts/player/state/player_idle.gd" id="4_lywk6"]
+[ext_resource type="Script" path="res://scripts/player/states/player_idle.gd" id="4_lywk6"]
+[ext_resource type="Script" path="res://scripts/player/states/player_move.gd" id="5_apiqb"]
+[ext_resource type="Script" path="res://scripts/player/states/player_attack.gd" id="6_mu75d"]
+[ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
+[ext_resource type="Script" path="res://scripts/player/states/player_fall.gd" id="8_syw8d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oneio"]
 atlas = ExtResource("1_thv4f")
@@ -188,7 +192,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_x8ije")
 }],
 "loop": false,
-"name": &"falling",
+"name": &"fall",
 "speed": 2.0
 }, {
 "frames": [{
@@ -267,33 +271,59 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1qkxh"]
 radius = 12.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_2h6oh")
 
-[node name="playerAnimations" type="AnimatedSprite2D" parent="."]
+[node name="PlayerAnimations" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_uysvw")
-animation = &"falling"
+animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_1qkxh")
 
-[node name="State Machine" type="Node2D" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ycxh5")
+initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="State Machine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "attack_state")]
 script = ExtResource("4_lywk6")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Move")
+attack_state = NodePath("../Attack")
+animation_name = "Idle"
 
-[node name="Move" type="Node2D" parent="State Machine"]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "jump_state", "fall_state")]
+script = ExtResource("5_apiqb")
+idle_state = NodePath("../Idle")
+attack_state = NodePath("../Attack")
+jump_state = NodePath("../Jump")
+fall_state = NodePath("../Fall")
+animation_name = "Run"
 
-[node name="Attack" type="Node2D" parent="State Machine"]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "jump_state", "fall_state")]
+script = ExtResource("6_mu75d")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+jump_state = NodePath("../Jump")
+fall_state = NodePath("../Fall")
+animation_name = "Attack_1"
 
-[node name="Jump" type="Node2D" parent="State Machine"]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "attack_state", "fall_state")]
+script = ExtResource("7_2f50p")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+attack_state = NodePath("../Attack")
+fall_state = NodePath("../Fall")
+animation_name = "Jump"
 
-[node name="Fall" type="Node2D" parent="State Machine"]
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("8_syw8d")
+animation_name = "Fall"
 
 [node name="Player Manager" type="Node2D" parent="."]
 

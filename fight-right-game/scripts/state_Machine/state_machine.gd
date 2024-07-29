@@ -1,4 +1,5 @@
 #class_name StateMachine
+
 extends Node
 
 @export var initial_state : State # Path to the initial active state. We export it to be able to pick the initial state in the inspector.
