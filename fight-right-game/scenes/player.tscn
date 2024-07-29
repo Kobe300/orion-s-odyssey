@@ -1,7 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://cunfbj54yyhib"]
+[gd_scene load_steps=40 format=3 uid="uid://cunfbj54yyhib"]
 
-[ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://chhnwjogxpcx1" path="res://assets/characters/NightBorne/NightBorne.png" id="1_thv4f"]
+[ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
+[ext_resource type="Script" path="res://scripts/player/state/player_idle.gd" id="4_lywk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oneio"]
 atlas = ExtResource("1_thv4f")
@@ -267,14 +269,32 @@ radius = 12.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_khwak")
+script = ExtResource("1_2h6oh")
 
-[node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="playerAnimations" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_uysvw")
-animation = &"jump"
+animation = &"falling"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_1qkxh")
+
+[node name="State Machine" type="Node2D" parent="."]
+script = ExtResource("3_ycxh5")
+
+[node name="Idle" type="Node2D" parent="State Machine"]
+script = ExtResource("4_lywk6")
+
+[node name="Move" type="Node2D" parent="State Machine"]
+
+[node name="Attack" type="Node2D" parent="State Machine"]
+
+[node name="Jump" type="Node2D" parent="State Machine"]
+
+[node name="Fall" type="Node2D" parent="State Machine"]
+
+[node name="Player Manager" type="Node2D" parent="."]
+
+[node name="Health" type="Node2D" parent="Player Manager"]
