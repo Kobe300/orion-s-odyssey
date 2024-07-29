@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://cunfbj54yyhib"]
+[gd_scene load_steps=45 format=3 uid="uid://cunfbj54yyhib"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
+[ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
 [ext_resource type="Texture2D" uid="uid://chhnwjogxpcx1" path="res://assets/characters/NightBorne/NightBorne.png" id="1_thv4f"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
 [ext_resource type="Script" path="res://scripts/player/states/player_idle.gd" id="4_lywk6"]
@@ -326,6 +327,7 @@ move_state = NodePath("../Move")
 attack_state = NodePath("../Attack")
 jump_state = NodePath("../Jump")
 
-[node name="Player Manager" type="Node2D" parent="."]
+[node name="PlayerManager" type="Node" parent="."]
 
-[node name="Health" type="Node2D" parent="Player Manager"]
+[node name="Health" type="Node" parent="PlayerManager"]
+script = ExtResource("1_khwak")

@@ -1,5 +1,4 @@
 #class_name Player
-
 class_name Player
 extends CharacterBody2D
 

@@ -1,4 +1,4 @@
-extends "res://scripts/player/player.gd"
+extends Node
 
 var PLAYER_HEALTH = 100.0
 

@@ -5,7 +5,7 @@ const dmg = 10.0
 @onready var player
 
 func _ready():
-	player = get_node("/root/Game/Player")
+	player = get_node("/root/Game/Player/PlayerManager/Health")
 
 func _on_body_entered(body):
 	player.dmg_player(dmg);
