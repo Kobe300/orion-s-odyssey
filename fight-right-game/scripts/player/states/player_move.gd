@@ -9,23 +9,23 @@ extends State
 
 
 # Called when the node enters a state.
-#func enter() -> void:
+#func Enter():
 	#return null
 
 # Called when the node exit a state.
-#func exit():
-	#return null
+func Exit():
+	pass
 
-func process_input(event: InputEvent) -> State:
+func Process_Input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 		return jump_state
 	return null
 
  # Corrisponds with the _physics_process() in "state_machine" script
-#func process_frame(delta: float) -> State:
-	#return null
+func Process_Frame(delta: float) -> State:
+	return null
 
-func process_physics(delta: float) -> State:
+func Process_Physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	
 	var movement = Input.get_axis("walk_left", "walk_right") * MOVESPEED

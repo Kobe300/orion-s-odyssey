@@ -8,23 +8,23 @@ extends State
 @export var jump_state: State
 
 # Called when the node enters a state.
-func enter() -> void:
-	parent.animations.play(animation_name)
+func Enter() -> void:
+	pass
 
 # Called when the node exit a state.
-func exit() -> void:
+func Exit() -> void:
 	pass
 
 # Corrisponds with the _process() in "state_machine" script
-func process_input(event: InputEvent) -> State:
+func Process_Input(event: InputEvent) -> State:
 	return null
 
 # Corrisponds with the _physics_process() in "state_machine" script
-func process_frame(delta: float) -> State:
+func Process_Frame(delta: float) -> State:
 	return null
 
 # Corrisponds with the _physics_process() in "state_machine" script
-func process_physics(delta: float) -> State:
+func Process_Physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 
 	var movement = Input.get_axis('walk_left', 'walk_right') * MOVESPEED

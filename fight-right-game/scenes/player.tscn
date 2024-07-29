@@ -278,8 +278,10 @@ script = ExtResource("1_2h6oh")
 [node name="PlayerAnimations" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_uysvw")
-animation = &"Fall"
+animation = &"Attack_1"
 autoplay = "Idle"
+frame = 11
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)

@@ -14,14 +14,14 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
+	state_machine.Process_Input(event)
 
 
 func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
+	state_machine.Process_Physics(delta)
 
 
 func _process_input(delta: float) -> void:
-	state_machine.process_frame(delta)
+	state_machine.Process_Frame(delta)
 
 

@@ -9,16 +9,16 @@ extends State
 
 
 # Called when the node enters a state.
-func enter() -> void:
+func Enter() -> void:
 	super()
 	parent.velocity.x = 0
 
 # Called when the node exit a state.
-func exit():
+func Exit():
 	pass
 
 # Called to receives events from the `_unhandled_input()` callback.
-func process_input(_event: InputEvent) -> State:
+func Process_Input(_event: InputEvent) -> State:
 
 	if Input.is_action_just_pressed("jump") and parent.is_on_floor():	 # Handle jump.
 		return jump_state
@@ -32,10 +32,10 @@ func process_input(_event: InputEvent) -> State:
 	return null
 
 # Corrisponds with the _physics_process() in "state_machine" script
-func process_frame(delta: float) -> State:
+func Process_Frame(delta: float) -> State:
 	return null
 
-func process_physics(delta: float):
+func Process_Physics(delta: float):
 	# Add the gravity.
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
