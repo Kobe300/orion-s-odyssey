@@ -2,6 +2,11 @@
 
 extends State
 
+@export var idle_state: State
+@export var move_state: State
+@export var attack_state: State
+@export var jump_state: State
+
 # Called when the node enters a state.
 func enter() -> void:
 	parent.animations.play(animation_name)
@@ -20,4 +25,17 @@ func process_frame(delta: float) -> State:
 
 # Corrisponds with the _physics_process() in "state_machine" script
 func process_physics(delta: float) -> State:
+	parent.velocity.y += gravity * delta
+
+	var movement = Input.get_axis('walk_left', 'walk_right') * MOVESPEED
+	
+	if movement != 0:
+		parent.animations.flip_h = movement < 0
+	parent.velocity.x = movement
+	parent.move_and_slide()
+	
+	if parent.is_on_floor():
+		if movement != 0:
+			return move_state
+		return idle_state
 	return null

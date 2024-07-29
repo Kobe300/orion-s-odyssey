@@ -31,7 +31,7 @@ func process_physics(delta: float) -> State:
 	if parent.velocity.y > 0:
 		return fall_state
 	
-	var movement = Input.get_axis('move_left', 'move_right') * MOVESPEED
+	var movement = Input.get_axis('walk_left', 'walk_right') * MOVESPEED
 	
 	if movement != 0:
 		parent.animations.flip_h = movement < 0

@@ -181,7 +181,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_gogau")
 }],
 "loop": false,
-"name": &"attack_1",
+"name": &"Attack_1",
 "speed": 20.0
 }, {
 "frames": [{
@@ -191,8 +191,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x8ije")
 }],
-"loop": false,
-"name": &"fall",
+"loop": true,
+"name": &"Fall",
 "speed": 2.0
 }, {
 "frames": [{
@@ -224,7 +224,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_j3vcq")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
 "speed": 10.0
 }, {
 "frames": [{
@@ -241,7 +241,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_c3joa")
 }],
 "loop": false,
-"name": &"jump",
+"name": &"Jump",
 "speed": 10.0
 }, {
 "frames": [{
@@ -264,7 +264,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1med6")
 }],
 "loop": true,
-"name": &"run",
+"name": &"Run",
 "speed": 15.0
 }]
 
@@ -278,8 +278,8 @@ script = ExtResource("1_2h6oh")
 [node name="PlayerAnimations" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_uysvw")
-animation = &"jump"
-autoplay = "idle"
+animation = &"Fall"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
@@ -287,7 +287,7 @@ shape = SubResource("CircleShape2D_1qkxh")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ycxh5")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Fall")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "attack_state")]
 script = ExtResource("4_lywk6")
@@ -321,8 +321,12 @@ attack_state = NodePath("../Attack")
 fall_state = NodePath("../Fall")
 animation_name = "Jump"
 
-[node name="Fall" type="Node" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "attack_state", "jump_state")]
 script = ExtResource("8_syw8d")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+attack_state = NodePath("../Attack")
+jump_state = NodePath("../Jump")
 animation_name = "Fall"
 
 [node name="Player Manager" type="Node2D" parent="."]

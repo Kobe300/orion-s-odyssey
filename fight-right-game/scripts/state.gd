@@ -3,7 +3,7 @@ class_name State
 extends Node
 
 @export var animation_name: String
-@export var MOVESPEED:  float = 100
+@export var MOVESPEED:  float = 250
 		#const SPRINTSPPED = 250.0
 @export var JUMP_FORCE: float = 300.0
 
