@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalInv="*res://scripts/globalInv.gd"
+GlobalInv="*res://scripts/inventory/globalInv.gd"
 
 [dotnet]
 
