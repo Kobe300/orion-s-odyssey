@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://chhnwjogxpcx1" path="res://assets/characters/NightBorne/NightBorne.png" id="1_thv4f"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
 [ext_resource type="Script" path="res://scripts/player/states/player_idle.gd" id="4_lywk6"]
-[ext_resource type="Script" path="res://scripts/player/states/player_move.gd" id="5_apiqb"]
+[ext_resource type="Script" path="res://scripts/player/states/player_ground.gd" id="5_apiqb"]
 [ext_resource type="Script" path="res://scripts/player/states/player_attack.gd" id="6_mu75d"]
 [ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
 [ext_resource type="Script" path="res://scripts/player/states/player_fall.gd" id="8_syw8d"]
@@ -281,10 +281,8 @@ script = ExtResource("1_2h6oh")
 [node name="PlayerAnimations" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_uysvw")
-animation = &"Attack_1"
+animation = &"Fall"
 autoplay = "Idle"
-frame = 11
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
