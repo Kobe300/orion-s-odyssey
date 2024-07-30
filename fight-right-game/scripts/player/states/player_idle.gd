@@ -7,6 +7,8 @@ extends State
 @export var move_state: State
 @export var attack_state: State
 
+@onready var inventory_ui = $"../../InventoryUI"
+
 
 # Called when the node enters a state.
 func Enter() -> void:
@@ -26,6 +28,11 @@ func Process_Input(_event: InputEvent) -> State:
 		
 	if Input.get_axis("walk_left", "walk_right"):
 		return move_state
+
+	if Input.is_action_just_pressed("inventory"):
+		inventory_ui.visible = !inventory_ui.visible
+		get_tree().paused = !get_tree().paused
+	
 
 	if Input.is_action_just_pressed("attack_1") and parent.is_on_floor(): 	# Handle attack.
 		return attack_state

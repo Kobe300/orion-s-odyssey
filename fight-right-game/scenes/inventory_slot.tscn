@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dv38wprk72js4"]
+
+[node name="Inventory_Slot" type="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 160.0
