@@ -10,6 +10,7 @@ var state_machine = $StateMachine #getnode("state_machine")
 
 func _ready() -> void:
 	state_machine.init(self)  #Initialize the statemachine
+	GlobalInv.player_ref(self)
 
 
 func _unhandled_input(event: InputEvent) -> void:
