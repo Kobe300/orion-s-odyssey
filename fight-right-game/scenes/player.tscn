@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/player/states/player_attack.gd" id="6_mu75d"]
 [ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
 [ext_resource type="Script" path="res://scripts/player/states/player_fall.gd" id="8_syw8d"]
-[ext_resource type="PackedScene" path="res://scenes/inventory_ui.tscn" id="10_fpuix"]
+[ext_resource type="PackedScene" uid="uid://cawer53dvns13" path="res://scenes/inventory_ui.tscn" id="10_fpuix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oneio"]
 atlas = ExtResource("1_thv4f")
