@@ -2,13 +2,20 @@
 
 extends Node
 
+@export var states : Array[State]
 @export var initial_state : State # Path to the initial active state. We export it to be able to pick the initial state in the inspector.
 
 var current_state: State # The current active state. At the start of the game, we get the `initial_state`. 
 
 
+
 func init(parent: Player) -> void:
 	for child in get_children():
+		if(child is State):
+			states.append(child)
+		else:
+			push_warning("Child " + child.name + "is not a Name of " + parent.name)
+		
 		child.parent = parent 
 		
 	#Initialize to the default state
