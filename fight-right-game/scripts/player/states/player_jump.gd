@@ -1,50 +1,36 @@
 #class_name Jump
-
 extends State
 
-@export var idle_state: State
-@export var move_state: State
-@export var attack_state: State
 @export var fall_state: State
+@export var fall_animation : String = "fall"
 
 # Called when the node enters a state.
-func Enter():
-	super()
-	parent.velocity.y = -JUMP_FORCE
-	parent.animations.play("Jump")
-
-# Called when the node exit a state.
-func Exit() -> void:
+func enter():
 	pass
 
-# Corrisponds with the _process() in "state_machine" script
-func Process_Input(event: InputEvent) -> State:
-	return null
+# Called when the node exit a state.
+func exit() -> void:
+	## to add levitation state
+	#if(next_state == levetation_state):
+		#playback.travel(flight_animation)
+		#is_levetaion = true
+	pass
 
-# Corrisponds with the _physics_process() in "state_machine" script
-func Process_Frame(delta: float) -> State:
+#
+func process_input(event: InputEvent) -> State:
+	## to add levetation state
+	#if(event.is_action_pressed("jump") && !is_levetaion):
+			#levetation()
 	return null
+	
+# 
+func process_physics(delta: float):
+	if(not character.is_on_floor()):
+		next_state = fall_state
 
-# Corrisponds with the _physics_process() in "state_machine" script
-func Process_Physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
-	
-	if parent.velocity.y > 0:
-		return fall_state
-	
-	var movement = Input.get_axis('walk_left', 'walk_right') * MOVESPEED
-	
-	if movement != 0:
-		parent.animations.flip_h = movement < 0
-	parent.velocity.x = movement
-	parent.move_and_slide()
-	
-	if parent.is_on_floor():
-		if movement != 0:
-			return move_state
-		return idle_state
-	
-	return null
-
+#
+func levetaion():
+	#_levitaion = true
+	pass
 
 

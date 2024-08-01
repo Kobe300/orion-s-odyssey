@@ -8,38 +8,27 @@ extends State
 @export var fall_state: State
 
 # Called when the node enters a state.
-func Enter() -> void:
-	parent.animations.play("Attack_1")
+func enter() -> void:
+	pass
 
 # Called when the node exit a state.
-func Exit() -> void:
+func exit() -> void:
 	pass
 
 # Corrisponds with the _process() in "state_machine" script
-func Process_Input(event: InputEvent) -> State:
+func process_input(event: InputEvent) -> State:
 	return null
 
 # Corrisponds with the _physics_process() in "state_machine" script
-func Process_Frame(delta: float) -> State:
-	return null
-
-# Corrisponds with the _physics_process() in "state_machine" script
-func Process_Physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
-	
-	if parent.velocity.y > 0:
+func process_physics(delta: float) -> State:
+	if character.velocity.y > 0:
 		return fall_state
+
 	
-	var movement = Input.get_axis('walk_left', 'walk_right') * MOVESPEED
-	
-	if movement != 0:
-		parent.animations.flip_h = movement < 0
-	parent.velocity.x = movement
-	parent.move_and_slide()
-	
-	if parent.is_on_floor():
-		if movement != 0:
-			return move_state
-		return idle_state
+	if character.is_on_floor():
+		#if direction.x != 0:
+			#return move_state
+		#return idle_state
+		pass
 	
 	return null

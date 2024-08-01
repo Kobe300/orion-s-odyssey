@@ -1,44 +1,32 @@
-#class_name Move
-
+#class_name Ground
 extends State
 
-@export var idle_state: State
-@export var attack_state: State
 @export var jump_state: State
-@export var fall_state: State
+#@export var SPRINTSPPED = 250.0
+@export var JUMP_FORCE: float = -300.0
+@export var jump_animation : String = "jump"
 
 
 # Called when the node enters a state.
-func Enter():
-	parent.animations.play("Run")
+func enter():
+	pass
+	#parent.animations.play("Run")
 
 # Called when the node exit a state.
-func Exit():
+func exit():
 	pass
 
-func Process_Input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
-		return jump_state
+func process_input(event: InputEvent):
+	if (Input.is_action_just_pressed("jump")):
+		jump()
+		print('Character Jump')
+
+#
+func _process_physics(delta: float) -> State:
 	return null
 
- # Corrisponds with the _physics_process() in "state_machine" script
-func Process_Frame(delta: float) -> State:
-	return null
+func jump():
+	character.velocity.y = JUMP_FORCE
 
-func Process_Physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
-	
-	var movement = Input.get_axis("walk_left", "walk_right") * MOVESPEED
-	
-	if movement == 0:
-		return idle_state
-	
-	parent.animations.flip_h = movement < 0
-	parent.velocity.x = movement
-	parent.move_and_slide()
-	
-	if !parent.is_on_floor():
-		return fall_state
-	return null
-
-
+	next_state = jump_state
+	playback.travel(jump_animation)
