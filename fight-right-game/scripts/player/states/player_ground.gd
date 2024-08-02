@@ -2,6 +2,8 @@
 extends State
 
 @export var jump_state: State
+@export var attack_state: State
+
 #@export var sprint_speed = 250.0
 @export var JUMP_FORCE: float = -300.0
 
@@ -24,6 +26,11 @@ func process_input(event: InputEvent):
 		next_state = jump_state
 		playback.travel("jump")
 		#jump()
+	
+	# Character Attacks
+	if (Input.is_action_just_pressed("attack")): 
+		next_state = attack_state
+		playback.travel("attack_1")
 
 #
 func process_physics(delta: float):

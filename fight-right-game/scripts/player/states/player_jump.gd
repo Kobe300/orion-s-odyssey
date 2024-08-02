@@ -6,7 +6,7 @@ extends State
 
 # Called when the node enters a state.
 func enter():
-		print('Character in Jump State')
+	print('Character in Jump State')
 	#pass
 
 # Called when the node exit a state.
