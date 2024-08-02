@@ -33,12 +33,6 @@ func levetaion():
 	pass
 
 
-func _on_animation_player_animation_finished(anim_name):
-	if(anim_name == "jump"):
-		next_state = fall_state
-		print("jump animation has ended")
-
-
 	## to add levitation state
 	#if(next_state == levetation_state):
 		#playback.travel(flight_animation)

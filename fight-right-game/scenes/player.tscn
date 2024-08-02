@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://6dfh8g6e6kff" path="res://assets/characters/Ben/Death.png" id="5_dxwxn"]
 [ext_resource type="Script" path="res://scripts/player/states/player_attack.gd" id="6_mu75d"]
 [ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
-[ext_resource type="Script" path="res://scripts/player/states/player_fall.gd" id="8_syw8d"]
 [ext_resource type="PackedScene" uid="uid://cawer53dvns13" path="res://scenes/inventory_ui.tscn" id="10_fpuix"]
+[ext_resource type="Script" path="res://scripts/player/states/player_fall.gd" id="11_qcao1"]
 [ext_resource type="Script" path="res://scenes/StateLabel.gd" id="15_1rvvb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihfay"]
@@ -542,7 +542,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_v38yb"]
 resource_name = "fall"
-loop_mode = 1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -574,7 +574,7 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [3, 4]
@@ -757,6 +757,8 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6uq8"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgtu1"]
+switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
 states/attack_1/node = SubResource("AnimationNodeAnimation_xijry")
@@ -770,13 +772,14 @@ states/jump/position = Vector2(337.328, 263.745)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.781, 100.01)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1")]
-graph_offset = Vector2(-18.2998, -117.083)
+graph_offset = Vector2(160.53, -31.7781)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 3
 position = Vector2(2.08165e-12, -18)
 collision_layer = 2
 script = ExtResource("1_2h6oh")
+MOVESPEED = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -827,7 +830,7 @@ script = ExtResource("7_2f50p")
 fall_state = NodePath("../Fall")
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
-script = ExtResource("8_syw8d")
+script = ExtResource("11_qcao1")
 ground_state = NodePath("../Ground")
 
 [node name="PlayerManager" type="Node" parent="."]
@@ -870,4 +873,5 @@ text = "State:"
 script = ExtResource("15_1rvvb")
 state_machine = NodePath("../StateMachine")
 
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Fall" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Fall" method="_on_animation_player_animation_finished"]
