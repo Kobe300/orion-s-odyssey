@@ -8,7 +8,7 @@ signal inventory_updated
 @onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")
 
 func _ready():
-	inventory.resize(10)
+	inventory.resize(16)
 
 func add_item(item):
 	for i in range(inventory.size()):
