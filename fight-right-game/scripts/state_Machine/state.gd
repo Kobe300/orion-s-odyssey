@@ -8,14 +8,14 @@ var character : CharacterBody2D
 var playback : AnimationNodeStateMachinePlayback
 var next_state : State
 
-func state_process(delta):
+func process_input(event : InputEvent):
 	pass
 
-func state_input(event : InputEvent):
+func process_physics(deltae):
 	pass
 
-func on_enter():
+func enter():
 	pass
 
-func on_exit():
+func exit():
 	pass
