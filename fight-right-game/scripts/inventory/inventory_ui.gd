@@ -10,6 +10,14 @@ func _ready():
 
 func _on_inv_update():
 	clear_grid_container()
+	
+	for item in GlobalInv.inventory:
+		var slot = GlobalInv.inventory_slot_scene.instantiate()
+		grid_container.add_child(slot)
+		if item != null:
+			slot.set_item(item)
+		else:
+			slot.set_empty() 
 
 func clear_grid_container():
 	while grid_container.get_child_count() > 0:

@@ -15,6 +15,4 @@ offset_left = 190.0
 offset_top = 130.0
 offset_right = 990.0
 offset_bottom = 530.0
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
 columns = 10

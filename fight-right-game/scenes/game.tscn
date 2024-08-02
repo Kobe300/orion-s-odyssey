@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cowwe0ofo5g5s"]
+[gd_scene load_steps=7 format=3 uid="uid://cowwe0ofo5g5s"]
 
 [ext_resource type="PackedScene" uid="uid://cpci0632qe345" path="res://scenes/forest.tscn" id="1_eyn3g"]
 [ext_resource type="PackedScene" uid="uid://cunfbj54yyhib" path="res://scenes/player.tscn" id="1_mk3hk"]
 [ext_resource type="PackedScene" uid="uid://dyd5ysyn2pv5y" path="res://scenes/enemy_pillar.tscn" id="3_1b0j5"]
 [ext_resource type="PackedScene" uid="uid://csq10ikwbkpg8" path="res://scenes/inventory_item.tscn" id="4_nb5jk"]
+[ext_resource type="Texture2D" uid="uid://0iw436t6slfw" path="res://assets/items/item3.png" id="5_astqb"]
+[ext_resource type="Texture2D" uid="uid://ditxcretb7cpp" path="res://assets/items/item21.png" id="6_x5cjy"]
 
 [node name="Game" type="Node2D"]
 
@@ -21,3 +23,14 @@ scale = Vector2(0.25, 0.25)
 
 [node name="Inventory_Item" parent="." instance=ExtResource("4_nb5jk")]
 position = Vector2(253, -17)
+item_type = "weapon"
+item_name = "flame"
+item_effect = "burn"
+item_texture = ExtResource("5_astqb")
+
+[node name="Inventory_Item2" parent="." instance=ExtResource("4_nb5jk")]
+position = Vector2(287, -17)
+item_type = "tool"
+item_name = "pickaxe"
+item_effect = "mining speed"
+item_texture = ExtResource("6_x5cjy")
