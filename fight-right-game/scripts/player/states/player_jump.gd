@@ -10,11 +10,9 @@ func enter():
 	#pass
 
 # Called when the node exit a state.
-func exit() -> void:
-	## to add levitation state
-	#if(next_state == levetation_state):
-		#playback.travel(flight_animation)
-		#is_levetaion = true
+func exit():
+	#if(next_state == fall_state):
+		#playback.travel("fall")
 	pass
 
 #
@@ -29,7 +27,6 @@ func process_physics(delta: float):
 	if(!character.is_on_floor()):
 		next_state = fall_state
 	
-
 #
 func levetaion():
 	#_levitaion = true
@@ -40,3 +37,9 @@ func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "jump"):
 		next_state = fall_state
 		print("jump animation has ended")
+
+
+	## to add levitation state
+	#if(next_state == levetation_state):
+		#playback.travel(flight_animation)
+		#is_levetaion = true      

@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://cunfbj54yyhib"]
+[gd_scene load_steps=94 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
@@ -625,7 +625,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_mfck1"]
 resource_name = "jump"
 length = 0.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -762,13 +761,13 @@ states/attack_1/position = Vector2(478.025, 35.745)
 states/death/node = SubResource("AnimationNodeAnimation_xogc2")
 states/death/position = Vector2(595.025, 235.745)
 states/fall/node = SubResource("AnimationNodeAnimation_psi0b")
-states/fall/position = Vector2(457.525, 227.745)
+states/fall/position = Vector2(458.525, 263.995)
 states/jump/node = SubResource("AnimationNodeAnimation_84vs6")
 states/jump/position = Vector2(337.328, 263.745)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(338.781, 100.52)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr")]
-graph_offset = Vector2(194.025, 45.7724)
+graph_offset = Vector2(4.34998, 26.3849)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 3
@@ -786,9 +785,9 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
-texture = ExtResource("5_dxwxn")
+texture = ExtResource("3_8kber")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 23
+hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 3)
@@ -824,8 +823,9 @@ fall_state = NodePath("../Fall")
 script = ExtResource("7_2f50p")
 fall_state = NodePath("../Fall")
 
-[node name="Fall" type="Node" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
 script = ExtResource("8_syw8d")
+ground_state = NodePath("../Ground")
 
 [node name="PlayerManager" type="Node" parent="."]
 
