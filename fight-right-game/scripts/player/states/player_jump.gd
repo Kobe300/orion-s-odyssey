@@ -6,7 +6,8 @@ extends State
 
 # Called when the node enters a state.
 func enter():
-	pass
+		print('Character in Jump State')
+	#pass
 
 # Called when the node exit a state.
 func exit() -> void:
@@ -25,8 +26,9 @@ func process_input(event: InputEvent) -> State:
 	
 # 
 func process_physics(delta: float):
-	if(not character.is_on_floor()):
+	if(!character.is_on_floor()):
 		next_state = fall_state
+	
 
 #
 func levetaion():
@@ -34,3 +36,7 @@ func levetaion():
 	pass
 
 
+func _on_animation_player_animation_finished(anim_name):
+	if(anim_name == "jump"):
+		next_state = fall_state
+		print("jump animation has ended")

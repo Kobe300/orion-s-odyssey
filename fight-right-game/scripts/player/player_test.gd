@@ -10,7 +10,7 @@ const JUMP_VELOCITY = -300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #Decalare the player Sprite
-@onready var player_sprite = $PlayerAnimatedSprite2D
+@onready var player_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -28,7 +28,7 @@ func _physics_process(delta):
 
 
 	# Get the input direction and handle the movement/deceleration -1, 0, 1.
-	var direction = Input.get_axis("walk_left", "walk_right")
+	var direction = Input.get_axis("left", "right")
 	
 	#Flip Sprite
 	if direction > 0:
@@ -44,7 +44,7 @@ func _physics_process(delta):
 		else: 
 			player_sprite.play("run")
 	else:
-		player_sprite.play("falling")
+		player_sprite.play("fall")
 		
 	
 	
