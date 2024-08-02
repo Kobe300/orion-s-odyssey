@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get th
 var direction :  Vector2 = Vector2.ZERO
 
 func _ready():
+	GlobalInv.player_ref(self)
 	animation_tree.active = true #Ensures animation Tree is always active on game runtime
 
 

@@ -28,8 +28,9 @@ func _ready():
 func _process(_delta):
 	if not Engine.is_editor_hint():
 		icon_sprite.texture = item_texture
+		
 	
-	if player_in_range and Input.is_action_just_pressed(\"interact\"):
+	if player_in_range and Input.is_action_just_pressed(\"Interact\"):
 		pickup_item()
 
 func pickup_item():
@@ -41,6 +42,7 @@ func pickup_item():
 		\"texture\": item_texture,
 		\"path\": scene_path
 	}
+	
 	
 	if GlobalInv.player_node:
 		GlobalInv.add_item(item)
