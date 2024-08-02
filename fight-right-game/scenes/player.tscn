@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=96 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
@@ -756,6 +756,8 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6uq8"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgtu1"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
 states/attack_1/node = SubResource("AnimationNodeAnimation_xijry")
 states/attack_1/position = Vector2(330.653, -4.755)
@@ -767,8 +769,8 @@ states/jump/node = SubResource("AnimationNodeAnimation_84vs6")
 states/jump/position = Vector2(337.328, 263.745)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.781, 100.01)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8")]
-graph_offset = Vector2(157.05, -27.9)
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1")]
+graph_offset = Vector2(-18.2998, -117.083)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 3
@@ -786,9 +788,9 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
-texture = ExtResource("3_hkm0l")
+texture = ExtResource("3_8kber")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 12
+hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 3)
