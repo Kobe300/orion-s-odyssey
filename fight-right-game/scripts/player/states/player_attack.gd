@@ -28,7 +28,7 @@ func process_physics(delta: float):
 		#pass
 	pass
  
-
+# Execute when animation is finished
 func _on_animation_tree_animation_finished(anim_name):
 	if(anim_name == "attack_1"):
 		next_state = ground_state
