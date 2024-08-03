@@ -8,12 +8,14 @@ extends State
 
 # Called when the node enters a state.
 func enter() -> void:
-	playback.travel("jump")
+	playback.travel("fall")
 	print('Character in Fall State')
-	#pasS
+	#pass
 
 # Called when the node exit a state.
 func exit():
+	#playback.stop()
+	
 	pass
 	
 #

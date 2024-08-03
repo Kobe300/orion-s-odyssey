@@ -6,7 +6,7 @@ extends State
 @export var ground_state: State
 
 # Called when the node enters a state.
-func enter() -> void:
+func enter():
 	playback.travel("attack_1")
 	print('Character in Attack State')
 	print(player.direction.x)

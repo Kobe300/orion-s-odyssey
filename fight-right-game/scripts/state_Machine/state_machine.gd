@@ -26,19 +26,17 @@ func change_state(new_state : State) -> void:
 
 	current_state = new_state
 	current_state.enter()
-	print("state was changed")
+	#print("state was changed")
 
 #process States 60 times a seconds
 func _physics_process(delta: float) -> void:
 	if (current_state.next_state != null):
 		change_state(current_state.next_state)
-		
 	current_state.process_physics(delta)
 
+#
+func _input(event: InputEvent):
+	current_state.process_input(event)
 
 func check_can_move():
 	return current_state.can_move	
-
-
-func _input(event: InputEvent):
-	current_state.process_input(event)

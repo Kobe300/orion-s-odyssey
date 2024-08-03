@@ -16,7 +16,6 @@ func enter():
 	playback.travel("move")
 	print('Character in Ground State')
 	#pass
-
 # Called when the node exit a state.
 func exit(): 
 	pass
