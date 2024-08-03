@@ -4,6 +4,7 @@ class_name State
 
 @export var can_move : bool = true
 
+var animation_name : String
 var character : CharacterBody2D
 var playback : AnimationNodeStateMachinePlayback
 var next_state : State
@@ -15,7 +16,8 @@ func process_physics(deltae):
 	pass
 
 func enter():
-	pass
+	playback.travel(animation_name)
+	#pass
 
 func exit():
 	pass

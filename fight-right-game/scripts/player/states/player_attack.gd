@@ -7,7 +7,7 @@ extends State
 
 # Called when the node enters a state.
 func enter() -> void:
-	#player.direction.x = 0.0
+	playback.travel("attack_1")
 	print('Character in Attack State')
 	print(player.direction.x)
 	#pass
@@ -23,10 +23,9 @@ func process_input(event: InputEvent):
 
 #Corrisponds with the _physics_process() in "state_machine" script
 func process_physics(delta: float):
-	#if(character.is_on_floor()):
-		#next_state = ground_state	
-		#pass
-	pass
+	player.direction = Input.get_vector("left", "right", "up", "down")
+	player.velocity.x = player.direction.x * 3000 * delta
+	#pass
  
 # Execute when animation is finished
 func _on_animation_tree_animation_finished(anim_name):

@@ -13,9 +13,9 @@ extends State
 
 # Called when the node enters a state.
 func enter():
+	playback.travel("move")
 	print('Character in Ground State')
-	#playback.travel("jump")
-	pass
+	#pass
 
 # Called when the node exit a state.
 func exit(): 
@@ -31,13 +31,10 @@ func process_input(event: InputEvent):
 	if (Input.is_action_just_pressed("jump")): 
 		character.velocity.y = JUMP_FORCE
 		next_state = jump_state
-		playback.travel("jump")
-		#jump()
 	
 	# Character Attacks
 	if (Input.is_action_just_pressed("attack")): 
 		next_state = attack_state
-		playback.travel("attack_1")
 
 #
 func process_physics(delta: float):

@@ -773,14 +773,13 @@ states/jump/position = Vector2(337.328, 263.745)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.781, 100.01)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1")]
-graph_offset = Vector2(-39.0298, -62.7981)
+graph_offset = Vector2(-1.09482, -248.295)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 3
 position = Vector2(2.08165e-12, -18)
 collision_layer = 2
 script = ExtResource("1_2h6oh")
-MOVESPEED = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
