@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
+var facing_direction : Vector2 = Vector2.RIGHT
 
 func _ready():
 	GlobalInv.player_ref(self)
@@ -30,7 +31,10 @@ func _physics_process(delta: float):
 	
 	update_animation_parameters()
 	update_palyer_direction()
+	determine_face_direction()
 	move_and_slide()
+	
+	print(facing_direction)
 
 
 func update_animation_parameters():
@@ -42,5 +46,21 @@ func update_palyer_direction():
 		sprite.flip_h = false
 	elif direction.x < 0:
 		sprite.flip_h = true
+		
+
+func determine_face_direction():
+	if (direction == Vector2.ZERO):
+		direction = facing_direction 
+	elif (direction != Vector2.ZERO):
+		facing_direction = direction
+		
+	 # Calculate the new position based on the direction and a speed factor (5 in this case)
+	#var new_position = character.global_position + Vector2(character.direction.x * 10, 0)
+	# Instantly move the character to the new position
+	#character.global_position = new_position
+	#character.direction = Input.get_vector("left", "right", "up", "down")
+	#character.velocity.x = character.direction.x * 5
+	#character.move_local_x(character.velocity.x)
+	#character.move_and_slide()
 
 
