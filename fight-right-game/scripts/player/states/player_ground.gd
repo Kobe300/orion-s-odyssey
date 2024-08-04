@@ -8,6 +8,7 @@ extends State
 @export var JUMP_FORCE: float = -300.0
 
 @onready var inventory_ui = $"../../InventoryUI"
+@onready var buffer_timer : Timer = $BuffferTimer
 
 
 
@@ -37,5 +38,5 @@ func process_input(event: InputEvent):
 
 #
 func process_physics(delta: float):
-	if (!character.is_on_floor()):
+	if (!character.is_on_floor() and buffer_timer.is_stopped()):
 		next_state = jump_state
