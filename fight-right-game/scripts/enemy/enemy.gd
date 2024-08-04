@@ -1,8 +1,8 @@
-#class_name Player
-class_name Player
+#class_name Enemy
+class_name Enemy
 extends CharacterBody2D
 
-@export var MOVESPEED : float = 250.0
+@export var MOVESPEED : float = 50.0
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
@@ -21,8 +21,9 @@ func _physics_process(delta: float):
 	if !is_on_floor():
 		velocity.y += gravity * delta #Add gravity
 
-	# Get the input direction and handle the movement/deceleration.
-	direction = Input.get_vector("left", "right", "up", "down") 	#controls Enemy Basic Movement 
+	if is_on_wall():
+		# Get the input direction and handle the movement/deceleration.
+		direction *= -1 	#controls Player Movement 
 	
 	if state_machine.check_can_move():
 		velocity.x = direction.x * MOVESPEED

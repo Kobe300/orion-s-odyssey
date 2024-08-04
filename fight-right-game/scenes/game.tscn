@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cowwe0ofo5g5s"]
+[gd_scene load_steps=8 format=3 uid="uid://cowwe0ofo5g5s"]
 
 [ext_resource type="PackedScene" uid="uid://cpci0632qe345" path="res://scenes/forest.tscn" id="1_eyn3g"]
 [ext_resource type="PackedScene" uid="uid://bo7pvfcttnrnc" path="res://scenes/player.tscn" id="1_mk3hk"]
 [ext_resource type="PackedScene" uid="uid://dyd5ysyn2pv5y" path="res://scenes/enemy_pillar.tscn" id="3_1b0j5"]
+[ext_resource type="PackedScene" uid="uid://1ghtnf3m8r5e" path="res://scenes/enemy.tscn" id="3_i7luh"]
 [ext_resource type="PackedScene" uid="uid://csq10ikwbkpg8" path="res://scenes/inventory_item.tscn" id="4_nb5jk"]
 [ext_resource type="Texture2D" uid="uid://0iw436t6slfw" path="res://assets/items/item3.png" id="5_astqb"]
 [ext_resource type="Texture2D" uid="uid://ditxcretb7cpp" path="res://assets/items/item21.png" id="6_x5cjy"]
@@ -13,10 +14,11 @@
 
 [node name="Player" parent="." instance=ExtResource("1_mk3hk")]
 position = Vector2(2.08165e-12, -25.49)
-MOVESPEED = 250.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
+
+[node name="Enemy" parent="." instance=ExtResource("3_i7luh")]
 
 [node name="Enemy_Pillar" parent="." instance=ExtResource("3_1b0j5")]
 position = Vector2(142, 2)
