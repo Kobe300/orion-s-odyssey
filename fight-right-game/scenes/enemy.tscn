@@ -348,7 +348,7 @@ states/sword_attack_1/position = Vector2(330.653, -4.755)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1")]
 graph_offset = Vector2(163.29, -124.215)
 
-[node name="Enemy" type="CharacterBody2D" groups=["Player"]]
+[node name="Enemy" type="CharacterBody2D"]
 process_mode = 3
 position = Vector2(2.08165e-12, -18)
 collision_layer = 2

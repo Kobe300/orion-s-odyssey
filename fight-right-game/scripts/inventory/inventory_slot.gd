@@ -47,3 +47,13 @@ func _on_button_pressed():
 	if item != null:
 		info.visible = false
 		action_panel.visible = !action_panel.visible
+
+
+func _on_drop_pressed():
+	if item != null:
+		var drop_position = GlobalInv.player_node.global_position
+		var drop_offset = Vector2(0, 50)
+		drop_offset = drop_offset.rotated(GlobalInv.player_node.rotation)
+		GlobalInv.drop_item(item, drop_position + drop_offset)
+		GlobalInv.remove_item(item["type"], item["effect"])
+		action_panel.visible = false

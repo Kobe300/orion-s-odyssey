@@ -13,7 +13,7 @@ var direction :  Vector2 = Vector2.ZERO
 var facing_direction : Vector2 = Vector2.RIGHT
 
 func _ready():
-	GlobalInv.player_ref(self)
+	#GlobalInv.player_ref(self)
 	animation_tree.active = true #Ensures animation Tree is always active on game runtime
 
 

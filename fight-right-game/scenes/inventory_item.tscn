@@ -58,6 +58,12 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group(\"Player\"):
 		player_in_range = false
 		print(player_in_range)
+
+func set_item_data(data):
+	item_type = data[\"type\"]
+	item_name = data[\"name\"]
+	item_effect = data[\"effect\"]
+	item_texture = data[\"texture\"]
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcfh1"]
