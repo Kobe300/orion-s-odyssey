@@ -35,7 +35,7 @@ func _physics_process(delta: float):
 	determine_face_direction()
 	move_and_slide()
 	
-	print(facing_direction)
+	#print(facing_direction)
 
 
 func update_animation_parameters():

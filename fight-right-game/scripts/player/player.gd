@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
 @onready  var state_machine : StateMachine = $StateMachine #getnode("state_machine")
 
+@onready var player_health = get_node("/root/Game/Player/PlayerManager/Health")
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
 var facing_direction : Vector2 = Vector2.RIGHT
@@ -34,7 +36,7 @@ func _physics_process(delta: float):
 	determine_face_direction()
 	move_and_slide()
 	
-	print(facing_direction)
+	#print(facing_direction)
 
 
 func update_animation_parameters():
@@ -63,4 +65,16 @@ func determine_face_direction():
 	#character.move_local_x(character.velocity.x)
 	#character.move_and_slide()
 
+func apply_item_effect(item):
+	match item["effect"]:
+		"Stamina":
+			MOVESPEED += 50
+			print("Speed increased to ", MOVESPEED)
+		"Slot Boost":
+			GlobalInv.increase_inventory_size(5)
+			print("Slots increased to ", GlobalInv.inventory.size())
+		"Heal":
+			player_health.heal_player(50)
+		_:
+			print("There is no effect for this item")
 

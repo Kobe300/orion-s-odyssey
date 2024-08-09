@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cowwe0ofo5g5s"]
+[gd_scene load_steps=9 format=3 uid="uid://cowwe0ofo5g5s"]
 
 [ext_resource type="PackedScene" uid="uid://cpci0632qe345" path="res://scenes/forest.tscn" id="1_eyn3g"]
 [ext_resource type="PackedScene" uid="uid://bo7pvfcttnrnc" path="res://scenes/player.tscn" id="1_mk3hk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csq10ikwbkpg8" path="res://scenes/inventory_item.tscn" id="4_nb5jk"]
 [ext_resource type="Texture2D" uid="uid://0iw436t6slfw" path="res://assets/items/item3.png" id="5_astqb"]
 [ext_resource type="Texture2D" uid="uid://ditxcretb7cpp" path="res://assets/items/item21.png" id="6_x5cjy"]
+[ext_resource type="Texture2D" uid="uid://db08p8ktxk74d" path="res://assets/items/item51.png" id="8_07ptj"]
 
 [node name="Game" type="Node2D"]
 
@@ -37,3 +38,10 @@ item_type = "tool"
 item_name = "pickaxe"
 item_effect = "mining speed"
 item_texture = ExtResource("6_x5cjy")
+
+[node name="Inventory_Item3" parent="." instance=ExtResource("4_nb5jk")]
+position = Vector2(213, -17)
+item_type = "Consumable"
+item_name = "Health Potion"
+item_effect = "Heal"
+item_texture = ExtResource("8_07ptj")

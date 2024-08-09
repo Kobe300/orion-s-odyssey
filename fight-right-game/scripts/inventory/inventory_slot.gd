@@ -57,3 +57,12 @@ func _on_drop_pressed():
 		GlobalInv.drop_item(item, drop_position + drop_offset)
 		GlobalInv.remove_item(item["type"], item["effect"])
 		action_panel.visible = false
+
+func _on_use_pressed():
+	action_panel.visible = false
+	if item != null and item["effect"] != "":
+		if GlobalInv.player_node:
+			GlobalInv.player_node.apply_item_effect(item)
+			GlobalInv.remove_item(item["type"], item["effect"])
+		else:
+			print("Player could not be found")
