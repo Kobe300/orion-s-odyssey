@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6dfh8g6e6kff"
-path="res://.godot/imported/Death.png-f9a70ac2f6ab2377423fe68385c87cbc.ctex"
+uid="uid://djrtny05xd2go"
+path="res://.godot/imported/Idle.png-3983fc324746e8947a15195f8d26dec0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Ben/Death.png"
-dest_files=["res://.godot/imported/Death.png-f9a70ac2f6ab2377423fe68385c87cbc.ctex"]
+source_file="res://assets/characters/Night_Borne/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-3983fc324746e8947a15195f8d26dec0.ctex"]
 
 [params]
 

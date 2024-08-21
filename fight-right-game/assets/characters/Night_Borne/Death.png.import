@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fuxdgruj2je6"
-path="res://.godot/imported/Ben_Tilesheet.png-162fcab7cd990d242cea88422c140cbd.ctex"
+uid="uid://6dfh8g6e6kff"
+path="res://.godot/imported/Death.png-05ad7fb4be11386a07c0af9791477b85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Ben/Ben_Tilesheet.png"
-dest_files=["res://.godot/imported/Ben_Tilesheet.png-162fcab7cd990d242cea88422c140cbd.ctex"]
+source_file="res://assets/characters/Night_Borne/Death.png"
+dest_files=["res://.godot/imported/Death.png-05ad7fb4be11386a07c0af9791477b85.ctex"]
 
 [params]
 

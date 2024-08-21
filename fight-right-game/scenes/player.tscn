@@ -1,13 +1,14 @@
-[gd_scene load_steps=38 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=39 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
-[ext_resource type="Texture2D" uid="uid://djrtny05xd2go" path="res://assets/characters/Ben/Idle.png" id="3_8kber"]
-[ext_resource type="Texture2D" uid="uid://dctbq74dmmc8t" path="res://assets/characters/Ben/Attack_1.png" id="3_hkm0l"]
-[ext_resource type="Texture2D" uid="uid://bl1t4uqyg2b8c" path="res://assets/characters/Ben/Run.png" id="3_ulmaa"]
+[ext_resource type="Texture2D" uid="uid://rbfti1st5n6o" path="res://assets/characters/Ben/Idle.png" id="3_8kber"]
+[ext_resource type="Texture2D" uid="uid://dctbq74dmmc8t" path="res://assets/characters/Night_Borne/Attack_1.png" id="3_hkm0l"]
+[ext_resource type="Texture2D" uid="uid://bl1t4uqyg2b8c" path="res://assets/characters/Night_Borne/Run.png" id="3_ulmaa"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
+[ext_resource type="Texture2D" uid="uid://djrtny05xd2go" path="res://assets/characters/Night_Borne/Idle.png" id="4_f72v5"]
 [ext_resource type="Script" path="res://scripts/player/states/player_ground.gd" id="5_apiqb"]
-[ext_resource type="Texture2D" uid="uid://6dfh8g6e6kff" path="res://assets/characters/Ben/Death.png" id="5_dxwxn"]
+[ext_resource type="Texture2D" uid="uid://6dfh8g6e6kff" path="res://assets/characters/Night_Borne/Death.png" id="5_dxwxn"]
 [ext_resource type="Script" path="res://scripts/player/states/player_attack.gd" id="6_mu75d"]
 [ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
 [ext_resource type="PackedScene" uid="uid://cawer53dvns13" path="res://scenes/inventory_ui.tscn" id="10_fpuix"]
@@ -117,7 +118,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_8kber")]
+"values": [ExtResource("4_f72v5")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -308,9 +309,6 @@ blend_mode = 1
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xijry"]
 animation = &"sword_attack_1"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3g1tx"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l1iap"]
 switch_mode = 2
 advance_mode = 2
@@ -323,6 +321,9 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgtu1"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3g1tx"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
 states/death/node = SubResource("AnimationNodeAnimation_xogc2")
 states/death/position = Vector2(595.025, 235.745)
@@ -334,8 +335,8 @@ states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.781, 100.01)
 states/sword_attack_1/node = SubResource("AnimationNodeAnimation_xijry")
 states/sword_attack_1/position = Vector2(330.653, -4.755)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1")]
-graph_offset = Vector2(163.29, -124.215)
+transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx")]
+graph_offset = Vector2(-49.335, -35.0324)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 3
@@ -348,7 +349,7 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("3_8kber")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 9
-frame = 3
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 3)
@@ -360,6 +361,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_62fma")
 anim_player = NodePath("../AnimationPlayer")
 parameters/move/blend_position = 0.00474501
