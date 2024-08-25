@@ -3,7 +3,7 @@ extends Node
 class_name State
 
 @export var can_move : bool = true
-var weapon : bool = true #temporary varible put on player
+var weapon : bool = false #temporary varible put on player
 var sword : bool = true #temporary varible put on player
 var bow : bool = false #temporary varible put on player
 

@@ -2,7 +2,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var MOVESPEED : float = 250.0
+@export var MOVESPEED : float = 150.0
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
@@ -22,11 +22,18 @@ func _ready():
 func _physics_process(delta: float):
 	if !is_on_floor():
 		velocity.y += gravity * delta #Add gravity
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	direction = Input.get_vector("left", "right", "up", "down") 	#controls Enemy Basic Movement 
 	
 	if state_machine.check_can_move():
+		# Character Sprint
+		if (Input.is_action_pressed("sprint")): 
+			direction.x *= 2
+			MOVESPEED = 200.0
+		else:
+			MOVESPEED = 125.0
+			
 		velocity.x = direction.x * MOVESPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, MOVESPEED)
@@ -35,11 +42,10 @@ func _physics_process(delta: float):
 	update_palyer_direction()
 	determine_face_direction()
 	move_and_slide()
-	
 	#print(facing_direction)
 
-
 func update_animation_parameters():
+	print(direction.x)
 	animation_tree.set("parameters/move/blend_position", direction.x)
 
 
@@ -48,7 +54,7 @@ func update_palyer_direction():
 		sprite.flip_h = false
 	elif direction.x < 0:
 		sprite.flip_h = true
-		
+
 
 func determine_face_direction():
 	if (direction == Vector2.ZERO):

@@ -2,7 +2,6 @@
 extends State
 
 @export var fall_state: State
-@export var fall_animation : String = "fall"
 
 # Called when the node enters a state.
 func enter():
