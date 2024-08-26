@@ -15,7 +15,7 @@ extends State
 # Called when the node enters a state.
 func enter():
 	playback.travel("move")
-	print('Character in Ground State')
+	#print('Enemy in Ground State')
 	#pass
 # Called when the node exit a state.
 func exit(): 

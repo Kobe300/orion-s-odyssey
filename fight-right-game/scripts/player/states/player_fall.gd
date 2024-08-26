@@ -15,7 +15,6 @@ func enter() -> void:
 # Called when the node exit a state.
 func exit():
 	#playback.stop()
-	
 	pass
 	
 #

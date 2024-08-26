@@ -3,9 +3,7 @@ extends Node
 class_name State
 
 @export var can_move : bool = true
-var weapon : bool = false #temporary varible put on player
-var sword : bool = true #temporary varible put on player
-var bow : bool = false #temporary varible put on player
+var sword : bool = false #temporary varible put on player
 
 var animation_name : String
 var character : CharacterBody2D
@@ -24,3 +22,9 @@ func enter():
 
 func exit():
 	pass
+
+func attack_face():		
+	var new_position = character.global_position + Vector2(character.direction.x * 15, 0)  # Calculate the new position based on the direction and a speed factor (5 in this case)
+	character.global_position = new_position # Instantly move the character to the new position
+#character.velocity.x = character.direction.x * 5
+#character.move_and_slide()

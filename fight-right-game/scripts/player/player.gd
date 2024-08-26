@@ -45,7 +45,6 @@ func _physics_process(delta: float):
 	#print(facing_direction)
 
 func update_animation_parameters():
-	print(direction.x)
 	animation_tree.set("parameters/move/blend_position", direction.x)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=68 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
 [ext_resource type="Texture2D" uid="uid://b0h53u7ilmv5" path="res://assets/characters/Ben/Ben-jump.png" id="4_anuog"]
 [ext_resource type="Script" path="res://scripts/player/states/player_ground.gd" id="5_apiqb"]
-[ext_resource type="Script" path="res://scripts/player/states/player_attack.gd" id="6_mu75d"]
 [ext_resource type="Texture2D" uid="uid://ckxua1icgj7wk" path="res://assets/characters/Ben/Ben-sword-attack-1.png" id="6_osf6g"]
 [ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
 [ext_resource type="Texture2D" uid="uid://dga58m52stblw" path="res://assets/characters/Ben/Ben-sword-attack-2.png" id="7_hvocl"]
@@ -19,10 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://cawer53dvns13" path="res://scenes/inventory_ui.tscn" id="10_fpuix"]
 [ext_resource type="Texture2D" uid="uid://c66rcr75cxig5" path="res://assets/characters/Ben/Ben-punch-attack-3.png" id="11_e0d2f"]
 [ext_resource type="Script" path="res://scripts/player/states/player_fall.gd" id="11_qcao1"]
-[ext_resource type="Script" path="res://scripts/player/states/sub-states/player_walk.gd" id="14_te3ps"]
 [ext_resource type="Script" path="res://scenes/StateLabel.gd" id="15_1rvvb"]
 [ext_resource type="Script" path="res://scripts/player/states/sub-states/player_sword.gd" id="15_r2te3"]
-[ext_resource type="Script" path="res://scripts/player/states/sub-states/player_run.gd" id="15_rl8bs"]
 [ext_resource type="Script" path="res://scripts/player/states/sub-states/player_melee.gd" id="16_kprbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obox3"]
@@ -552,9 +549,6 @@ min_space = -2.0
 max_space = 2.0
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nk4d0"]
-animation = &"sprint"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xijry"]
 animation = &"sword_attack_1"
 
@@ -591,9 +585,13 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pkor0"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_go5g2"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4oma5"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rdyh8"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k6dar"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yl8r1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xvww5"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
 states/Start/position = Vector2(-29.5, 97.75)
@@ -604,23 +602,21 @@ states/fall/position = Vector2(458.525, 263.995)
 states/jump/node = SubResource("AnimationNodeAnimation_84vs6")
 states/jump/position = Vector2(337.328, 263.745)
 states/melee_attack_1/node = SubResource("AnimationNodeAnimation_y0nao")
-states/melee_attack_1/position = Vector2(441.878, -3.76367)
+states/melee_attack_1/position = Vector2(594.452, -4.00083)
 states/melee_attack_2/node = SubResource("AnimationNodeAnimation_kmi05")
-states/melee_attack_2/position = Vector2(440.628, -101.559)
+states/melee_attack_2/position = Vector2(536.628, -99.2298)
 states/melee_attack_3/node = SubResource("AnimationNodeAnimation_h4b3t")
 states/melee_attack_3/position = Vector2(441.253, -193.847)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.217, 100.003)
-states/sprint/node = SubResource("AnimationNodeAnimation_nk4d0")
-states/sprint/position = Vector2(495.868, 98.875)
 states/sword_attack_1/node = SubResource("AnimationNodeAnimation_xijry")
-states/sword_attack_1/position = Vector2(202.077, -4.44313)
+states/sword_attack_1/position = Vector2(3.077, -5.14826)
 states/sword_attack_2/node = SubResource("AnimationNodeAnimation_soj2n")
-states/sword_attack_2/position = Vector2(199.717, -100.242)
+states/sword_attack_2/position = Vector2(40.217, -99.9005)
 states/sword_attack_3/node = SubResource("AnimationNodeAnimation_dg47p")
-states/sword_attack_3/position = Vector2(199.859, -195.46)
-transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "sword_attack_1", "sword_attack_2", SubResource("AnimationNodeStateMachineTransition_fpni0"), "sword_attack_2", "sword_attack_3", SubResource("AnimationNodeStateMachineTransition_if0ov"), "move", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_64pa6"), "melee_attack_1", "melee_attack_2", SubResource("AnimationNodeStateMachineTransition_6s4w5"), "melee_attack_2", "melee_attack_3", SubResource("AnimationNodeStateMachineTransition_kvqlk"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_pkor0"), "move", "sprint", SubResource("AnimationNodeStateMachineTransition_go5g2"), "sprint", "move", SubResource("AnimationNodeStateMachineTransition_rdyh8")]
-graph_offset = Vector2(-105.15, -56.078)
+states/sword_attack_3/position = Vector2(176.359, -194.404)
+transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "sword_attack_1", "sword_attack_2", SubResource("AnimationNodeStateMachineTransition_fpni0"), "sword_attack_2", "sword_attack_3", SubResource("AnimationNodeStateMachineTransition_if0ov"), "move", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_64pa6"), "melee_attack_1", "melee_attack_2", SubResource("AnimationNodeStateMachineTransition_6s4w5"), "melee_attack_2", "melee_attack_3", SubResource("AnimationNodeStateMachineTransition_kvqlk"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_pkor0"), "sword_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_4oma5"), "melee_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_k6dar"), "sword_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_yl8r1"), "melee_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_xvww5")]
+graph_offset = Vector2(-255.72, -87.9603)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 3
@@ -656,38 +652,15 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 current_state = NodePath("Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "attack_state")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state")]
 script = ExtResource("5_apiqb")
 jump_state = NodePath("../Jump")
-attack_state = NodePath("../Attack")
+sword_state = NodePath("../Sword")
+melee_state = NodePath("../Melee")
 
 [node name="BuffferTimer" type="Timer" parent="StateMachine/Ground"]
 wait_time = 0.05
-one_shot = true
 autostart = true
-
-[node name="Walk" type="Node" parent="StateMachine/Ground"]
-script = ExtResource("14_te3ps")
-
-[node name="Run" type="Node" parent="StateMachine/Ground"]
-script = ExtResource("15_rl8bs")
-
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_state", "melee_state")]
-script = ExtResource("6_mu75d")
-sword_state = NodePath("Sword")
-melee_state = NodePath("Melee")
-can_move = false
-
-[node name="AttackTimer" type="Timer" parent="StateMachine/Attack"]
-wait_time = 0.3
-
-[node name="Sword" type="Node" parent="StateMachine/Attack" node_paths=PackedStringArray("ground_state")]
-script = ExtResource("15_r2te3")
-ground_state = NodePath("../../Ground")
-
-[node name="Melee" type="Node" parent="StateMachine/Attack" node_paths=PackedStringArray("ground_state")]
-script = ExtResource("16_kprbr")
-ground_state = NodePath("../../Ground")
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state")]
 script = ExtResource("7_2f50p")
@@ -696,6 +669,24 @@ fall_state = NodePath("../Fall")
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
 script = ExtResource("11_qcao1")
 ground_state = NodePath("../Ground")
+
+[node name="Sword" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("15_r2te3")
+ground_state = NodePath("../Ground")
+can_move = false
+
+[node name="AttackTimer" type="Timer" parent="StateMachine/Sword"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("16_kprbr")
+ground_state = NodePath("../Ground")
+can_move = false
+
+[node name="AttackTimer" type="Timer" parent="StateMachine/Melee"]
+wait_time = 0.3
+one_shot = true
 
 [node name="PlayerManager" type="Node" parent="."]
 
@@ -737,5 +728,5 @@ text = "State:"
 script = ExtResource("15_1rvvb")
 state_machine = NodePath("../StateMachine")
 
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Attack" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]

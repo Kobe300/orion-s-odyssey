@@ -9,7 +9,7 @@ extends State
 # Called when the node enters a state.
 func enter() -> void:
 	playback.travel("fall")
-	print('Character in Fall State')
+	#print('Enemy in Fall State')
 	#pass
 
 # Called when the node exit a state.
