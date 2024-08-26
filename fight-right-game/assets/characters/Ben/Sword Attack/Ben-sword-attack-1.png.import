@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dga58m52stblw"
-path="res://.godot/imported/Ben-sword-attack-2.png-1395c6bf1738f6dd0279ce310baca768.ctex"
+uid="uid://ckxua1icgj7wk"
+path="res://.godot/imported/Ben-sword-attack-1.png-a30a9033125aae84e4d6a18fee321467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Ben/Ben-sword-attack-2.png"
-dest_files=["res://.godot/imported/Ben-sword-attack-2.png-1395c6bf1738f6dd0279ce310baca768.ctex"]
+source_file="res://assets/characters/Ben/Sword Attack/Ben-sword-attack-1.png"
+dest_files=["res://.godot/imported/Ben-sword-attack-1.png-a30a9033125aae84e4d6a18fee321467.ctex"]
 
 [params]
 

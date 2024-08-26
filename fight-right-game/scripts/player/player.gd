@@ -4,7 +4,9 @@ extends CharacterBody2D
 
 @export var MOVESPEED : float = 150.0
 
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var bodysprite : Sprite2D = $PlayerSprites/BodySprite2D
+@onready var frontarmsprite : Sprite2D = $PlayerSprites/FrontArmSprite2D
+
 @onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
 @onready  var state_machine : StateMachine = $StateMachine #getnode("state_machine")
 
@@ -50,9 +52,11 @@ func update_animation_parameters():
 
 func update_palyer_direction():
 	if direction.x > 0:
-		sprite.flip_h = false
+		bodysprite.flip_h = false
+		frontarmsprite.flip_h = false
 	elif direction.x < 0:
-		sprite.flip_h = true
+		bodysprite.flip_h = true
+		frontarmsprite.flip_h = true
 
 
 func determine_face_direction():
