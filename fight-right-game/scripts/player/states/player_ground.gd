@@ -35,12 +35,13 @@ func process_input(event: InputEvent):
 	
 	# Character Attacks
 	if (Input.is_action_just_pressed("attack")): 
-		if sword:
+		if state.sword:
 			next_state = sword_state
-		elif not sword:
+		elif not state.sword:
 			next_state = melee_state
 
 #
 func process_physics(delta: float):
+	#print(state.sword)
 	if (!character.is_on_floor()):
 		next_state = jump_state

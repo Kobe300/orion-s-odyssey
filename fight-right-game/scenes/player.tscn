@@ -1165,6 +1165,7 @@ script = ExtResource("1_2h6oh")
 [node name="PlayerSprites" type="Node2D" parent="."]
 
 [node name="Sword" type="Node2D" parent="PlayerSprites"]
+visible = false
 position = Vector2(7.15256e-07, 0)
 rotation = -0.068396
 

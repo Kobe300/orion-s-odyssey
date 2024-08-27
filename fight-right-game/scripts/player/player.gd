@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var fxsprite : Sprite2D = $PlayerSprites/FXSprite2D #Flip FX Sprite2D
 
 @onready var sword : Node2D = $PlayerSprites/Sword #Flip Sword Node
+@onready var sword_sprite_2d = $PlayerSprites/Sword/SwordSprite2D
 
 @onready var animation_tree : AnimationTree = $AnimationTree 
 @onready  var state_machine : StateMachine = $StateMachine 
@@ -92,3 +93,13 @@ func apply_item_effect(item):
 		_:
 			print("There is no effect for this item")
 
+func equip_item(item):
+	match item["type"]:
+		"weapon":
+			state.sword = true
+			print("sword is = to ", state.sword)
+			sword.visible = true
+			sword_sprite_2d.texture = item["texture"]
+			print("weapon equiped")
+		_:
+			print("There is no type for this item")

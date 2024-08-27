@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cowwe0ofo5g5s"]
+[gd_scene load_steps=10 format=3 uid="uid://cowwe0ofo5g5s"]
 
 [ext_resource type="PackedScene" uid="uid://cpci0632qe345" path="res://scenes/forest.tscn" id="1_eyn3g"]
 [ext_resource type="PackedScene" uid="uid://bo7pvfcttnrnc" path="res://scenes/player.tscn" id="1_mk3hk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://0iw436t6slfw" path="res://assets/items/item3.png" id="5_astqb"]
 [ext_resource type="Texture2D" uid="uid://ditxcretb7cpp" path="res://assets/items/item21.png" id="6_x5cjy"]
 [ext_resource type="Texture2D" uid="uid://db08p8ktxk74d" path="res://assets/items/item51.png" id="8_07ptj"]
+[ext_resource type="Texture2D" uid="uid://c1j7sxdfok3ai" path="res://assets/items/item42.png" id="9_4xky8"]
 
 [node name="Game" type="Node2D"]
 
@@ -45,3 +46,10 @@ item_type = "Consumable"
 item_name = "Health Potion"
 item_effect = "Heal"
 item_texture = ExtResource("8_07ptj")
+
+[node name="Inventory_Item4" parent="." instance=ExtResource("4_nb5jk")]
+position = Vector2(175, -17)
+item_type = "weapon"
+item_name = "Axe"
+item_effect = "Bleed"
+item_texture = ExtResource("9_4xky8")

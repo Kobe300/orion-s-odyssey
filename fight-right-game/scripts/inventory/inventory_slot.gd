@@ -66,3 +66,10 @@ func _on_use_pressed():
 			GlobalInv.remove_item(item["type"], item["effect"])
 		else:
 			print("Player could not be found")
+	
+	if item != null and item["type"] != "":
+		if GlobalInv.player_node:
+			GlobalInv.player_node.equip_item(item)
+			GlobalInv.remove_item(item["type"], item["effect"])
+		else:
+			print("Player could not be found")
