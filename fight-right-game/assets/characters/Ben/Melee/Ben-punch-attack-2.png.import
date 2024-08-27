@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpsha0m3o612s"
-path="res://.godot/imported/Ben-FrontArm-S-A-3.png-47eb0a53b5eccd55044fba14722116e0.ctex"
+uid="uid://8ww7l6nd4psc"
+path="res://.godot/imported/Ben-punch-attack-2.png-565e365195a49e3ca5db537405cd59b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Ben-FrontArm-S-A-3.png"
-dest_files=["res://.godot/imported/Ben-FrontArm-S-A-3.png-47eb0a53b5eccd55044fba14722116e0.ctex"]
+source_file="res://assets/characters/Ben/Melee/Ben-punch-attack-2.png"
+dest_files=["res://.godot/imported/Ben-punch-attack-2.png-565e365195a49e3ca5db537405cd59b6.ctex"]
 
 [params]
 

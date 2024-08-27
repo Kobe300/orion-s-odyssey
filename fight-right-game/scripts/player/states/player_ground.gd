@@ -42,5 +42,5 @@ func process_input(event: InputEvent):
 
 #
 func process_physics(delta: float):
-	if (!character.is_on_floor() and buffer_timer.is_stopped()):
+	if (!character.is_on_floor()):
 		next_state = jump_state

@@ -4,11 +4,13 @@ extends CharacterBody2D
 
 @export var MOVESPEED : float = 150.0
 
-@onready var bodysprite : Sprite2D = $PlayerSprites/BodySprite2D
-@onready var frontarmsprite : Sprite2D = $PlayerSprites/FrontArmSprite2D
+@onready var bodysprite : Sprite2D = $PlayerSprites/BodySprite2D #Flip Player Sprite2D
+@onready var fxsprite : Sprite2D = $PlayerSprites/FXSprite2D #Flip FX Sprite2D
 
-@onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
-@onready  var state_machine : StateMachine = $StateMachine #getnode("state_machine")
+@onready var sword : Node2D = $PlayerSprites/Sword #Flip Sword Node
+
+@onready var animation_tree : AnimationTree = $AnimationTree 
+@onready  var state_machine : StateMachine = $StateMachine 
 
 @onready var player_health = get_node("/root/Game/Player/PlayerManager/Health")
 
@@ -41,7 +43,7 @@ func _physics_process(delta: float):
 		velocity.x = move_toward(velocity.x, 0, MOVESPEED)
 	
 	update_animation_parameters()
-	update_palyer_direction()
+	update_player_direction()
 	determine_face_direction()
 	move_and_slide()
 	#print(facing_direction)
@@ -50,13 +52,16 @@ func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position", direction.x)
 
 
-func update_palyer_direction():
+func update_player_direction():
 	if direction.x > 0:
 		bodysprite.flip_h = false
-		frontarmsprite.flip_h = false
+		fxsprite.flip_h = false
+		sword.scale.x = abs(sword.scale.x) 
 	elif direction.x < 0:
 		bodysprite.flip_h = true
-		frontarmsprite.flip_h = true
+		fxsprite.flip_h = true
+		sword.scale.x = -abs(sword.scale.x)
+ 
 
 
 func determine_face_direction():

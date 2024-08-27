@@ -3,7 +3,7 @@ extends Node
 class_name State
 
 @export var can_move : bool = true
-var sword : bool = true #temporary varible put on player
+var sword : bool = false #temporary varible put on player
 
 var animation_name : String
 var character : CharacterBody2D
