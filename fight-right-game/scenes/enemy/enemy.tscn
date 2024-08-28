@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://1ghtnf3m8r5e"]
+[gd_scene load_steps=38 format=3 uid="uid://1ghtnf3m8r5e"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_6eixy"]
+[ext_resource type="PackedScene" uid="uid://kmeci7ndyvn3" path="res://damage_taken_text.tscn" id="2_fbfwk"]
 [ext_resource type="Texture2D" uid="uid://6dfh8g6e6kff" path="res://assets/characters/Night_Borne/Death.png" id="3_1p5fv"]
 [ext_resource type="Texture2D" uid="uid://djrtny05xd2go" path="res://assets/characters/Night_Borne/Idle.png" id="4_4ls5a"]
 [ext_resource type="Texture2D" uid="uid://bl1t4uqyg2b8c" path="res://assets/characters/Night_Borne/Run.png" id="5_qq2gi"]
@@ -353,6 +354,7 @@ process_mode = 3
 position = Vector2(2.08165e-12, -18)
 collision_layer = 2
 script = ExtResource("1_6eixy")
+damage_taken_text = ExtResource("2_fbfwk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)

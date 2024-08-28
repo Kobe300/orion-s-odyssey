@@ -2,7 +2,17 @@
 class_name Player
 extends CharacterBody2D
 
+@export var damage_taken_text : PackedScene
 @export var MOVESPEED : float = 150.0
+@export var current_item : Item:
+	set(value):
+		current_item = value
+		if current_item !=null:
+			if current_item.animation in ["sword"]:
+				set_damage(current_item.damage)
+			else:
+				set_damage(1)
+		
 
 @onready var bodysprite : Sprite2D = $PlayerSprites/BodySprite2D #Flip Player Sprite2D
 @onready var fxsprite : Sprite2D = $PlayerSprites/FXSprite2D #Flip FX Sprite2D
@@ -52,7 +62,7 @@ func _physics_process(delta: float):
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position", direction.x)
 
-
+#Deterimine the direction the player sprite and children are facing
 func update_player_direction():
 	if direction.x > 0:
 		bodysprite.flip_h = false
@@ -63,23 +73,14 @@ func update_player_direction():
 		fxsprite.flip_h = true
 		sword.scale.x = -abs(sword.scale.x)
  
-
-
+#Determine tirection the player is facing
 func determine_face_direction():
 	if (direction == Vector2.ZERO):
 		direction = facing_direction 
 	elif (direction != Vector2.ZERO):
 		facing_direction = direction
-		
-	 # Calculate the new position based on the direction and a speed factor (5 in this case)
-	#var new_position = character.global_position + Vector2(character.direction.x * 10, 0)
-	# Instantly move the character to the new position
-	#character.global_position = new_position
-	#character.direction = Input.get_vector("left", "right", "up", "down")
-	#character.velocity.x = character.direction.x * 5
-	#character.move_local_x(character.velocity.x)
-	#character.move_and_slide()
 
+#Aplly Item Effect To Player
 func apply_item_effect(item):
 	match item["effect"]:
 		"Stamina":
@@ -93,6 +94,7 @@ func apply_item_effect(item):
 		_:
 			print("There is no effect for this item")
 
+#Equip Items to Player
 func equip_item(item):
 	match item["type"]:
 		"weapon":
@@ -103,3 +105,18 @@ func equip_item(item):
 			print("weapon equiped")
 		_:
 			print("There is no type for this item")
+
+func set_damage(amount):
+	$HitBoxArea2D.damage = amount
+
+#Show damage take by text 
+func damage_taken(amount):
+	var damage = damage_taken_text.instantiate() # instantiate damage text scene in scene of damaged 
+	damage.find_child("Label").text = str(amount) # find Label Node in scene and adjust to text equal amount
+	damage.position = position # instantiated positon will be the position of position of Node
+	get_tree().current_scene.add_child(damage)
+	
+	print(amount)
+
+	
+	

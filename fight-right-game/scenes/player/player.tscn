@@ -1,9 +1,10 @@
-[gd_scene load_steps=76 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=78 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
 [ext_resource type="Texture2D" uid="uid://cruwq5kr8ntu" path="res://assets/items/item4.png" id="2_g4txm"]
+[ext_resource type="PackedScene" uid="uid://kmeci7ndyvn3" path="res://damage_taken_text.tscn" id="2_inuyb"]
 [ext_resource type="Texture2D" uid="uid://3unp2fegjs6u" path="res://assets/characters/Ben/Ben-walk.png" id="2_scpiv"]
 [ext_resource type="Texture2D" uid="uid://bg8sqrlhtfsrb" path="res://assets/characters/Ben/Ben-fall.png" id="2_temo4"]
 [ext_resource type="Texture2D" uid="uid://ckxua1icgj7wk" path="res://assets/characters/Ben/Sword/Ben-sword-attack-1.png" id="2_u8oah"]
@@ -25,12 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://sct5e0c6rkay" path="res://assets/characters/Ben/Sword/Ben-sword-attack-2-fx.png" id="14_sejuo"]
 [ext_resource type="Script" path="res://scenes/StateLabel.gd" id="15_1rvvb"]
 [ext_resource type="Texture2D" uid="uid://dmuqnki5cv76q" path="res://assets/characters/Ben/Sword/Ben-sword-attack-1-fx.png" id="15_pybsr"]
-[ext_resource type="Script" path="res://scripts/player/states/sub-states/player_sword.gd" id="15_r2te3"]
-[ext_resource type="Script" path="res://scripts/player/states/sub-states/player_melee.gd" id="16_kprbr"]
+[ext_resource type="Script" path="res://scripts/player/states/player_sword.gd" id="15_r2te3"]
+[ext_resource type="Script" path="res://scripts/player/states/player_melee.gd" id="16_kprbr"]
 [ext_resource type="Texture2D" uid="uid://bib4itw5hk321" path="res://assets/characters/Ben/Sword/Ben-sword-attack-3-fx.png" id="17_b1yj7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
-size = Vector2(7.07107, 16.364)
+[ext_resource type="Script" path="res://scripts/hit_zone.gd" id="29_aup6x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obox3"]
 radius = 14.0
@@ -108,6 +107,42 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HitBoxArea2D/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.75, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HitBoxArea2D/CollisionShape2D:shape:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28.5, 25)]
 }
 
 [sub_resource type="Animation" id="Animation_v38yb"]
@@ -392,6 +427,42 @@ tracks/5/keys = {
 "update": 1,
 "values": [1, 0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HitBoxArea2D/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(4.75, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HitBoxArea2D/CollisionShape2D:shape:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(28.5, 25)]
+}
 
 [sub_resource type="Animation" id="Animation_r8yjl"]
 resource_name = "melee_attack_2"
@@ -468,6 +539,42 @@ tracks/5/keys = {
 "update": 1,
 "values": [1, 0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HitBoxArea2D/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.75, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HitBoxArea2D/CollisionShape2D:shape:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28.5, 25)]
+}
 
 [sub_resource type="Animation" id="Animation_da3t2"]
 resource_name = "melee_attack_3"
@@ -543,6 +650,42 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HitBoxArea2D/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.75, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HitBoxArea2D/CollisionShape2D:shape:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28.5, 25)]
 }
 
 [sub_resource type="Animation" id="Animation_r47f1"]
@@ -721,6 +864,42 @@ tracks/8/keys = {
 "update": 1,
 "values": [1, 2, 3, 0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HitBoxArea2D/CollisionShape2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7.25, -0.25)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HitBoxArea2D/CollisionShape2D:shape:size")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33.5, 37.5)]
+}
 
 [sub_resource type="Animation" id="Animation_qdaa2"]
 resource_name = "sword_attack_2"
@@ -833,6 +1012,42 @@ tracks/8/keys = {
 "update": 1,
 "values": []
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HitBoxArea2D/CollisionShape2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7.25, -0.25)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HitBoxArea2D/CollisionShape2D:shape:size")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33.5, 37.5)]
+}
 
 [sub_resource type="Animation" id="Animation_25m37"]
 resource_name = "sword_attack_3"
@@ -944,6 +1159,42 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(),
 "update": 1,
 "values": []
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HitBoxArea2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HitBoxArea2D/CollisionShape2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7.25, -0.25)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HitBoxArea2D/CollisionShape2D:shape:size")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33.5, 37.5)]
 }
 
 [sub_resource type="Animation" id="Animation_25r06"]
@@ -1156,11 +1407,15 @@ states/sword_attack_3/position = Vector2(176.359, -194.404)
 transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "sword_attack_1", "sword_attack_2", SubResource("AnimationNodeStateMachineTransition_fpni0"), "sword_attack_2", "sword_attack_3", SubResource("AnimationNodeStateMachineTransition_if0ov"), "move", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_64pa6"), "melee_attack_1", "melee_attack_2", SubResource("AnimationNodeStateMachineTransition_6s4w5"), "melee_attack_2", "melee_attack_3", SubResource("AnimationNodeStateMachineTransition_kvqlk"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_pkor0"), "sword_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_4oma5"), "melee_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_k6dar"), "sword_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_yl8r1"), "melee_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_xvww5")]
 graph_offset = Vector2(-255.72, -87.9603)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
+size = Vector2(28.5, 25)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 3
 position = Vector2(2.08165e-12, -18)
 collision_layer = 2
 script = ExtResource("1_2h6oh")
+damage_taken_text = ExtResource("2_inuyb")
 
 [node name="PlayerSprites" type="Node2D" parent="."]
 
@@ -1174,26 +1429,18 @@ position = Vector2(-13, 13)
 rotation = -3.11611
 texture = ExtResource("2_g4txm")
 
-[node name="Area2D" type="Area2D" parent="PlayerSprites/Sword/SwordSprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprites/Sword/SwordSprite2D/Area2D"]
-position = Vector2(3, -3)
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_mbtvl")
-
 [node name="BodySprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("9_hjlvy")
+texture = ExtResource("12_h5yxl")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 4
+hframes = 6
 frame = 1
 
 [node name="FXSprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("9_uaaf7")
+texture = ExtResource("17_b1yj7")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(2.08165e-12, 3)
+position = Vector2(-2.08165e-12, 4)
 shape = SubResource("CircleShape2D_obox3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1213,6 +1460,18 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 current_state = NodePath("Ground")
 
+[node name="Bow" type="Node" parent="StateMachine"]
+
+[node name="Climb" type="Node" parent="StateMachine"]
+
+[node name="Counter" type="Node" parent="StateMachine"]
+
+[node name="Guard" type="Node" parent="StateMachine"]
+
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("11_qcao1")
+ground_state = NodePath("../Ground")
+
 [node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state")]
 script = ExtResource("5_apiqb")
 jump_state = NodePath("../Jump")
@@ -1227,9 +1486,18 @@ autostart = true
 script = ExtResource("7_2f50p")
 fall_state = NodePath("../Fall")
 
-[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
-script = ExtResource("11_qcao1")
+[node name="Kick" type="Node" parent="StateMachine"]
+
+[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("16_kprbr")
 ground_state = NodePath("../Ground")
+can_move = false
+
+[node name="AttackTimer" type="Timer" parent="StateMachine/Melee"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Magic" type="Node" parent="StateMachine"]
 
 [node name="Sword" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
 script = ExtResource("15_r2te3")
@@ -1240,14 +1508,7 @@ can_move = false
 wait_time = 0.3
 one_shot = true
 
-[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
-script = ExtResource("16_kprbr")
-ground_state = NodePath("../Ground")
-can_move = false
-
-[node name="AttackTimer" type="Timer" parent="StateMachine/Melee"]
-wait_time = 0.3
-one_shot = true
+[node name="Grapple" type="Node" parent="StateMachine"]
 
 [node name="PlayerManager" type="Node" parent="."]
 
@@ -1289,5 +1550,15 @@ text = "State:"
 script = ExtResource("15_1rvvb")
 state_machine = NodePath("../StateMachine")
 
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]
+[node name="HitBoxArea2D" type="Area2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("29_aup6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea2D"]
+position = Vector2(4.75, 6)
+shape = SubResource("RectangleShape2D_mbtvl")
+disabled = true
+
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="HitBoxArea2D" to="HitBoxArea2D" method="_on_body_entered"]

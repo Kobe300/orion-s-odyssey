@@ -2,6 +2,7 @@
 class_name Enemy
 extends CharacterBody2D
 
+@export var damage_taken_text : PackedScene
 @export var MOVESPEED : float = 50.0
 
 @onready var sprite : Sprite2D = $Sprite2D
@@ -54,14 +55,6 @@ func determine_face_direction():
 		direction = facing_direction 
 	elif (direction != Vector2.ZERO):
 		facing_direction = direction
-		
-	 # Calculate the new position based on the direction and a speed factor (5 in this case)
-	#var new_position = character.global_position + Vector2(character.direction.x * 10, 0)
-	# Instantly move the character to the new position
-	#character.global_position = new_position
-	#character.direction = Input.get_vector("left", "right", "up", "down")
-	#character.velocity.x = character.direction.x * 5
-	#character.move_local_x(character.velocity.x)
-	#character.move_and_slide()
+
 
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyd5ysyn2pv5y"]
+[gd_scene load_steps=21 format=3 uid="uid://dyd5ysyn2pv5y"]
 
+[ext_resource type="Script" path="res://scenes/enemy/enemy_pillar.gd" id="1_nc7qv"]
 [ext_resource type="Texture2D" uid="uid://b80eso1sy3cvt" path="res://assets/characters/pillar/FlyingObelisk_no_lightnings_no_letter.png" id="1_r5oq8"]
 [ext_resource type="PackedScene" uid="uid://bexmm7veci34c" path="res://scenes/dmg_zone.tscn" id="2_fjedq"]
+[ext_resource type="PackedScene" uid="uid://kmeci7ndyvn3" path="res://damage_taken_text.tscn" id="2_j1ygq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y55qk"]
 atlas = ExtResource("1_r5oq8")
@@ -105,7 +107,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykeql"]
 size = Vector2(77, 334.5)
 
-[node name="Enemy_Pillar" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jkip"]
+
+[node name="Enemy_Pillar" type="CharacterBody2D"]
+script = ExtResource("1_nc7qv")
+damage_taken_text = ExtResource("2_j1ygq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -188)
@@ -113,8 +119,11 @@ sprite_frames = SubResource("SpriteFrames_hy28e")
 autoplay = "default"
 frame_progress = 0.494763
 
-[node name="Dmg_Zone" parent="." instance=ExtResource("2_fjedq")]
+[node name="HitBoxArea2D" parent="." instance=ExtResource("2_fjedq")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dmg_Zone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea2D"]
 position = Vector2(3, -168.75)
 shape = SubResource("RectangleShape2D_ykeql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7jkip")
