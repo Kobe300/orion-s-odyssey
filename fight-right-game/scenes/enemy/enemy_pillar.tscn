@@ -108,6 +108,7 @@ animations = [{
 size = Vector2(77, 334.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jkip"]
+size = Vector2(76, 334)
 
 [node name="Enemy_Pillar" type="CharacterBody2D"]
 script = ExtResource("1_nc7qv")
@@ -122,8 +123,10 @@ frame_progress = 0.494763
 [node name="HitBoxArea2D" parent="." instance=ExtResource("2_fjedq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea2D"]
-position = Vector2(3, -168.75)
+position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_ykeql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_7jkip")
+one_way_collision = true

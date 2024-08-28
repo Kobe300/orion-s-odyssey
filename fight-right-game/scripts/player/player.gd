@@ -3,6 +3,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var damage_taken_text : PackedScene
+
 @export var MOVESPEED : float = 150.0
 @export var current_item : Item:
 	set(value):
@@ -68,11 +69,13 @@ func update_player_direction():
 		bodysprite.flip_h = false
 		fxsprite.flip_h = false
 		sword.scale.x = abs(sword.scale.x) 
+		$HitBoxArea2D.scale.x = 1
 	elif direction.x < 0:
 		bodysprite.flip_h = true
 		fxsprite.flip_h = true
 		sword.scale.x = -abs(sword.scale.x)
- 
+		$HitBoxArea2D.scale.x = -1
+		
 #Determine tirection the player is facing
 func determine_face_direction():
 	if (direction == Vector2.ZERO):
@@ -115,8 +118,8 @@ func damage_taken(amount):
 	damage.find_child("Label").text = str(amount) # find Label Node in scene and adjust to text equal amount
 	damage.position = position # instantiated positon will be the position of position of Node
 	get_tree().current_scene.add_child(damage)
-	
-	print(amount)
+
+	print(str(amount) + " lost by player")
 
 	
 	
