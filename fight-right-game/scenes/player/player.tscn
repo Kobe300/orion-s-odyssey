@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=80 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
@@ -30,7 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://bib4itw5hk321" path="res://assets/characters/Ben/Sword/Ben-sword-attack-3-fx.png" id="17_b1yj7"]
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 [ext_resource type="Script" path="res://scripts/dmg_zone.gd" id="30_qwjr2"]
-[ext_resource type="Script" path="res://scenes/player/HealthComponent.gd" id="31_onma0"]
+[ext_resource type="Script" path="res://scripts/components/healthcomponent.gd" id="31_onma0"]
+[ext_resource type="Script" path="res://scripts/components/hitboxcomponent.gd" id="32_kedpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uty62"]
 size = Vector2(16, 29)
@@ -1562,6 +1563,9 @@ disabled = true
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("31_onma0")
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("32_kedpe")
 
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]

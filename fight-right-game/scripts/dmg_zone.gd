@@ -9,6 +9,7 @@ func _on_body_entered(body):
 		attack.attack_damage = attack_damage
 		attack.knock_back_force = knock_back_force
 		attack.attack_position = global_position
+		
 		body.damage_taken(attack)
 		print('Damage Taken!')
 
