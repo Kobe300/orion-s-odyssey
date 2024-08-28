@@ -131,4 +131,3 @@ func print_damage(amount):
 	get_tree().current_scene.add_child(damage)
 	
 	print(str(amount) + " lost by player")
-

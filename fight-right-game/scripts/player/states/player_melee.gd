@@ -48,6 +48,3 @@ func _on_animation_tree_animation_finished(anim_name):
 			next_state = ground_state
 		else:
 			next_state = ground_state
-
-
-

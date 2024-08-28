@@ -423,10 +423,10 @@ tracks/5/path = NodePath("PlayerSprites/FXSprite2D:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [1, 0]
+"values": [0, 1, 0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -535,10 +535,10 @@ tracks/5/path = NodePath("PlayerSprites/FXSprite2D:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [1, 0]
+"values": [0, 1, 0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -647,10 +647,10 @@ tracks/5/path = NodePath("PlayerSprites/FXSprite2D:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [1, 0]
+"values": [0, 1, 0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -860,10 +860,10 @@ tracks/8/path = NodePath("PlayerSprites/FXSprite2D:frame")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 0]
+"values": [0, 1, 2, 3, 0]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -972,10 +972,10 @@ tracks/5/path = NodePath("PlayerSprites/FXSprite2D:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 0]
+"values": [0, 1, 2, 3, 0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1120,10 +1120,10 @@ tracks/5/path = NodePath("PlayerSprites/FXSprite2D:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 0]
+"values": [0, 1, 2, 3, 0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1431,9 +1431,9 @@ rotation = -3.11611
 texture = ExtResource("2_g4txm")
 
 [node name="BodySprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("3_8kber")
+texture = ExtResource("12_h5yxl")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 4
+hframes = 6
 frame = 1
 
 [node name="FXSprite2D" type="Sprite2D" parent="PlayerSprites"]
