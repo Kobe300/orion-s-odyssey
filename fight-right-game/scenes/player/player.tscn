@@ -31,8 +31,8 @@
 [ext_resource type="Script" path="res://scripts/hit_zone.gd" id="29_aup6x"]
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_obox3"]
-radius = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uty62"]
+size = Vector2(16, 29)
 
 [sub_resource type="Animation" id="Animation_pjysu"]
 length = 0.001
@@ -1430,9 +1430,9 @@ rotation = -3.11611
 texture = ExtResource("2_g4txm")
 
 [node name="BodySprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("12_h5yxl")
+texture = ExtResource("3_8kber")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 6
+hframes = 4
 frame = 1
 
 [node name="FXSprite2D" type="Sprite2D" parent="PlayerSprites"]
@@ -1440,8 +1440,8 @@ texture = ExtResource("17_b1yj7")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.08165e-12, 3)
-shape = SubResource("CircleShape2D_obox3")
+position = Vector2(-2.08165e-12, 2.5)
+shape = SubResource("RectangleShape2D_uty62")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1558,6 +1558,8 @@ script = ExtResource("29_aup6x")
 position = Vector2(4.75, 6)
 shape = SubResource("RectangleShape2D_mbtvl")
 disabled = true
+
+[node name="HealthComponent" type="Node" parent="."]
 
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]
