@@ -2,6 +2,8 @@
 class_name Player
 extends CharacterBody2D
 
+var health : float = 200
+
 @export var damage_taken_text : PackedScene
 
 @export var MOVESPEED : float = 150.0
@@ -110,14 +112,23 @@ func equip_item(item):
 			print("There is no type for this item")
 
 func set_damage(amount):
-	$HitBoxArea2D.damage = amount
+	$HitBoxArea2D.attack_damage = amount
 
-#Show damage take by text 
-func damage_taken(amount):
+func damage_taken(attack: Attack):
+	print_damage(attack.attack_damage)
+	
+	# Handles Health Loss
+	health -= attack.attack_damage
+	
+	if health <= 0:
+		queue_free()
+	print("player health is " + str(health ))
+
+func print_damage(amount):
 	var damage = damage_taken_text.instantiate() # instantiate damage text scene in scene of damaged 
 	damage.find_child("Label").text = str(amount) # find Label Node in scene and adjust to text equal amount
 	damage.position = position # instantiated positon will be the position of position of Node
-	get_tree().current_scene.add_child(damage) # Add the damage text to the current scene
-
+	get_tree().current_scene.add_child(damage)
+	
 	print(str(amount) + " lost by player")
 

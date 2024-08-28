@@ -130,3 +130,5 @@ shape = SubResource("RectangleShape2D_ykeql")
 position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_7jkip")
 one_way_collision = true
+
+[node name="HealthComponent" type="Node" parent="."]

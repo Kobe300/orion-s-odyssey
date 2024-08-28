@@ -13,7 +13,7 @@ var next_state : State
 func process_input(event : InputEvent):
 	pass
 
-func process_physics(deltae):
+func process_physics(delta):
 	pass
 
 func enter():
