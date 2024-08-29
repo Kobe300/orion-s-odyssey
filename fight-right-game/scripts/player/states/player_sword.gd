@@ -12,7 +12,6 @@ func enter():
 
 # Called when the node exit a state.
 func exit() -> void:
-	print(" Exit Attack State")
 	pass
 
 # Corrisponds with the _process() in "state_machine" script
@@ -45,4 +44,3 @@ func _on_animation_tree_animation_finished(anim_name):
 			next_state = ground_state
 		else:
 			next_state = ground_state
-

@@ -4,18 +4,7 @@ extends CharacterBody2D
 
 var health : float = 200
 
-@export var damage_taken_text : PackedScene
-
 @export var MOVESPEED : float = 150.0
-@export var current_item : Item:
-	set(value):
-		current_item = value
-		if current_item !=null:
-			if current_item.animation in ["sword"]:
-				set_damage(current_item.damage)
-			else:
-				set_damage(1)
-		
 
 @onready var bodysprite : Sprite2D = $PlayerSprites/BodySprite2D #Flip Player Sprite2D
 @onready var fxsprite : Sprite2D = $PlayerSprites/FXSprite2D #Flip FX Sprite2D
@@ -71,13 +60,15 @@ func update_player_direction():
 		bodysprite.flip_h = false
 		fxsprite.flip_h = false
 		sword.scale.x = abs(sword.scale.x) 
-		$HitBoxArea2D.scale.x = 1
+		$HitBoxComponent.scale.x = 1
+		$AttackComponent.scale.x = 1
 	elif direction.x < 0:
 		bodysprite.flip_h = true
 		fxsprite.flip_h = true
 		sword.scale.x = -abs(sword.scale.x)
-		$HitBoxArea2D.scale.x = -1
-		
+		$HitBoxComponent.scale.x = -1
+		$AttackComponent.scale.x = -1
+	
 #Determine tirection the player is facing
 func determine_face_direction():
 	if (direction == Vector2.ZERO):
@@ -110,24 +101,3 @@ func equip_item(item):
 			print("weapon equiped")
 		_:
 			print("There is no type for this item")
-
-func set_damage(amount):
-	$HitBoxArea2D.attack_damage = amount
-
-func damage_taken(attack: Attack):
-	print_damage(attack.attack_damage)
-	
-	# Handles Health Loss
-	health -= attack.attack_damage
-	
-	if health <= 0:
-		queue_free()
-	print("player health is " + str(health ))
-
-func print_damage(amount):
-	var damage = damage_taken_text.instantiate() # instantiate damage text scene in scene of damaged 
-	damage.find_child("Label").text = str(amount) # find Label Node in scene and adjust to text equal amount
-	damage.position = position # instantiated positon will be the position of position of Node
-	get_tree().current_scene.add_child(damage)
-	
-	print(str(amount) + " lost by player")

@@ -9,13 +9,12 @@ extends State
 func enter():
 	playback.travel("melee_attack_1")
 	timer.start()
-	print('Character in Attack State')
+	#print('Character in Attack State')
 	attack_face()
 	#pass
 
 # Called when the node exit a state.
 func exit() -> void:
-	print(" Exit Attack State")
 	pass
 
 # Corrisponds with the _process() in "state_machine" script
