@@ -26,7 +26,6 @@ func process_input(event: InputEvent):
 	# Open inventory
 	if Input.is_action_just_pressed("inventory"):
 		inventory_ui.visible = !inventory_ui.visible
-		get_tree().paused = !get_tree().paused
 		
 	# Character Jumps
 	if (Input.is_action_just_pressed("jump")): 

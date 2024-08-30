@@ -126,6 +126,7 @@ frame_progress = 0.494763
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_7jkip")
+one_way_collision = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_eoe6r")]
 damage_taken_text = ExtResource("2_j1ygq")

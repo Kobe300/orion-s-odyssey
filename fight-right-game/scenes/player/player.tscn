@@ -1,7 +1,6 @@
-[gd_scene load_steps=81 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=80 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
-[ext_resource type="Script" path="res://scripts/player/player_health.gd" id="1_khwak"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
 [ext_resource type="Texture2D" uid="uid://cruwq5kr8ntu" path="res://assets/items/item4.png" id="2_g4txm"]
 [ext_resource type="PackedScene" uid="uid://kmeci7ndyvn3" path="res://scenes/components/damage_taken_text.tscn" id="2_inuyb"]
@@ -1512,11 +1511,6 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Grapple" type="Node" parent="StateMachine"]
-
-[node name="PlayerManager" type="Node" parent="."]
-
-[node name="Health" type="Node" parent="PlayerManager"]
-script = ExtResource("1_khwak")
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 visible = false
