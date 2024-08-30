@@ -74,12 +74,38 @@ func drop_item(item_data, drop_position):
 
 # Hotbar Code
 func add_hotbar_item(item):
-	for i in range(hotbar_size):
-		if hotbar_inventory[i] == null:
-			hotbar_inventory[i] = item
-			inventory_updated.emit()
-			return true
-	return false
+	var slot_index := -1
+
+	# Determine the slot based on the item type
+	match item["type"]:
+		"weapon":
+			slot_index = 0 # Example: weapons go into slot 0
+		"gauntlet":
+			slot_index = 1 # Example: skills go into slot 1
+		"bow":
+			slot_index = 2 # Example: potions go into slot 2
+		"gems":
+			slot_index = 3 # Example: potions go into slot 2
+		_:
+			slot_index = -1 # Default case
+
+	# Check if the determined slot is valid and assign the item
+	if slot_index != -1:
+		# If there's already an item in the slot, unequip and move it back to inventory
+		if hotbar_inventory[slot_index] != null:
+			var old_item = hotbar_inventory[slot_index]
+			GlobalInv.player_node.unequip_item(old_item)
+			GlobalInv.add_item(old_item) # Add the old item back to the inventory
+
+		# Equip the new item in the slot
+		hotbar_inventory[slot_index] = item
+		GlobalInv.player_node.equip_item(item) # Equip the new item
+		inventory_updated.emit()
+		return true
+	else:
+		print("No available slot or slot already occupied")
+		return false
+
 
 func remove_hotbar_item(item_type, item_effect):
 	for i in range(hotbar_inventory.size()):

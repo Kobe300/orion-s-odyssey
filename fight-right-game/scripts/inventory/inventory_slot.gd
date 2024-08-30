@@ -55,12 +55,13 @@ func _on_drop_pressed():
 		drop_offset = drop_offset.rotated(GlobalInv.player_node.rotation)
 		GlobalInv.drop_item(item, drop_position + drop_offset)
 		GlobalInv.remove_item(item["type"], item["effect"])
+		GlobalInv.player_node.unequip_item(item)
 		GlobalInv.remove_hotbar_item(item["type"], item["effect"])
 		action_panel.visible = false
 
 func _on_use_pressed():
 	action_panel.visible = false
-	if item != null and item["type"] == "weapon":
+	if item["type"] == "weapon" or item["type"] == "gauntlet" or item["type"] == "gems" or item["type"] == "bow":
 		if GlobalInv.player_node:
 			GlobalInv.player_node.equip_item(item)
 			is_assigned = true
@@ -95,6 +96,6 @@ func _on_unequip_pressed() -> void:
 		GlobalInv.player_node.unequip_item(item)
 		GlobalInv.unassign_hotbar_item(item["type"], item["effect"])
 		print('unequipping')
-		GlobalInv.remove_item(item["type"], item["effect"])
+		GlobalInv.remove_item_from_inventory(item["type"], item["effect"])
 		GlobalInv.remove_hotbar_item(item["type"], item["effect"])
 		GlobalInv.add_item(item)
