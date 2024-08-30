@@ -30,7 +30,7 @@
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 [ext_resource type="PackedScene" uid="uid://mq7fqi2wpdfg" path="res://scenes/components/health_component.tscn" id="29_orejo"]
 [ext_resource type="PackedScene" uid="uid://bi7ixx7s7khoh" path="res://scenes/components/hitbox_component.tscn" id="31_2h16e"]
-[ext_resource type="PackedScene" uid="uid://bw1461j1eh2tt" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
+[ext_resource type="PackedScene" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
 [ext_resource type="PackedScene" uid="uid://dqkv21vefioh8" path="res://scenes/components/attack_component.tscn" id="33_tb2bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uty62"]
@@ -1522,19 +1522,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.192157, 0.376471, 0.321569, 0)
-
-[node name="Label" type="Label" parent="InventoryUI/ColorRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -140.0
-offset_top = 50.0
-offset_right = 140.0
-offset_bottom = 133.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 60
-text = "Inventory"
 
 [node name="Inventory_UI" parent="InventoryUI/ColorRect" instance=ExtResource("10_fpuix")]
 layout_mode = 1
