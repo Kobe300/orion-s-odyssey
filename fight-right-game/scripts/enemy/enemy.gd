@@ -55,6 +55,3 @@ func determine_face_direction():
 		direction = facing_direction 
 	elif (direction != Vector2.ZERO):
 		facing_direction = direction
-
-
-

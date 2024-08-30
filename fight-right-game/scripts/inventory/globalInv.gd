@@ -7,8 +7,12 @@ signal inventory_updated
 
 @onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")
 
+var hotbar_size = 3
+var hotbar_inventory = []
+
 func _ready():
 	inventory.resize(16)
+	hotbar_inventory.resize(hotbar_size)
 
 func add_item(item):
 	for i in range(inventory.size()):
@@ -59,3 +63,28 @@ func drop_item(item_data, drop_position):
 	drop_position = adjust_drop_position(player_node.global_position)
 	item_instance.global_position = drop_position
 	get_tree().current_scene.add_child(item_instance)
+
+# Hotbar Code
+func add_hotbar_item(item):
+	for i in range(hotbar_size):
+		if hotbar_inventory[i] == null:
+			hotbar_inventory[i] = item
+			return true
+	return false
+
+func remove_hotbar_item(item_type, item_effect):
+	for i in range(hotbar_inventory.size()):
+		if hotbar_inventory[i] != null and hotbar_inventory[i]["type"] == item_type and hotbar_inventory[i]["effect"] == item_effect:
+			if hotbar_inventory[i]["quantity"] <= 0:
+				hotbar_inventory[i] = null
+			inventory_updated.emit()
+			return true
+	return false
+
+func unassign_hotbar_item(item_type, item_effect):
+	for i in range(hotbar_inventory.size()):
+		if hotbar_inventory[i] != null and hotbar_inventory[i]["type"] == item_type and hotbar_inventory[i]["effect"] == item_effect:
+			hotbar_inventory[i] = null
+			inventory_updated.emit()
+			return true
+	return false
