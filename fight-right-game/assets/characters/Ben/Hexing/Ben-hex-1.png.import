@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhuxeo01ple7f"
-path="res://.godot/imported/Ben-cast-loop.png-363cfb874b9a7b76b1ada67eaea8698e.ctex"
+uid="uid://cofkoi8wiikpn"
+path="res://.godot/imported/Ben-hex-1.png-498506caaf64c43f69a0c55f728f5f9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Ben/Ben-cast-loop.png"
-dest_files=["res://.godot/imported/Ben-cast-loop.png-363cfb874b9a7b76b1ada67eaea8698e.ctex"]
+source_file="res://assets/characters/Ben/Hexing/Ben-hex-1.png"
+dest_files=["res://.godot/imported/Ben-hex-1.png-498506caaf64c43f69a0c55f728f5f9a.ctex"]
 
 [params]
 
