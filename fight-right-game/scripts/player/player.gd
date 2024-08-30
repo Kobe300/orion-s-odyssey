@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var animation_tree : AnimationTree = $AnimationTree 
 @onready  var state_machine : StateMachine = $StateMachine 
 
-#@onready var player_health = get_node("/root/Game/Player/PlayerManager/Health")
+@onready var player_health = $HealthComponent
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
@@ -84,8 +84,8 @@ func apply_item_effect(item):
 			GlobalInv.increase_inventory_size(5)
 			print("Slots increased to ", GlobalInv.inventory.size())
 		"Heal":
-			#player_health.heal_player(50)
-			print('to be added')
+			player_health.health += 50
+			print("Player Heal'd to = " + str(player_health.health))
 		_:
 			print("There is no effect for this item")
 
