@@ -4,6 +4,7 @@ extends State
 @export var jump_state: State
 @export var sword_state: State
 @export var melee_state: State
+@export var kick_state: State
 
 #@export var sprint_speed = 250.0
 @export var JUMP_FORCE: float = -300.0
@@ -39,6 +40,9 @@ func process_input(event: InputEvent):
 		elif not state.sword:
 			next_state = melee_state
 
+	# Character Kicks
+	if (Input.is_action_just_pressed("kick")): 
+		next_state = kick_state
 #
 func process_physics(delta: float):
 	#print(state.sword)

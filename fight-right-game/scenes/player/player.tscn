@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=93 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bg8sqrlhtfsrb" path="res://assets/characters/Ben/Ben-fall.png" id="2_temo4"]
 [ext_resource type="Texture2D" uid="uid://ckxua1icgj7wk" path="res://assets/characters/Ben/Sword/Ben-sword-attack-1.png" id="2_u8oah"]
 [ext_resource type="Texture2D" uid="uid://rbfti1st5n6o" path="res://assets/characters/Ben/Idle.png" id="3_8kber"]
+[ext_resource type="Texture2D" uid="uid://bh6kmwd042a1e" path="res://assets/characters/Ben/Kick/Ben-kick-attack-2.png" id="3_ayq56"]
+[ext_resource type="Texture2D" uid="uid://bhlghb0jx7l76" path="res://assets/characters/Ben/Kick/Ben-kick-attack-1.png" id="3_s5h18"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
 [ext_resource type="Texture2D" uid="uid://b0h53u7ilmv5" path="res://assets/characters/Ben/Ben-jump.png" id="4_anuog"]
+[ext_resource type="Texture2D" uid="uid://k4lpwi08boei" path="res://assets/characters/Ben/Kick/Ben-kick-attack-2-fx.png" id="4_fgq8x"]
+[ext_resource type="Texture2D" uid="uid://ctagon3gr1gf8" path="res://assets/characters/Ben/Kick/Ben-kick-attack-1-fx.png" id="4_oyw2e"]
 [ext_resource type="Script" path="res://scripts/player/states/player_ground.gd" id="5_apiqb"]
 [ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
 [ext_resource type="Texture2D" uid="uid://31ii5exw26aw" path="res://assets/characters/Ben/Melee/Ben-punch-attack-1.png" id="9_hjlvy"]
@@ -27,10 +31,11 @@
 [ext_resource type="Script" path="res://scripts/player/states/player_sword.gd" id="15_r2te3"]
 [ext_resource type="Script" path="res://scripts/player/states/player_melee.gd" id="16_kprbr"]
 [ext_resource type="Texture2D" uid="uid://bib4itw5hk321" path="res://assets/characters/Ben/Sword/Ben-sword-attack-3-fx.png" id="17_b1yj7"]
+[ext_resource type="Script" path="res://scripts/player/states/player_kick.gd" id="28_7t5yu"]
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 [ext_resource type="PackedScene" uid="uid://mq7fqi2wpdfg" path="res://scenes/components/health_component.tscn" id="29_orejo"]
 [ext_resource type="PackedScene" uid="uid://bi7ixx7s7khoh" path="res://scenes/components/hitbox_component.tscn" id="31_2h16e"]
-[ext_resource type="PackedScene" uid="uid://bw1461j1eh2tt" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
+[ext_resource type="PackedScene" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
 [ext_resource type="PackedScene" uid="uid://dqkv21vefioh8" path="res://scenes/components/attack_component.tscn" id="33_tb2bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uty62"]
@@ -1276,12 +1281,241 @@ tracks/5/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_vbrle"]
+resource_name = "kick_attack_1"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_s5h18")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/BodySprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/BodySprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites/FXSprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_oyw2e")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprites/FXSprite2D:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerSprites/FXSprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AttackComponent/Attack_CollisionShape2D2:shape:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(9, 25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AttackComponent/Attack_CollisionShape2D2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(14.5, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AttackComponent/Attack_CollisionShape2D2:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_7os7v"]
+resource_name = "kick_attack_2"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ayq56")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/BodySprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/BodySprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites/FXSprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fgq8x")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprites/FXSprite2D:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerSprites/FXSprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AttackComponent/Attack_CollisionShape2D2:shape:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(10, 25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AttackComponent/Attack_CollisionShape2D2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(15, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AttackComponent/Attack_CollisionShape2D2:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn768"]
 _data = {
 "RESET": SubResource("Animation_pjysu"),
 "fall": SubResource("Animation_v38yb"),
 "idle": SubResource("Animation_arf4t"),
 "jump": SubResource("Animation_mfck1"),
+"kick_attack_1": SubResource("Animation_vbrle"),
+"kick_attack_2": SubResource("Animation_7os7v"),
 "melee_attack_1": SubResource("Animation_kojbg"),
 "melee_attack_2": SubResource("Animation_r8yjl"),
 "melee_attack_3": SubResource("Animation_da3t2"),
@@ -1300,6 +1534,12 @@ animation = &"fall"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_84vs6"]
 animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1d10t"]
+animation = &"kick_attack_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ckl35"]
+animation = &"kick_attack_2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y0nao"]
 animation = &"melee_attack_1"
@@ -1384,6 +1624,14 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xvww5"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5il31"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ahg1t"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sol2b"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_08o0r"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
 states/Start/position = Vector2(-29.5, 97.75)
 states/death/node = SubResource("AnimationNodeAnimation_xogc2")
@@ -1392,22 +1640,26 @@ states/fall/node = SubResource("AnimationNodeAnimation_psi0b")
 states/fall/position = Vector2(458.525, 263.995)
 states/jump/node = SubResource("AnimationNodeAnimation_84vs6")
 states/jump/position = Vector2(337.328, 263.745)
+states/kick_attack_1/node = SubResource("AnimationNodeAnimation_1d10t")
+states/kick_attack_1/position = Vector2(216.527, -229.171)
+states/kick_attack_2/node = SubResource("AnimationNodeAnimation_ckl35")
+states/kick_attack_2/position = Vector2(393.527, -228.124)
 states/melee_attack_1/node = SubResource("AnimationNodeAnimation_y0nao")
-states/melee_attack_1/position = Vector2(594.452, -4.00083)
+states/melee_attack_1/position = Vector2(769.452, 13.4992)
 states/melee_attack_2/node = SubResource("AnimationNodeAnimation_kmi05")
-states/melee_attack_2/position = Vector2(536.628, -99.2298)
+states/melee_attack_2/position = Vector2(711.628, -81.7298)
 states/melee_attack_3/node = SubResource("AnimationNodeAnimation_h4b3t")
-states/melee_attack_3/position = Vector2(441.253, -193.847)
+states/melee_attack_3/position = Vector2(616.253, -176.347)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.217, 100.003)
 states/sword_attack_1/node = SubResource("AnimationNodeAnimation_xijry")
-states/sword_attack_1/position = Vector2(3.077, -5.14826)
+states/sword_attack_1/position = Vector2(-216.923, -29.1483)
 states/sword_attack_2/node = SubResource("AnimationNodeAnimation_soj2n")
-states/sword_attack_2/position = Vector2(40.217, -99.9005)
+states/sword_attack_2/position = Vector2(-179.783, -123.9)
 states/sword_attack_3/node = SubResource("AnimationNodeAnimation_dg47p")
-states/sword_attack_3/position = Vector2(176.359, -194.404)
-transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "sword_attack_1", "sword_attack_2", SubResource("AnimationNodeStateMachineTransition_fpni0"), "sword_attack_2", "sword_attack_3", SubResource("AnimationNodeStateMachineTransition_if0ov"), "move", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_64pa6"), "melee_attack_1", "melee_attack_2", SubResource("AnimationNodeStateMachineTransition_6s4w5"), "melee_attack_2", "melee_attack_3", SubResource("AnimationNodeStateMachineTransition_kvqlk"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_pkor0"), "sword_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_4oma5"), "melee_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_k6dar"), "sword_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_yl8r1"), "melee_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_xvww5")]
-graph_offset = Vector2(-255.72, -87.9603)
+states/sword_attack_3/position = Vector2(-43.641, -218.404)
+transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "sword_attack_1", "sword_attack_2", SubResource("AnimationNodeStateMachineTransition_fpni0"), "sword_attack_2", "sword_attack_3", SubResource("AnimationNodeStateMachineTransition_if0ov"), "move", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_64pa6"), "melee_attack_1", "melee_attack_2", SubResource("AnimationNodeStateMachineTransition_6s4w5"), "melee_attack_2", "melee_attack_3", SubResource("AnimationNodeStateMachineTransition_kvqlk"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_pkor0"), "sword_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_4oma5"), "melee_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_k6dar"), "sword_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_yl8r1"), "melee_attack_3", "move", SubResource("AnimationNodeStateMachineTransition_xvww5"), "kick_attack_1", "kick_attack_2", SubResource("AnimationNodeStateMachineTransition_5il31"), "kick_attack_2", "move", SubResource("AnimationNodeStateMachineTransition_ahg1t"), "kick_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_sol2b"), "move", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_08o0r")]
+graph_offset = Vector2(-236.693, -283.89)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
 size = Vector2(28.5, 25)
@@ -1431,13 +1683,13 @@ rotation = -3.11611
 texture = ExtResource("2_g4txm")
 
 [node name="BodySprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("12_h5yxl")
+texture = ExtResource("3_s5h18")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 6
+hframes = 5
 frame = 1
 
 [node name="FXSprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("17_b1yj7")
+texture = ExtResource("4_oyw2e")
 hframes = 4
 
 [node name="Hit_World_CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1474,11 +1726,12 @@ current_state = NodePath("Ground")
 script = ExtResource("11_qcao1")
 ground_state = NodePath("../Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state", "kick_state")]
 script = ExtResource("5_apiqb")
 jump_state = NodePath("../Jump")
 sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
+kick_state = NodePath("../Kick")
 
 [node name="BuffferTimer" type="Timer" parent="StateMachine/Ground"]
 wait_time = 0.05
@@ -1488,11 +1741,16 @@ autostart = true
 script = ExtResource("7_2f50p")
 fall_state = NodePath("../Fall")
 
-[node name="Kick" type="Node" parent="StateMachine"]
-
-[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
-script = ExtResource("16_kprbr")
+[node name="Kick" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("28_7t5yu")
 ground_state = NodePath("../Ground")
+
+[node name="AttackTimer" type="Timer" parent="StateMachine/Kick"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Melee" type="Node" parent="StateMachine"]
+script = ExtResource("16_kprbr")
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Melee"]
@@ -1557,5 +1815,6 @@ disabled = true
 
 [node name="Inventory_HotBar" parent="Inventory_HotBar" instance=ExtResource("33_8ibjo")]
 
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Kick" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]
