@@ -2,8 +2,6 @@
 class_name Player
 extends CharacterBody2D
 
-var health : float = 200
-
 @export var MOVESPEED : float = 150.0
 
 @onready var bodysprite : Sprite2D = $PlayerSprites/BodySprite2D #Flip Player Sprite2D
