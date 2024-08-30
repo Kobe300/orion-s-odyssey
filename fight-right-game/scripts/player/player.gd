@@ -102,3 +102,14 @@ func equip_item(item):
 			print("weapon equiped")
 		_:
 			print("There is no type for this item")
+
+func unequip_item(item):
+	match item["type"]:
+		"weapon":
+			state.sword = false
+			print("sword is = to ", state.sword)
+			sword.visible = false
+			sword_sprite_2d.texture = item["texture"]
+			print("weapon unequiped")
+		_:
+			print("There is no type for this item")

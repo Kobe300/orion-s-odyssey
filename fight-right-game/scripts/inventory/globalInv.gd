@@ -7,7 +7,7 @@ signal inventory_updated
 
 @onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")
 
-var hotbar_size = 3
+var hotbar_size = 4
 var hotbar_inventory = []
 
 func _ready():
@@ -34,6 +34,14 @@ func remove_item(item_type, item_effect):
 			inventory[i]["quantity"] -= 1
 			if inventory[i]["quantity"] <= 0:
 				inventory[i] = null
+			inventory_updated.emit()
+			return true
+	return false
+
+func remove_item_from_inventory(item_type, item_effect):
+	for i in range(inventory.size()):
+		if inventory[i] != null and inventory[i]["type"] == item_type and inventory[i]["effect"] == item_effect:
+			inventory[i] = null
 			inventory_updated.emit()
 			return true
 	return false
@@ -69,14 +77,14 @@ func add_hotbar_item(item):
 	for i in range(hotbar_size):
 		if hotbar_inventory[i] == null:
 			hotbar_inventory[i] = item
+			inventory_updated.emit()
 			return true
 	return false
 
 func remove_hotbar_item(item_type, item_effect):
 	for i in range(hotbar_inventory.size()):
 		if hotbar_inventory[i] != null and hotbar_inventory[i]["type"] == item_type and hotbar_inventory[i]["effect"] == item_effect:
-			if hotbar_inventory[i]["quantity"] <= 0:
-				hotbar_inventory[i] = null
+			hotbar_inventory[i] = null
 			inventory_updated.emit()
 			return true
 	return false
@@ -88,3 +96,6 @@ func unassign_hotbar_item(item_type, item_effect):
 			inventory_updated.emit()
 			return true
 	return false
+
+func is_item_assigned_to_hotbar(item_to_check):
+	return item_to_check in hotbar_inventory
