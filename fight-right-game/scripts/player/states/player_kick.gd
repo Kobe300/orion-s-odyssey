@@ -1,8 +1,11 @@
 #class_Name Kick
 extends State
 
-@onready var timer : Timer = $AttackTimer
 @export var ground_state : State
+@export var sword_state: State
+@export var melee_state: State
+
+@onready var timer : Timer = $AttackTimer
 
 func enter():
 	playback.travel("kick_attack_1")
@@ -14,9 +17,17 @@ func exit():
 	pass
 	
 func process_input(event : InputEvent):
-	if (Input.is_action_just_pressed("attack")):
+	if (Input.is_action_just_pressed("kick")):
 		timer.start()
 	#pass
+	
+	# Character Attacks
+	if (Input.is_action_just_pressed("attack")): 
+		if state.sword:
+			next_state = sword_state
+		elif not state.sword:
+			next_state = melee_state
+
 
 func process_physics(deltae):
 	pass

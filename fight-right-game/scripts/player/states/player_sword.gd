@@ -2,6 +2,7 @@
 extends State
 
 @export var ground_state : State
+@export var kick_state: State
 
 @onready var timer : Timer = $AttackTimer
 
@@ -19,6 +20,9 @@ func process_input(event: InputEvent):
 	if (Input.is_action_just_pressed("attack")): 
 		timer.start()
 	#pass
+	
+	if (Input.is_action_just_pressed("kick")):
+		next_state = kick_state
 
 #Corrisponds with the _ physics_process() in "state_machine" script
 func process_physics(delta: float):
