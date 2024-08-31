@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready  var state_machine : StateMachine = $StateMachine 
 
 @onready var player_health = $HealthComponent
+@onready var player_attack = $AttackComponent
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
@@ -98,6 +99,7 @@ func equip_item(item):
 			sword.visible = true
 			sword_sprite_2d.texture = item["texture"]
 			print("weapon equiped")
+			player_attack.attack_damage = item["damage"]
 		_:
 			print("There is no type for this item")
 
@@ -109,5 +111,6 @@ func unequip_item(item):
 			sword.visible = false
 			sword_sprite_2d.texture = item["texture"]
 			print("weapon unequiped")
+			player_attack.attack_damage = 30
 		_:
 			print("There is no type for this item")

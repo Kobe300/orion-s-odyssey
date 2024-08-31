@@ -11,6 +11,7 @@ extends Node2D
 @export var item_name = \"\"
 @export var item_effect = \"\"
 @export var item_texture = Texture
+@export var item_damage = 0
 
 var scene_path: String = \"res://scenes/inventory_item.tscn\"
 
@@ -39,7 +40,8 @@ func pickup_item():
 		\"name\": item_name,
 		\"effect\": item_effect,
 		\"texture\": item_texture,
-		\"path\": scene_path
+		\"path\": scene_path,
+		\"damage\": item_damage
 	}
 	
 	
@@ -74,6 +76,7 @@ item_type = "place_holder"
 item_name = "godoer"
 item_effect = "heal"
 item_texture = ExtResource("2_f7kv3")
+item_damage = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_rhmm0")
