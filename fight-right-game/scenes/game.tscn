@@ -40,7 +40,6 @@ item_type = "tool"
 item_name = "pickaxe"
 item_effect = "mining speed"
 item_texture = ExtResource("6_x5cjy")
-item_damage = null
 
 [node name="Inventory_Item3" parent="." instance=ExtResource("4_nb5jk")]
 position = Vector2(213, -17)
@@ -48,7 +47,6 @@ item_type = "Consumable"
 item_name = "Health Potion"
 item_effect = "Heal"
 item_texture = ExtResource("8_07ptj")
-item_damage = null
 
 [node name="Inventory_Item4" parent="." instance=ExtResource("4_nb5jk")]
 position = Vector2(175, -17)

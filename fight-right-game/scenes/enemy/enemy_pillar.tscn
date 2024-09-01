@@ -113,6 +113,7 @@ size = Vector2(76, 334)
 size = Vector2(72, 336)
 
 [node name="Enemy_Pillar" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_nc7qv")
 damage_taken_text = ExtResource("2_j1ygq")
 attack_damage = 10.0
@@ -126,13 +127,14 @@ frame_progress = 0.494763
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_7jkip")
-one_way_collision = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_eoe6r")]
 damage_taken_text = ExtResource("2_j1ygq")
 Max_health = 200.0
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_ffiw3")]
+collision_layer = 4
+collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
 [node name="HitBox_CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
@@ -140,7 +142,9 @@ position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_qkqih")
 
 [node name="AttackComponent" parent="." instance=ExtResource("6_55p5f")]
+collision_layer = 0
+collision_mask = 2
 
 [node name="Attack_CollisionShape" type="CollisionShape2D" parent="AttackComponent"]
-position = Vector2(-80, -168)
+position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_qkqih")
