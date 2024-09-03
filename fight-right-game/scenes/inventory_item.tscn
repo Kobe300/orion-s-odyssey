@@ -66,6 +66,7 @@ func set_item_data(data):
 	item_name = data[\"name\"]
 	item_effect = data[\"effect\"]
 	item_texture = data[\"texture\"]
+	item_damage = data[\"damage\"]
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcfh1"]
