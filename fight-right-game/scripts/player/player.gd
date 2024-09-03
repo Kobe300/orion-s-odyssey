@@ -99,7 +99,7 @@ func equip_item(item):
 			sword.visible = true
 			sword_sprite_2d.texture = item["texture"]
 			print("weapon equiped")
-			player_attack.attack_damage = item["damage"]
+			player_attack.attack_damage = player_attack.attack_damage + item["damage"]
 		_:
 			print("There is no type for this item")
 

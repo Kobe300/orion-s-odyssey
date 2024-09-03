@@ -1,19 +1,28 @@
 extends Area2D
 
-@export var attack_damage : float = 10
+@export var attack_damage : float = 20
+@export var kick_damage : float = 30
 
 func _on_area_entered(area: Area2D) -> void:
 	print("Area entered:", area)
 	if area is HitBoxComponent:
 		var hitbox : HitBoxComponent = area
-		
 		var attack = Attack.new()
+
 		attack.attack_damage = attack_damage
-		#attack.knock_back_force = knock_back_force
-		#attack.attack_position = global_position
+		# Differentiate between kick and damage areas
+		#if area.name == "Attack_Collision":
+			#attack.attack_damage = attack_damage
+			##attack.knock_back_force = knock_back_force
+			##attack.attack_position = global_position
+			#print(str(name) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
+		#elif area.name == "Kick_Collision":
+			#attack.kick_damage = kick_damage
+			#print(str(name) + " Dealt " + str(kick_damage) + " to " + str(hitbox.get_parent().name))
 		
 		area.damage(attack)
-		print(str(name) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
-	
+		#print(str(name) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
+		#print(str(area.name))
+		
 	else:
 		print("Entered area is not a HitBoxComponent")
