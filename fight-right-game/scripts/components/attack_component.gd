@@ -10,16 +10,9 @@ func _on_area_entered(area: Area2D) -> void:
 		var attack = Attack.new()
 
 		attack.attack_damage = attack_damage
-		# Differentiate between kick and damage areas
-		#if area.name == "Attack_Collision":
-			#attack.attack_damage = attack_damage
-			##attack.knock_back_force = knock_back_force
-			##attack.attack_position = global_position
-			#print(str(name) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
-		#elif area.name == "Kick_Collision":
-			#attack.kick_damage = kick_damage
-			#print(str(name) + " Dealt " + str(kick_damage) + " to " + str(hitbox.get_parent().name))
-		
+		##attack.knock_back_force = knock_back_force
+		##attack.attack_position = global_position
+
 		area.damage(attack)
 		#print(str(name) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
 		#print(str(area.name))
