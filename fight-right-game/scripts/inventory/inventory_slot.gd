@@ -63,7 +63,7 @@ func _on_use_pressed():
 	action_panel.visible = false
 	if item["type"] == "weapon" or item["type"] == "gauntlet" or item["type"] == "gems" or item["type"] == "bow":
 		if GlobalInv.player_node:
-			GlobalInv.player_node.equip_item(item)
+			#GlobalInv.player_node.equip_item(item)
 			is_assigned = true
 			GlobalInv.remove_item_from_inventory(item["type"], item["effect"])
 			GlobalInv.add_hotbar_item(item)
