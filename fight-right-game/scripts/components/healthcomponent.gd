@@ -18,7 +18,7 @@ func damage_taken(attack : Attack):
 	
 	if health <= 0:
 		get_parent().queue_free()
-	print(str(get_parent()) + "health is " + str(health))
+	print(str(get_parent().name) + " health is " + str(health))
 
 
 func print_damage(amount):
@@ -27,4 +27,4 @@ func print_damage(amount):
 	damage.position = get_parent().position # instantiated positon will be the position of position of Node
 	get_tree().current_scene.add_child(damage)
 	
-	print(str(amount) + " of health lost by player")
+	print(str(amount) + " of health lost by " + str(get_parent().name))
