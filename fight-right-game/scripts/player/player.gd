@@ -16,6 +16,9 @@ extends CharacterBody2D
 @onready var player_health = $HealthComponent
 @onready var player_attack = $AttackComponent
 
+var script_path = self.get_script().resource_path
+var script_name = script_path.get_file() 
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
 var facing_direction : Vector2 = Vector2.RIGHT
@@ -95,13 +98,15 @@ func equip_item(item):
 	match item["type"]:
 		"weapon":
 			state.sword = true
-			print("sword is = to ", state.sword)
+			#print("sword is = to ", state.sword)
 			sword.visible = true
 			sword_sprite_2d.texture = item["texture"]
-			print("weapon equiped")
-			print(str(player_attack.attack_damage) + " before equipped")
+			#print("weapon equiped")
+			#print(str(player_attack.attack_damage) + " before equipped")
 			player_attack.attack_damage = player_attack.attack_damage + item["damage"]
-			print(str(player_attack.attack_damage) + " after equipped")
+			#print(str(player_attack.attack_damage) + " after equipped")
+			print("equip_item is executed in script: " + str(script_name))
+
 		_:
 			print("There is no type for this item")
 
