@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://bi7ixx7s7khoh" path="res://scenes/components/hitbox_component.tscn" id="31_2h16e"]
 [ext_resource type="PackedScene" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
 [ext_resource type="PackedScene" uid="uid://dqkv21vefioh8" path="res://scenes/components/attack_component.tscn" id="33_tb2bv"]
-[ext_resource type="PackedScene" path="res://scenes/player/PlayerInfo.tscn" id="38_ec4e7"]
+[ext_resource type="PackedScene" uid="uid://cnobiuuaefxph" path="res://scenes/player/PlayerInfo.tscn" id="38_ec4e7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uty62"]
 size = Vector2(16, 29)
@@ -1760,7 +1760,7 @@ frame = 1
 texture = ExtResource("4_oyw2e")
 hframes = 4
 
-[node name="Hit_World_CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Player_Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-2.08165e-12, 2.5)
 shape = SubResource("RectangleShape2D_uty62")
 
@@ -1879,9 +1879,10 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(-4.1633e-12, 2.5)
 shape = SubResource("RectangleShape2D_uty62")
 
-[node name="AttackComponent" parent="." instance=ExtResource("33_tb2bv")]
+[node name="AttackComponent" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("33_tb2bv")]
 collision_layer = 0
 collision_mask = 4
+state_machine = NodePath("../StateMachine")
 
 [node name="Attack_Collision" type="CollisionShape2D" parent="AttackComponent"]
 position = Vector2(4.75, 6)
