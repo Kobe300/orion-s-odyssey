@@ -28,14 +28,14 @@ func process_input(event: InputEvent):
 		#get_tree().paused = !get_tree().paused
 		
 	# Character Jumps
-	if (Input.is_action_just_pressed("jump")): 
-		character.velocity.y = JUMP_FORCE
-		next_state = jump_state
+	#if (Input.is_action_just_pressed("jump")): 
+		#character.velocity.y = JUMP_FORCE
+		#next_state = jump_state
 	
 	# Character Attacks
-	if (Input.is_action_just_pressed("attack")): 
-		next_state = attack_state
-
+	#if (Input.is_action_just_pressed("attack")): 
+		#next_state = attack_state
+	pass
 #
 func process_physics(delta: float):
 	if (!character.is_on_floor() and buffer_timer.is_stopped()):

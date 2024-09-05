@@ -2,6 +2,7 @@
 class_name Enemy
 extends CharacterBody2D
 
+@export var damage_taken_text : PackedScene
 @export var MOVESPEED : float = 50.0
 
 @onready var sprite : Sprite2D = $Sprite2D

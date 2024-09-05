@@ -1,16 +1,15 @@
-[gd_scene load_steps=38 format=3 uid="uid://1ghtnf3m8r5e"]
+[gd_scene load_steps=37 format=3 uid="uid://1ghtnf3m8r5e"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_6eixy"]
-[ext_resource type="PackedScene" uid="uid://kmeci7ndyvn3" path="res://scenes/components/damage_taken_text.tscn" id="2_fbfwk"]
-[ext_resource type="Texture2D" uid="uid://6dfh8g6e6kff" path="res://assets/characters/Night_Borne/Death.png" id="3_1p5fv"]
-[ext_resource type="Texture2D" uid="uid://djrtny05xd2go" path="res://assets/characters/Night_Borne/Idle.png" id="4_4ls5a"]
-[ext_resource type="Texture2D" uid="uid://bl1t4uqyg2b8c" path="res://assets/characters/Night_Borne/Run.png" id="5_qq2gi"]
-[ext_resource type="Texture2D" uid="uid://dctbq74dmmc8t" path="res://assets/characters/Night_Borne/Attack_1.png" id="6_0uy1m"]
+[ext_resource type="Texture2D" uid="uid://bfrnwf3cakuyk" path="res://assets/characters/Maldrives/maldrives-idle.png" id="3_v2dlu"]
+[ext_resource type="Texture2D" uid="uid://b4fgl8vltvdne" path="res://assets/characters/Maldrives/maldrives-death.png" id="4_x6gms"]
+[ext_resource type="Texture2D" uid="uid://cqjq00e8cpwb3" path="res://assets/characters/Maldrives/maldrives-run.png" id="5_34wkh"]
+[ext_resource type="Texture2D" uid="uid://df8xgj05nilc6" path="res://assets/characters/Maldrives/Sword/maldrives-sword-attack-1.png" id="6_d4bjk"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="7_h17g1"]
-[ext_resource type="Script" path="res://scripts/enemy/states/enemy_ground.gd" id="7_kk825"]
-[ext_resource type="Script" path="res://scripts/enemy/states/enemy_attack.gd" id="8_1mpwo"]
-[ext_resource type="Script" path="res://scripts/enemy/states/enemy_jump.gd" id="9_42goc"]
-[ext_resource type="Script" path="res://scripts/enemy/states/enemy_fall.gd" id="10_x3tcj"]
+[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_ground.gd" id="7_kk825"]
+[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_attack.gd" id="8_1mpwo"]
+[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_jump.gd" id="9_42goc"]
+[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_fall.gd" id="10_x3tcj"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="12_agq3w"]
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="13_2syjt"]
 
@@ -46,7 +45,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_1p5fv")]
+"values": [ExtResource("4_x6gms")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -88,7 +87,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_1p5fv")]
+"values": [ExtResource("4_x6gms")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -129,7 +128,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_4ls5a")]
+"values": [ExtResource("3_v2dlu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -170,7 +169,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_1p5fv")]
+"values": [ExtResource("4_x6gms")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -211,7 +210,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_qq2gi")]
+"values": [ExtResource("5_34wkh")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -252,7 +251,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_0uy1m")]
+"values": [ExtResource("6_d4bjk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -349,16 +348,16 @@ states/sword_attack_1/position = Vector2(330.653, -4.755)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1")]
 graph_offset = Vector2(188.34, -81.5625)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Maldrives" type="CharacterBody2D"]
 process_mode = 3
 position = Vector2(2.08165e-12, -18)
+scale = Vector2(1.2, 1.2)
 collision_layer = 2
 script = ExtResource("1_6eixy")
-damage_taken_text = ExtResource("2_fbfwk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
-texture = ExtResource("4_4ls5a")
+texture = ExtResource("3_v2dlu")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 9
 
