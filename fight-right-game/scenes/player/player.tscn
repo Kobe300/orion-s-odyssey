@@ -1889,6 +1889,11 @@ position = Vector2(4.75, 6)
 shape = SubResource("RectangleShape2D_mbtvl")
 disabled = true
 
+[node name="Kick_Collision" type="CollisionShape2D" parent="AttackComponent"]
+position = Vector2(4.75, 6)
+shape = SubResource("RectangleShape2D_mbtvl")
+disabled = true
+
 [node name="Inventory_HotBar" type="CanvasLayer" parent="."]
 layer = 2
 

@@ -135,7 +135,7 @@ collision_layer = 4
 collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
-[node name="HitBox_CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+[node name="HitBox_Collision" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(3, -167)
 shape = SubResource("RectangleShape2D_qkqih")
 
