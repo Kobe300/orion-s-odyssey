@@ -38,8 +38,9 @@ func _physics_process(delta: float):
 			update_player_direction(direction)  # Update direction if not chasing'
 			
 			# Check if the enemy has reached the current position
-			print(position.distance_to(roam.curr_position.position))
-			if position.distance_to(roam.curr_position.position) < MOVESPEED * delta:
+			print(roam.curr_position.position.x)
+			print(round(position.x))
+			if roam.curr_position.position.x == round(position.x):
 				roam._get_next_position()
 		else:
 			print('no positions available')
