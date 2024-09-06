@@ -3,12 +3,14 @@ extends Node
 class_name State
 
 @export var can_move : bool = true
-var sword : bool = false #temporary varible put on player
+var sword : bool = false #temporary varible put on players
+var  kick : bool = false #temporary variable put on players
 
 var animation_name : String
 var character : CharacterBody2D
 var playback : AnimationNodeStateMachinePlayback
 var next_state : State
+
 
 func enter():
 	playback.travel(animation_name)

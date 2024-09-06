@@ -11,13 +11,16 @@ func _on_area_entered(area: Area2D) -> void:
 		var hitbox : HitBoxComponent = area
 		var attack = Attack.new()
 	
-
-		attack.attack_damage = attack_damage
+		if state.kick:
+			attack.attack_damage = kick_damage  # Use kick damage
+			
+		else:
+			attack.attack_damage = attack_damage
 		##attack.knock_back_force = knock_back_force
 		##attack.attack_position = global_position
 
 		area.damage(attack)
-		print(str( get_node("ParentNode")) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
+		#print(str(name) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
 		#print(str(area.name))
 		
 	else:

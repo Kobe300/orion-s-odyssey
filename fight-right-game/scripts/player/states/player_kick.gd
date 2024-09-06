@@ -11,9 +11,12 @@ func enter():
 	playback.travel("kick_attack_1")
 	timer.start()
 	attack_face()
+	
+	state.kick = true
 	#pass
 
 func exit():
+	state.kick = false
 	pass
 	
 func process_input(event : InputEvent):
