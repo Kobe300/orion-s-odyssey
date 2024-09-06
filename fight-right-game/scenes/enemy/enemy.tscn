@@ -386,11 +386,12 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 current_state = NodePath("Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "attack_state", "chase_state")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "attack_state", "chase_state", "roam_state")]
 script = ExtResource("7_kk825")
 jump_state = NodePath("../Jump")
 attack_state = NodePath("../Attack")
 chase_state = NodePath("../Chase")
+roam_state = NodePath("../Roam")
 
 [node name="BuffferTimer" type="Timer" parent="StateMachine/Ground"]
 wait_time = 0.05
@@ -414,12 +415,16 @@ fall_state = NodePath("../Fall")
 script = ExtResource("10_x3tcj")
 ground_state = NodePath("../Ground")
 
-[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "roam_state")]
 script = ExtResource("11_m5v6i")
 ground_state = NodePath("../Ground")
+roam_state = NodePath("../Roam")
 
-[node name="Roam" type="Node" parent="StateMachine"]
+[node name="Roam" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "chase")]
 script = ExtResource("12_xcr6r")
+ground_state = NodePath("../Ground")
+chase = NodePath("../Chase")
+group_name = "MaldrivePath"
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 offset_left = -44.0
@@ -436,9 +441,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_ubgcv")
-
-[node name="TurnTimer" type="Timer" parent="."]
-wait_time = 0.3
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Attack" method="_on_animation_tree_animation_finished"]

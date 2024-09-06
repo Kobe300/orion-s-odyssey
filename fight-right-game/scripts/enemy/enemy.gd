@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
 @onready  var state_machine : StateMachine = $StateMachine #getnode("state_machine")
 @onready var chase: State = $StateMachine/Chase
-
+@onready var roam: State = $StateMachine/Roam
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
@@ -30,8 +30,20 @@ func _physics_process(delta: float):
 		position += chase_direction * MOVESPEED * delta  # Move towards the player
 		update_animation_parameters()
 		update_player_direction(chase_direction)  # Update the sprite's direction based on chase direction
-	else:
-		update_player_direction(direction)  # Update direction if not chasing
+	elif state_machine.check_can_move() and roam.is_roaming:
+		if roam.curr_position:
+			direction = (roam.curr_position.position - position).normalized()
+			position += direction * MOVESPEED * delta
+			update_animation_parameters()
+			update_player_direction(direction)  # Update direction if not chasing'
+			
+			# Check if the enemy has reached the current position
+			print(position.distance_to(roam.curr_position.position))
+			if position.distance_to(roam.curr_position.position) < MOVESPEED * delta:
+				roam._get_next_position()
+		else:
+			print('no positions available')
+
 	
 	determine_face_direction()
 	move_and_slide()

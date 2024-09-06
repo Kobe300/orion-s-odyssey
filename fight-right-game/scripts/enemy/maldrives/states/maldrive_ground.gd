@@ -4,6 +4,7 @@ extends State
 @export var jump_state: State
 @export var attack_state: State
 @export var chase_state: State
+@export var roam_state: State
 
 #@export var sprint_speed = 250.0
 @export var JUMP_FORCE: float = -300.0
@@ -30,3 +31,6 @@ func process_physics(delta: float):
 	
 	if chase_state.player_chase:
 		next_state = chase_state
+	
+	if roam_state.is_roaming:
+		next_state = roam_state

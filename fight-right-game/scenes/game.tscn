@@ -55,3 +55,12 @@ item_name = "Axe"
 item_effect = "Bleed"
 item_texture = ExtResource("9_4xky8")
 item_damage = 80
+
+[node name="Path" type="Marker2D" parent="." groups=["MaldrivePath"]]
+position = Vector2(56, 0)
+
+[node name="Path2" type="Marker2D" parent="." groups=["MaldrivePath"]]
+position = Vector2(-53, 1)
+
+[node name="Path3" type="Marker2D" parent="." groups=["MaldrivePath"]]
+position = Vector2(-177, 0)
