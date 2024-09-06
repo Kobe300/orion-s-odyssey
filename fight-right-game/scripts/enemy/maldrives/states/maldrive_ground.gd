@@ -9,10 +9,12 @@ extends State
 @export var JUMP_FORCE: float = -300.0
 
 @onready var buffer_timer : Timer = $BuffferTimer
+@onready var animation_tree: AnimationTree = $"../../AnimationTree"
 
 # Called when the node enters a state.
 func enter():
 	playback.travel("idle")
+	animation_tree.set("parameters/move/blend_position", 0)
 
 # Called when the node exit a state.
 func exit(): 
