@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://1ghtnf3m8r5e"]
+[gd_scene load_steps=44 format=3 uid="uid://1ghtnf3m8r5e"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_6eixy"]
 [ext_resource type="Texture2D" uid="uid://bfrnwf3cakuyk" path="res://assets/characters/Maldrives/maldrives-idle.png" id="3_v2dlu"]
@@ -10,7 +10,8 @@
 [ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_attack.gd" id="8_1mpwo"]
 [ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_jump.gd" id="9_42goc"]
 [ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_fall.gd" id="10_x3tcj"]
-[ext_resource type="Script" path="res://scripts/player/player_health.gd" id="12_agq3w"]
+[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_chase.gd" id="11_m5v6i"]
+[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_roam.gd" id="12_xcr6r"]
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="13_2syjt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obox3"]
@@ -295,6 +296,9 @@ animation = &"death"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_psi0b"]
 animation = &"fall"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5frma"]
+animation = &"idle"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_84vs6"]
 animation = &"jump"
 
@@ -319,9 +323,6 @@ blend_mode = 1
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xijry"]
 animation = &"sword_attack_1"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3g1tx"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l1iap"]
 switch_mode = 2
 advance_mode = 2
@@ -334,19 +335,36 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgtu1"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_35j08"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15m8v"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_prtps"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qolfr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q8evu"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
+states/Start/position = Vector2(20, 100)
 states/death/node = SubResource("AnimationNodeAnimation_xogc2")
 states/death/position = Vector2(595.025, 235.745)
 states/fall/node = SubResource("AnimationNodeAnimation_psi0b")
 states/fall/position = Vector2(458.525, 263.995)
+states/idle/node = SubResource("AnimationNodeAnimation_5frma")
+states/idle/position = Vector2(175.34, 100)
 states/jump/node = SubResource("AnimationNodeAnimation_84vs6")
 states/jump/position = Vector2(337.328, 263.745)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.781, 100.01)
 states/sword_attack_1/node = SubResource("AnimationNodeAnimation_xijry")
-states/sword_attack_1/position = Vector2(330.653, -4.755)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1")]
-graph_offset = Vector2(188.34, -81.5625)
+states/sword_attack_1/position = Vector2(331.781, -72.755)
+transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_35j08"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_15m8v"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_prtps"), "idle", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_qolfr"), "sword_attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_q8evu")]
+graph_offset = Vector2(-202.66, -179.563)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubgcv"]
+radius = 99.3381
 
 [node name="Maldrives" type="CharacterBody2D"]
 process_mode = 3
@@ -373,7 +391,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_62fma")
 anim_player = NodePath("../AnimationPlayer")
-parameters/move/blend_position = -0.00239521
+parameters/move/blend_position = -0.155224
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
 script = ExtResource("7_h17g1")
@@ -381,10 +399,11 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 current_state = NodePath("Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "attack_state")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "attack_state", "chase_state")]
 script = ExtResource("7_kk825")
 jump_state = NodePath("../Jump")
 attack_state = NodePath("../Attack")
+chase_state = NodePath("../Chase")
 
 [node name="BuffferTimer" type="Timer" parent="StateMachine/Ground"]
 wait_time = 0.05
@@ -408,10 +427,12 @@ fall_state = NodePath("../Fall")
 script = ExtResource("10_x3tcj")
 ground_state = NodePath("../Ground")
 
-[node name="PlayerManager" type="Node" parent="."]
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("11_m5v6i")
+ground_state = NodePath("../Ground")
 
-[node name="Health" type="Node" parent="PlayerManager"]
-script = ExtResource("12_agq3w")
+[node name="Roam" type="Node" parent="StateMachine"]
+script = ExtResource("12_xcr6r")
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 offset_left = -44.0
@@ -422,5 +443,14 @@ text = "State:"
 script = ExtResource("13_2syjt")
 state_machine = NodePath("../StateMachine")
 
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_ubgcv")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Attack" method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="DetectionArea" to="StateMachine/Chase" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="StateMachine/Chase" method="_on_detection_area_body_exited"]

@@ -1,56 +1,57 @@
 #class_name Enemy
-class_name Enemy
 extends CharacterBody2D
 
-@export var MOVESPEED : float = 50.0
+@export var MOVESPEED : float = 85.0
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
 @onready  var state_machine : StateMachine = $StateMachine #getnode("state_machine")
+@onready var chase: State = $StateMachine/Chase
+
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
 var facing_direction : Vector2 = Vector2.RIGHT
 
 func _ready():
-	#GlobalInv.player_ref(self)
 	animation_tree.active = true #Ensures animation Tree is always active on game runtime
 
 
 func _physics_process(delta: float):
 	if !is_on_floor():
-		velocity.y += gravity * delta #Add gravity
+		velocity.y += gravity * delta  # Add gravity
 
 	if is_on_wall():
-		# Get the input direction and handle the movement/deceleration.
-		direction *= -1 	#controls Player Movement 
+		# Reverse direction if on a wall
+		direction *= -1 
 	
-	if state_machine.check_can_move():
-		velocity.x = direction.x * MOVESPEED
+	if state_machine.check_can_move() and chase.player_chase:
+		var chase_direction = (chase.player.position - position).normalized()  # Normalize the chase direction
+		position += chase_direction * MOVESPEED * delta  # Move towards the player
+		update_animation_parameters()
+		update_player_direction(chase_direction)  # Update the sprite's direction based on chase direction
 	else:
-		velocity.x = move_toward(velocity.x, 0, MOVESPEED)
+		update_player_direction(direction)  # Update direction if not chasing
 	
-	update_animation_parameters()
-	update_palyer_direction()
 	determine_face_direction()
 	move_and_slide()
 	
 	#print(facing_direction)
 
-
+# Updates the animation parameters for movement
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position", direction.x)
 
+# Updates sprite flip based on the direction of movement or chase
+func update_player_direction(movement_direction: Vector2):
+	if movement_direction.x > 0:
+		sprite.flip_h = false  # Face right
+	elif movement_direction.x < 0:
+		sprite.flip_h = true   # Face left
 
-func update_palyer_direction():
-	if direction.x > 0:
-		sprite.flip_h = false
-	elif direction.x < 0:
-		sprite.flip_h = true
-		
-
+# Determines which direction the enemy should face
 func determine_face_direction():
-	if (direction == Vector2.ZERO):
-		direction = facing_direction 
-	elif (direction != Vector2.ZERO):
-		facing_direction = direction
+	if direction == Vector2.ZERO:
+		direction = facing_direction  # If no movement, keep current facing direction
+	else:
+		facing_direction = direction  # Update facing direction based on movement
