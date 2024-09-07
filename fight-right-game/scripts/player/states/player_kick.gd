@@ -12,9 +12,9 @@ func enter():
 	playback.travel("kick_attack_1")
 	timer.start()
 	attack_face()
+	stamina_drain()
 	
 	state.kick = true
-	stamina_drain()
 	print()
 	#pass
 
@@ -46,6 +46,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		else:
 			playback.travel("kick_attack_2")
 			attack_face()
+			stamina_drain()
 		
 	if(anim_name == "kick_attack_2"):
 		if(timer.is_stopped()):

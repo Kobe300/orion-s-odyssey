@@ -12,6 +12,7 @@ func enter():
 	timer.start()
 	#print('Character in Attack State')
 	attack_face()
+	stamina_drain()
 	#pass
 
 # Called when the node exit a state.
@@ -39,6 +40,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		else:
 			playback.travel("melee_attack_2")
 			attack_face()
+			stamina_drain()
 		
 	if(anim_name == "melee_attack_2"):
 		if(timer.is_stopped()):
@@ -46,6 +48,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		else:
 			playback.travel("melee_attack_3")
 			attack_face()
+			stamina_drain()
 	
 	if(anim_name == "melee_attack_3"):
 		if(timer.is_stopped()):
