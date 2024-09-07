@@ -14,8 +14,7 @@ func stamina_taken(energy: Stamina):
 	stamina -= energy.energy_loss
 	
 	if stamina <= 0:
-		#play rest state
-		#get_parent().queue_free()
+		stamina = 0
 		pass
 	print(str(get_parent()) + "stamina is " + str(stamina))
 

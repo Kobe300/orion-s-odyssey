@@ -1789,11 +1789,12 @@ sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
 kick_state = NodePath("../Kick")
 stamina_component = NodePath("../../StaminaComponent")
-energy_gain = 2.0
+energy_gain = 0.025
 
-[node name="BuffferTimer" type="Timer" parent="StateMachine/Ground"]
-wait_time = 0.05
-autostart = true
+[node name="RegenTimer" type="Timer" parent="StateMachine/Ground"]
+process_callback = 0
+wait_time = 4.0
+one_shot = true
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state")]
 script = ExtResource("7_2f50p")

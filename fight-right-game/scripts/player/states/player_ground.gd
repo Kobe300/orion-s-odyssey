@@ -10,13 +10,14 @@ extends State
 @export var JUMP_FORCE: float = -300.0
 
 @onready var inventory_ui = $"../../InventoryUI"
-@onready var buffer_timer : Timer = $BuffferTimer
+@onready var regen_timer : Timer = $RegenTimer
 
 
 
 # Called when the node enters a state.
 func enter():
 	playback.travel("move")
+	regen_timer.start()
 	#print('Character in Ground State')
 	#pass
 
@@ -49,7 +50,9 @@ func process_input(event: InputEvent):
 		next_state = kick_state
 #
 func process_physics(delta: float):
-	stamina_gain()
 	#print(state.sword)
 	if (!character.is_on_floor()):
 		next_state = jump_state
+		
+	if (regen_timer.is_stopped()):
+		stamina_gain()
