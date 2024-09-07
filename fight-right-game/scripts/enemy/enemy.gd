@@ -2,6 +2,7 @@
 extends CharacterBody2D
 
 @export var MOVESPEED : float = 85.0
+@export var ROAMSPEED : float = 35.0
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree #getnode("AnimationTree")\
@@ -38,7 +39,7 @@ func _physics_process(delta: float):
 	elif state_machine.check_can_move() and roam.is_roaming:
 		if roam.curr_position:
 			direction = (roam.curr_position.position - position).normalized()
-			position += direction * MOVESPEED * delta
+			position += direction * ROAMSPEED * delta
 			update_animation_parameters()
 			update_player_direction(direction)  # Update direction if not chasing'
 			
@@ -58,7 +59,10 @@ func _physics_process(delta: float):
 
 # Updates the animation parameters for movement
 func update_animation_parameters():
-	animation_tree.set("parameters/move/blend_position", direction.x)
+	if !chase.player_chase:
+		animation_tree.set("parameters/move/blend_position", direction.x)
+	else:
+		animation_tree.set("parameters/move/blend_position", direction.x * 2)
 
 # Updates sprite flip based on the direction of movement or chase
 func update_player_direction(movement_direction: Vector2):

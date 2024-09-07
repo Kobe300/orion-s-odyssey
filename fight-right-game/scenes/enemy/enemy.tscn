@@ -404,7 +404,7 @@ states/move/position = Vector2(331.781, 100.01)
 states/sword_attack_1/node = SubResource("AnimationNodeAnimation_xijry")
 states/sword_attack_1/position = Vector2(331.781, -72.755)
 transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_wufns")]
-graph_offset = Vector2(-28.99, -53.5629)
+graph_offset = Vector2(-191.99, -18.5629)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubgcv"]
 radius = 99.3381
