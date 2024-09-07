@@ -49,6 +49,7 @@ func process_input(event: InputEvent):
 		next_state = kick_state
 #
 func process_physics(delta: float):
+	stamina_gain()
 	#print(state.sword)
 	if (!character.is_on_floor()):
 		next_state = jump_state

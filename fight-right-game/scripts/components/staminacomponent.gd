@@ -21,7 +21,7 @@ func stamina_taken(energy: Stamina):
 
 
 func stamina_regen(energy: Stamina):
-	#handles stamina gain
+	#Handles Stamina Gain
 	stamina += energy.energy_gain
 	
 	if stamina >= Max_stamina:

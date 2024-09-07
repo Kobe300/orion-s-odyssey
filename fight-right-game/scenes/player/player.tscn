@@ -1789,7 +1789,7 @@ sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
 kick_state = NodePath("../Kick")
 stamina_component = NodePath("../../StaminaComponent")
-stamina_loss = 10.0
+energy_gain = 2.0
 
 [node name="BuffferTimer" type="Timer" parent="StateMachine/Ground"]
 wait_time = 0.05
@@ -1805,7 +1805,7 @@ ground_state = NodePath("../Ground")
 sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
 stamina_component = NodePath("../../StaminaComponent")
-stamina_loss = 10.0
+energy_loss = 15.0
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Kick"]
@@ -1817,7 +1817,7 @@ script = ExtResource("16_kprbr")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
 stamina_component = NodePath("../../StaminaComponent")
-stamina_loss = 10.0
+energy_loss = 10.0
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Melee"]
@@ -1831,7 +1831,6 @@ script = ExtResource("15_r2te3")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
 stamina_component = NodePath("../../StaminaComponent")
-stamina_loss = 1.0
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Sword"]
@@ -1886,7 +1885,6 @@ shape = SubResource("RectangleShape2D_mbtvl")
 disabled = true
 
 [node name="StaminaComponent" parent="." instance=ExtResource("39_e5the")]
-Max_stamina = 1000.0
 
 [node name="Inventory_HotBar" type="CanvasLayer" parent="."]
 layer = 2

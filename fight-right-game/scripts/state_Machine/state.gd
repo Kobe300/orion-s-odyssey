@@ -3,7 +3,8 @@ extends Node
 class_name State
 
 @export var stamina_component : StaminaComponent
-@export var stamina_loss: float 
+@export var energy_loss : float
+@export var energy_gain : float 
 
 @export var can_move : bool = true
 var sword : bool = false #temporary varible put on players
@@ -37,21 +38,13 @@ func attack_face():
 
 func stamina_drain():
 	var energy = Stamina.new()
-	energy.energy_loss = stamina_loss  # lose stamina on every kick
+	energy.energy_loss = energy_loss  # lose stamina on every kick
 	stamina_component.stamina_taken(energy)
 	print(stamina_component.stamina)
-	
-	if(stamina_component.stamina <= 0):
-		#next_state = rest_state
-		pass
-		
+
 
 func stamina_gain():
 	var energy = Stamina.new()
-	energy.energy_loss = stamina_loss  # lose stamina on every kick
-	stamina_component.stamina_taken(energy)
+	energy.energy_gain = energy_gain  # lose stamina on every kick
+	stamina_component.stamina_regen(energy)
 	print(stamina_component.stamina)
-	
-	if(stamina_component.stamina <= 0):
-		#next_state = rest_state
-		pass

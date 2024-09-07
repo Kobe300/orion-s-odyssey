@@ -26,7 +26,7 @@ func process_input(event: InputEvent) -> State:
 func process_physics(delta: float):
 	if(!character.is_on_floor()):
 		next_state = fall_state
-	
+
 #
 func levetaion():
 	#_levitaion = true
