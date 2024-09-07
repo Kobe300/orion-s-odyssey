@@ -7,9 +7,6 @@ extends State
 #@export var rest_state: State
 
 @export var stamina_loss: float = 20
-
-@export var stamina_component : StaminaComponent
-
 @onready var timer : Timer = $AttackTimer
 
 func enter():

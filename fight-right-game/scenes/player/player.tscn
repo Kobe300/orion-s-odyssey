@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=83 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
@@ -1689,18 +1689,6 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6matu"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n3dyq"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8unkb"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
 states/Start/position = Vector2(-29.5, 97.75)
 states/death/node = SubResource("AnimationNodeAnimation_xogc2")
@@ -1727,7 +1715,7 @@ states/sword_attack_2/node = SubResource("AnimationNodeAnimation_soj2n")
 states/sword_attack_2/position = Vector2(112.251, -149.632)
 states/sword_attack_3/node = SubResource("AnimationNodeAnimation_dg47p")
 states/sword_attack_3/position = Vector2(110.572, -233.635)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "sword_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_5csmg"), "melee_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_1qfsn"), "kick_attack_1", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_hmh0x"), "kick_attack_1", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_nr73j"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_6matu"), "kick_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_n3dyq"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_8unkb")]
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "sword_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_5csmg"), "melee_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_1qfsn"), "kick_attack_1", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_hmh0x"), "kick_attack_1", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_nr73j")]
 graph_offset = Vector2(11.8495, -104.633)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
@@ -1822,10 +1810,11 @@ can_move = false
 wait_time = 0.3
 one_shot = true
 
-[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state")]
+[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state", "stamina_component")]
 script = ExtResource("16_kprbr")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
+stamina_component = NodePath("../../StaminaComponent")
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Melee"]
@@ -1834,10 +1823,11 @@ one_shot = true
 
 [node name="Magic" type="Node" parent="StateMachine"]
 
-[node name="Sword" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state")]
+[node name="Sword" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state", "stamina_component")]
 script = ExtResource("15_r2te3")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
+stamina_component = NodePath("../../StaminaComponent")
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Sword"]
