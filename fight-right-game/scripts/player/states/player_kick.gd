@@ -8,6 +8,8 @@ extends State
 
 @export var stamina_loss: float = 20
 
+@export var stamina_component : StaminaComponent
+
 @onready var timer : Timer = $AttackTimer
 
 func enter():
@@ -43,11 +45,12 @@ func process_physics(deltae):
 
 
 func _on_animation_tree_animation_finished(anim_name):
-	if(timer.is_stopped()):
-		next_state = ground_state
-	else:
-		playback.travel("kick_attack_2")
-		attack_face()
+	if(anim_name == "kick_attack_1"):
+		if(timer.is_stopped()):
+			next_state = ground_state
+		else:
+			playback.travel("kick_attack_2")
+			attack_face()
 		
 	if(anim_name == "kick_attack_2"):
 		if(timer.is_stopped()):
@@ -58,7 +61,7 @@ func _on_animation_tree_animation_finished(anim_name):
 
 func stamina_drain():
 	var energy = Stamina.new()
-	energy.stamina_loss = stamina_loss  # lose stamina on every kick
+	energy.energy_loss = stamina_loss  # lose stamina on every kick
 	stamina_component.stamina_taken(energy)
 	print(stamina_component.stamina)
 	

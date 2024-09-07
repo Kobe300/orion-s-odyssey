@@ -1689,15 +1689,15 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7e7sq"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6matu"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f76cf"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n3dyq"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8lr4w"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8unkb"]
 switch_mode = 2
 advance_mode = 2
 
@@ -1727,8 +1727,8 @@ states/sword_attack_2/node = SubResource("AnimationNodeAnimation_soj2n")
 states/sword_attack_2/position = Vector2(112.251, -149.632)
 states/sword_attack_3/node = SubResource("AnimationNodeAnimation_dg47p")
 states/sword_attack_3/position = Vector2(110.572, -233.635)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "sword_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_5csmg"), "melee_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_1qfsn"), "kick_attack_1", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_hmh0x"), "kick_attack_1", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_nr73j"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_7e7sq"), "kick_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_f76cf"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_8lr4w")]
-graph_offset = Vector2(11.8495, -179.82)
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "sword_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_5csmg"), "melee_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_1qfsn"), "kick_attack_1", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_hmh0x"), "kick_attack_1", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_nr73j"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_6matu"), "kick_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_n3dyq"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_8unkb")]
+graph_offset = Vector2(11.8495, -104.633)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
 size = Vector2(28.5, 25)
@@ -1845,8 +1845,6 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Grapple" type="Node" parent="StateMachine"]
-
-[node name="Rest" type="Node" parent="StateMachine"]
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 layer = 2

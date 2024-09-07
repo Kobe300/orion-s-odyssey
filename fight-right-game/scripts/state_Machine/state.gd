@@ -2,7 +2,6 @@ extends Node
 
 class_name State
 
-@export var stamina_component : StaminaComponent
 @export var can_move : bool = true
 var sword : bool = false #temporary varible put on players
 var  kick : bool = false #temporary variable put on players

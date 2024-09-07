@@ -30,11 +30,12 @@ func process_physics(delta: float):
  
 # Execute when animation is finished
 func _on_animation_tree_animation_finished(anim_name):
-	if(timer.is_stopped()):
-		next_state = ground_state
-	else:
-		playback.travel("sword_attack_2")
-		attack_face()
+	if(anim_name == "sword_attack_1"):
+		if(timer.is_stopped()):
+			next_state = ground_state
+		else:
+			playback.travel("sword_attack_2")
+			attack_face()
 		
 	if(anim_name == "sword_attack_2"):
 		if(timer.is_stopped()):
