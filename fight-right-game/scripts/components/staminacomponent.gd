@@ -1,7 +1,6 @@
 extends Node2D
 class_name StaminaComponent
 
-@export var damage_taken_text : PackedScene
 @export var Max_stamina : float = 100
 var stamina : float
 
@@ -11,9 +10,23 @@ func _ready():
 
 #
 func stamina_taken(energy: Stamina):
-	# Handles staminaLoss
-	stamina-= energy.energy_loss
+	#print(energy.stamina_loss)
+	# Handles stamina Loss
+	stamina-= energy.stamina_loss
 	
-	if stamina<= 0:
-		get_parent().queue_free()
-	print(str(get_parent()) + "stamina is " + str(stamina))
+	if stamina <= 0:
+		#Activate Rest State
+		#get_parent().queue_free()
+		pass
+		
+	#print(str(get_parent().name) + "stamina is " + str(stamina))
+
+
+func stamina_regen(energy: Stamina):
+	#print(energy.stamina)
+	# Handles stamina Gain
+	if stamina == Max_stamina:
+		return
+	
+	#Enter ground Stated
+	return

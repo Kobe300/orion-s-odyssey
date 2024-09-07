@@ -2,8 +2,6 @@ extends Area2D
 
 @export var attack_damage : float = 20
 @export var kick_damage : float = 30
-@export var state_machine : StateMachine 
-
 
 func _on_area_entered(area: Area2D) -> void:
 	print("Area entered:", area)
@@ -19,7 +17,7 @@ func _on_area_entered(area: Area2D) -> void:
 		##attack.knock_back_force = knock_back_force
 		##attack.attack_position = global_position
 
-		area.damage(attack)
+		area.hit(attack)
 		#print(str(name) + " Dealt " + str(attack_damage) + " to " + str(hitbox.get_parent().name))
 		#print(str(area.name))
 		
