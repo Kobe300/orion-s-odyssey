@@ -19,7 +19,7 @@ func _ready():
 
 
 func _physics_process(delta: float):
-	if is_waiting:
+	if is_waiting and !chase.player_chase:
 		return  # Skip all movement and direction logic if waiting
 	
 	if !is_on_floor():
@@ -32,8 +32,9 @@ func _physics_process(delta: float):
 	if state_machine.check_can_move() and chase.player_chase:
 		var chase_direction = (chase.player.position - position).normalized()  # Normalize the chase direction
 		position += chase_direction * MOVESPEED * delta  # Move towards the player
+		direction = chase_direction
 		update_animation_parameters()
-		update_player_direction(chase_direction)  # Update the sprite's direction based on chase direction
+		update_player_direction(direction)  # Update the sprite's direction based on chase direction
 	elif state_machine.check_can_move() and roam.is_roaming:
 		if roam.curr_position:
 			direction = (roam.curr_position.position - position).normalized()
