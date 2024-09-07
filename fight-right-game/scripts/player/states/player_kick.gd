@@ -4,6 +4,9 @@ extends State
 @export var ground_state : State
 @export var sword_state: State
 @export var melee_state: State
+#@export var rest_state: State
+
+@export var stamina_loss: float = 20
 
 @onready var timer : Timer = $AttackTimer
 
@@ -13,6 +16,8 @@ func enter():
 	attack_face()
 	
 	state.kick = true
+	stamina_drain()
+	print()
 	#pass
 
 func exit():
@@ -21,6 +26,7 @@ func exit():
 	
 func process_input(event : InputEvent):
 	if (Input.is_action_just_pressed("kick")):
+		stamina_drain()
 		timer.start()
 	#pass
 	
@@ -48,3 +54,18 @@ func _on_animation_tree_animation_finished(anim_name):
 			next_state = ground_state
 		else:
 			next_state = ground_state
+
+
+func stamina_drain():
+	var energy = Stamina.new()
+	energy.stamina_loss = stamina_loss  # lose stamina on every kick
+	stamina_component.stamina_taken(energy)
+	print(stamina_component.stamina)
+	
+	if(stamina_component.stamina <= 0):
+		#next_state = rest_state
+		pass
+		
+		
+	 
+	
