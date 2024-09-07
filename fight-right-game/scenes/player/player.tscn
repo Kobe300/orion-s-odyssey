@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=86 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
@@ -35,9 +35,10 @@
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 [ext_resource type="PackedScene" uid="uid://mq7fqi2wpdfg" path="res://scenes/components/health_component.tscn" id="29_orejo"]
 [ext_resource type="PackedScene" uid="uid://bi7ixx7s7khoh" path="res://scenes/components/hitbox_component.tscn" id="31_2h16e"]
-[ext_resource type="PackedScene" uid="uid://bw1461j1eh2tt" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
+[ext_resource type="PackedScene" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
 [ext_resource type="PackedScene" uid="uid://dqkv21vefioh8" path="res://scenes/components/attack_component.tscn" id="33_tb2bv"]
 [ext_resource type="PackedScene" uid="uid://cnobiuuaefxph" path="res://scenes/player/PlayerInfo.tscn" id="38_ec4e7"]
+[ext_resource type="PackedScene" uid="uid://bf8jo58lkx7ja" path="res://scenes/components/stamina_component.tscn" id="39_e5the"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uty62"]
 size = Vector2(16, 29)
@@ -1727,7 +1728,7 @@ states/sword_attack_2/position = Vector2(112.251, -149.632)
 states/sword_attack_3/node = SubResource("AnimationNodeAnimation_dg47p")
 states/sword_attack_3/position = Vector2(110.572, -233.635)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "sword_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_5csmg"), "melee_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_1qfsn"), "kick_attack_1", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_hmh0x"), "kick_attack_1", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_nr73j"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_7e7sq"), "kick_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_f76cf"), "melee_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_8lr4w")]
-graph_offset = Vector2(-137.151, -9.82001)
+graph_offset = Vector2(11.8495, -179.82)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
 size = Vector2(28.5, 25)
@@ -1808,11 +1809,13 @@ autostart = true
 script = ExtResource("7_2f50p")
 fall_state = NodePath("../Fall")
 
-[node name="Kick" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "sword_state", "melee_state")]
+[node name="Kick" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "sword_state", "melee_state", "stamina_component")]
 script = ExtResource("28_7t5yu")
 ground_state = NodePath("../Ground")
 sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
+stamina_loss = 10.0
+stamina_component = NodePath("../../StaminaComponent")
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Kick"]
@@ -1842,6 +1845,8 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Grapple" type="Node" parent="StateMachine"]
+
+[node name="Rest" type="Node" parent="StateMachine"]
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 layer = 2
@@ -1879,15 +1884,17 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(-4.1633e-12, 2.5)
 shape = SubResource("RectangleShape2D_uty62")
 
-[node name="AttackComponent" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("33_tb2bv")]
+[node name="AttackComponent" parent="." instance=ExtResource("33_tb2bv")]
 collision_layer = 0
 collision_mask = 4
-state_machine = NodePath("../StateMachine")
 
 [node name="Attack_Collision" type="CollisionShape2D" parent="AttackComponent"]
 position = Vector2(4.75, 6)
 shape = SubResource("RectangleShape2D_mbtvl")
 disabled = true
+
+[node name="StaminaComponent" parent="." instance=ExtResource("39_e5the")]
+Max_stamina = 1000.0
 
 [node name="Inventory_HotBar" type="CanvasLayer" parent="."]
 layer = 2
@@ -1900,10 +1907,6 @@ layer = 2
 offset_top = -18.0
 offset_bottom = -18.0
 health_component = NodePath("../../HealthComponent")
-
-[node name="StaminaComponent" type="Node2D" parent="."]
-
-[node name="Components" type="Node" parent="."]
 
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Kick" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]
