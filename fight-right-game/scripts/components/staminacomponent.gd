@@ -14,10 +14,16 @@ func stamina_taken(energy: Stamina):
 	stamina -= energy.energy_loss
 	
 	if stamina <= 0:
-		get_parent().queue_free()
+		#play rest state
+		#get_parent().queue_free()
+		pass
 	print(str(get_parent()) + "stamina is " + str(stamina))
 
 
 func stamina_regen(energy: Stamina):
 	#handles stamina gain
 	stamina += energy.energy_gain
+	
+	if stamina >= Max_stamina:
+		stamina = Max_stamina
+	
