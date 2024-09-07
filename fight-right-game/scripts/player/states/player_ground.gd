@@ -25,6 +25,9 @@ func exit():
 	pass
 
 func process_input(event: InputEvent):
+	if Input.is_action_pressed("sprint"):
+		stamina_drain()
+	
 	# Open inventory
 	if Input.is_action_just_pressed("inventory"):
 		inventory_ui.visible = !inventory_ui.visible

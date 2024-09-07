@@ -1782,12 +1782,14 @@ current_state = NodePath("Ground")
 script = ExtResource("11_qcao1")
 ground_state = NodePath("../Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state", "kick_state")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state", "kick_state", "stamina_component")]
 script = ExtResource("5_apiqb")
 jump_state = NodePath("../Jump")
 sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
 kick_state = NodePath("../Kick")
+stamina_component = NodePath("../../StaminaComponent")
+stamina_loss = 10.0
 
 [node name="BuffferTimer" type="Timer" parent="StateMachine/Ground"]
 wait_time = 0.05
@@ -1829,6 +1831,7 @@ script = ExtResource("15_r2te3")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
 stamina_component = NodePath("../../StaminaComponent")
+stamina_loss = 1.0
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Sword"]
