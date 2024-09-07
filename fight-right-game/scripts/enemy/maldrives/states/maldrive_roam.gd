@@ -11,6 +11,8 @@ var curr_position: Marker2D
 
 var is_roaming = false
 
+@onready var roam_timer : Timer = $RoamTimer
+
 # Called when the node enters a state.
 func enter() -> void:
 	playback.travel("move")

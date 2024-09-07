@@ -21,7 +21,6 @@ position = Vector2(2.08165e-12, -25.49)
 zoom = Vector2(4, 4)
 
 [node name="Enemy" parent="." instance=ExtResource("3_i7luh")]
-visible = false
 
 [node name="Enemy_Pillar" parent="." instance=ExtResource("3_1b0j5")]
 position = Vector2(142, 2)

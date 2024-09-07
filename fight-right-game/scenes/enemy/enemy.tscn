@@ -426,6 +426,11 @@ ground_state = NodePath("../Ground")
 chase = NodePath("../Chase")
 group_name = "MaldrivePath"
 
+[node name="RoamTimer" type="Timer" parent="StateMachine/Roam"]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 offset_left = -44.0
 offset_top = -34.0

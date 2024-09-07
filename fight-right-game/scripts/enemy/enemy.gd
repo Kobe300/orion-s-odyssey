@@ -12,12 +12,16 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # Get the gravity from the project settings to be synced with RigidBody nodes.
 var direction :  Vector2 = Vector2.ZERO
 var facing_direction : Vector2 = Vector2.RIGHT
+var is_waiting = false
 
 func _ready():
 	animation_tree.active = true #Ensures animation Tree is always active on game runtime
 
 
 func _physics_process(delta: float):
+	if is_waiting:
+		return  # Skip all movement and direction logic if waiting
+	
 	if !is_on_floor():
 		velocity.y += gravity * delta  # Add gravity
 
@@ -40,12 +44,12 @@ func _physics_process(delta: float):
 			# Check if the enemy has reached the current position
 			print(roam.curr_position.position.x)
 			print(round(position.x))
+			print(round(position.y))
 			if roam.curr_position.position.x == round(position.x):
-				roam._get_next_position()
+				await start_waiting()
 		else:
 			print('no positions available')
 
-	
 	determine_face_direction()
 	move_and_slide()
 	
@@ -68,3 +72,11 @@ func determine_face_direction():
 		direction = facing_direction  # If no movement, keep current facing direction
 	else:
 		facing_direction = direction  # Update facing direction based on movement
+
+func start_waiting() -> void:
+	is_waiting = true  # Enter waiting state
+	position.y = -20
+	velocity = Vector2.ZERO  # Stop all movement
+	await get_tree().create_timer(2.5).timeout  # Wait for 2 seconds
+	roam._get_next_position()
+	is_waiting = false  # Exit waiting state
