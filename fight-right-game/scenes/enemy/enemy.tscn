@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://1ghtnf3m8r5e"]
+[gd_scene load_steps=43 format=3 uid="uid://1ghtnf3m8r5e"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_6eixy"]
 [ext_resource type="Texture2D" uid="uid://bfrnwf3cakuyk" path="res://assets/characters/Maldrives/maldrives-idle.png" id="3_v2dlu"]
 [ext_resource type="Texture2D" uid="uid://b4fgl8vltvdne" path="res://assets/characters/Maldrives/maldrives-death.png" id="4_x6gms"]
 [ext_resource type="Texture2D" uid="uid://cqjq00e8cpwb3" path="res://assets/characters/Maldrives/maldrives-run.png" id="5_34wkh"]
+[ext_resource type="Texture2D" uid="uid://cs7spqq483xd6" path="res://assets/characters/Maldrives/maldrives-walk.png" id="6_15ivo"]
 [ext_resource type="Texture2D" uid="uid://df8xgj05nilc6" path="res://assets/characters/Maldrives/Sword/maldrives-sword-attack-1.png" id="6_d4bjk"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="7_h17g1"]
 [ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_ground.gd" id="7_kk825"]
@@ -200,7 +201,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_r47f1"]
 resource_name = "run"
 length = 0.6
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -279,6 +279,48 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
 }
 
+[sub_resource type="Animation" id="Animation_hhagx"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_15ivo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn768"]
 _data = {
 "RESET": SubResource("Animation_pjysu"),
@@ -287,7 +329,8 @@ _data = {
 "idle": SubResource("Animation_arf4t"),
 "jump": SubResource("Animation_mfck1"),
 "run": SubResource("Animation_r47f1"),
-"sword_attack_1": SubResource("Animation_v53yu")
+"sword_attack_1": SubResource("Animation_v53yu"),
+"walk": SubResource("Animation_hhagx")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xogc2"]
@@ -308,13 +351,25 @@ animation = &"run"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xx7fh"]
 animation = &"run"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8s71a"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p7kqe"]
+animation = &"walk"
+
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_2qetk"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_f5b20")
 blend_point_0/pos = 0.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_e8lot")
-blend_point_1/pos = 1.0
+blend_point_1/pos = 2.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_xx7fh")
-blend_point_2/pos = -1.0
+blend_point_2/pos = -2.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_8s71a")
+blend_point_3/pos = -1.0
+blend_point_4/node = SubResource("AnimationNodeAnimation_p7kqe")
+blend_point_4/pos = 1.0
+min_space = -2.0
+max_space = 2.0
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xijry"]
@@ -348,7 +403,7 @@ states/move/position = Vector2(331.781, 100.01)
 states/sword_attack_1/node = SubResource("AnimationNodeAnimation_xijry")
 states/sword_attack_1/position = Vector2(331.781, -72.755)
 transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "move", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_s6uq8"), "sword_attack_1", "move", SubResource("AnimationNodeStateMachineTransition_jgtu1"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_wufns")]
-graph_offset = Vector2(-202.66, -53.563)
+graph_offset = Vector2(-28.99, -53.5629)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubgcv"]
 radius = 99.3381
@@ -362,9 +417,9 @@ script = ExtResource("1_6eixy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
-texture = ExtResource("3_v2dlu")
+texture = ExtResource("6_15ivo")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 8
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 3)
@@ -378,7 +433,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_62fma")
 anim_player = NodePath("../AnimationPlayer")
-parameters/move/blend_position = -0.155224
+parameters/move/blend_position = 1.00363
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
 script = ExtResource("7_h17g1")
