@@ -1,7 +1,7 @@
 #class_name Enemy
 extends CharacterBody2D
 
-@export var MOVESPEED : float = 85.0
+@export var MOVESPEED : float = 130.0
 @export var ROAMSPEED : float = 35.0
 
 @onready var sprite : Sprite2D = $Sprite2D
