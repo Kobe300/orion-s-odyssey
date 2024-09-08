@@ -2,7 +2,9 @@
 class_name Player
 extends CharacterBody2D
 
-@export var MOVESPEED : float = 150.0
+var MOVESPEED : float 
+@export var walk_speed : float = 100.0
+@export var sprint_speed : float = 150.0
 
 @onready var bodysprite : Sprite2D = $PlayerSprites/BodySprite2D #Flip Player Sprite2D
 @onready var fxsprite : Sprite2D = $PlayerSprites/FXSprite2D #Flip FX Sprite2D
@@ -39,9 +41,9 @@ func _physics_process(delta: float):
 		# Character Sprint
 		if (Input.is_action_pressed("sprint")): 
 			direction.x *= 2
-			MOVESPEED = 200.0
+			MOVESPEED = sprint_speed
 		else:
-			MOVESPEED = 125.0
+			MOVESPEED = walk_speed
 			
 		velocity.x = direction.x * MOVESPEED
 	else:
