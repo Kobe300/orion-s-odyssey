@@ -1789,6 +1789,7 @@ sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
 kick_state = NodePath("../Kick")
 stamina_component = NodePath("../../StaminaComponent")
+energy_loss = 1.0
 energy_gain = 0.025
 
 [node name="RegenTimer" type="Timer" parent="StateMachine/Ground"]
