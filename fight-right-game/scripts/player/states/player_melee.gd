@@ -11,7 +11,7 @@ func enter():
 	playback.travel("melee_attack_1")
 	timer.start()
 	#print('Character in Attack State')
-	attack_face()
+	attack_face(2)
 	stamina_drain()
 	#pass
 
@@ -39,7 +39,7 @@ func _on_animation_tree_animation_finished(anim_name):
 			next_state = ground_state
 		else:
 			playback.travel("melee_attack_2")
-			attack_face()
+			attack_face(2)
 			stamina_drain()
 		
 	if(anim_name == "melee_attack_2"):
@@ -47,7 +47,7 @@ func _on_animation_tree_animation_finished(anim_name):
 			next_state = ground_state
 		else:
 			playback.travel("melee_attack_3")
-			attack_face()
+			attack_face(2)
 			stamina_drain()
 	
 	if(anim_name == "melee_attack_3"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=88 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3unp2fegjs6u" path="res://assets/characters/Ben/Ben-walk.png" id="2_scpiv"]
 [ext_resource type="Texture2D" uid="uid://bg8sqrlhtfsrb" path="res://assets/characters/Ben/Ben-fall.png" id="2_temo4"]
 [ext_resource type="Texture2D" uid="uid://ckxua1icgj7wk" path="res://assets/characters/Ben/Sword/Ben-sword-attack-1.png" id="2_u8oah"]
+[ext_resource type="Texture2D" uid="uid://pglt1fn74hcr" path="res://assets/characters/Ben/Hurt/Ben-hurt-1.png" id="3_0tspf"]
 [ext_resource type="Texture2D" uid="uid://rbfti1st5n6o" path="res://assets/characters/Ben/Idle.png" id="3_8kber"]
 [ext_resource type="Texture2D" uid="uid://bh6kmwd042a1e" path="res://assets/characters/Ben/Kick/Ben-kick-attack-2.png" id="3_ayq56"]
 [ext_resource type="Texture2D" uid="uid://bhlghb0jx7l76" path="res://assets/characters/Ben/Kick/Ben-kick-attack-1.png" id="3_s5h18"]
@@ -35,6 +36,8 @@
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 [ext_resource type="PackedScene" uid="uid://mq7fqi2wpdfg" path="res://scenes/components/health_component.tscn" id="29_orejo"]
 [ext_resource type="PackedScene" uid="uid://bi7ixx7s7khoh" path="res://scenes/components/hitbox_component.tscn" id="31_2h16e"]
+[ext_resource type="Script" path="res://scripts/player/states/player_rest.gd" id="31_hk0fo"]
+[ext_resource type="Script" path="res://scripts/player/states/player_hurt.gd" id="32_2fv5y"]
 [ext_resource type="PackedScene" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
 [ext_resource type="PackedScene" uid="uid://dqkv21vefioh8" path="res://scenes/components/attack_component.tscn" id="33_tb2bv"]
 [ext_resource type="PackedScene" uid="uid://cnobiuuaefxph" path="res://scenes/player/PlayerInfo.tscn" id="38_ec4e7"]
@@ -1581,10 +1584,88 @@ tracks/5/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_kkjb1"]
+resource_name = "hurt_1"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_0tspf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/BodySprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/BodySprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites/Sword/SwordSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-3.504, 4.735), Vector2(-1.504, 4.735), Vector2(-0.504, 4.735)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprites/Sword/SwordSprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-3.40339]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerSprites/Sword/SwordSprite2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn768"]
 _data = {
 "RESET": SubResource("Animation_pjysu"),
 "fall": SubResource("Animation_v38yb"),
+"hurt_1": SubResource("Animation_kkjb1"),
 "idle": SubResource("Animation_arf4t"),
 "jump": SubResource("Animation_mfck1"),
 "kick_attack_1": SubResource("Animation_vbrle"),
@@ -1604,6 +1685,9 @@ animation = &"death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_psi0b"]
 animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4q0wf"]
+animation = &"hurt_1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_84vs6"]
 animation = &"jump"
@@ -1692,9 +1776,11 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
 states/Start/position = Vector2(-29.5, 97.75)
 states/death/node = SubResource("AnimationNodeAnimation_xogc2")
-states/death/position = Vector2(595.025, 250.745)
+states/death/position = Vector2(725.025, 264.37)
 states/fall/node = SubResource("AnimationNodeAnimation_psi0b")
 states/fall/position = Vector2(458.525, 263.995)
+states/hurt_1/node = SubResource("AnimationNodeAnimation_4q0wf")
+states/hurt_1/position = Vector2(597.039, 263.87)
 states/jump/node = SubResource("AnimationNodeAnimation_84vs6")
 states/jump/position = Vector2(337.328, 263.745)
 states/kick_attack_1/node = SubResource("AnimationNodeAnimation_1d10t")
@@ -1716,7 +1802,7 @@ states/sword_attack_2/position = Vector2(112.251, -149.632)
 states/sword_attack_3/node = SubResource("AnimationNodeAnimation_dg47p")
 states/sword_attack_3/position = Vector2(110.572, -233.635)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "sword_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_5csmg"), "melee_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_1qfsn"), "kick_attack_1", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_hmh0x"), "kick_attack_1", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_nr73j")]
-graph_offset = Vector2(11.8495, -104.633)
+graph_offset = Vector2(-12.9605, 163.035)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
 size = Vector2(28.5, 25)
@@ -1732,7 +1818,6 @@ script = ExtResource("1_2h6oh")
 [node name="Sword" type="Node2D" parent="PlayerSprites"]
 visible = false
 position = Vector2(7.15256e-07, 0)
-rotation = -0.068396
 
 [node name="SwordSprite2D" type="Sprite2D" parent="PlayerSprites/Sword"]
 position = Vector2(-13, 13)
@@ -1740,13 +1825,13 @@ rotation = -3.11611
 texture = ExtResource("2_g4txm")
 
 [node name="BodySprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("3_s5h18")
+texture = ExtResource("3_0tspf")
 offset = Vector2(2.08165e-12, 2.08165e-12)
-hframes = 5
+hframes = 3
 frame = 1
 
 [node name="FXSprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("4_oyw2e")
+texture = ExtResource("15_pybsr")
 hframes = 4
 
 [node name="Player_Collision" type="CollisionShape2D" parent="."]
@@ -1782,12 +1867,13 @@ current_state = NodePath("Ground")
 script = ExtResource("11_qcao1")
 ground_state = NodePath("../Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state", "kick_state", "stamina_component")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state", "kick_state", "hurt_state", "stamina_component")]
 script = ExtResource("5_apiqb")
 jump_state = NodePath("../Jump")
 sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
 kick_state = NodePath("../Kick")
+hurt_state = NodePath("../Hurt")
 stamina_component = NodePath("../../StaminaComponent")
 energy_loss = 1.0
 energy_gain = 0.025
@@ -1833,6 +1919,7 @@ script = ExtResource("15_r2te3")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
 stamina_component = NodePath("../../StaminaComponent")
+energy_loss = 15.0
 can_move = false
 
 [node name="AttackTimer" type="Timer" parent="StateMachine/Sword"]
@@ -1840,6 +1927,20 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Grapple" type="Node" parent="StateMachine"]
+
+[node name="Rest" type="Node" parent="StateMachine"]
+script = ExtResource("31_hk0fo")
+
+[node name="Collapse" type="Node" parent="StateMachine"]
+
+[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("32_2fv5y")
+ground_state = NodePath("../Ground")
+can_move = false
+
+[node name="Timer" type="Timer" parent="StateMachine/Hurt"]
+wait_time = 0.3
+one_shot = true
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 layer = 2
@@ -1905,3 +2006,4 @@ stamina_component = NodePath("../../StaminaComponent")
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Kick" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Hurt" method="_on_animation_tree_animation_finished"]

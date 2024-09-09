@@ -11,7 +11,7 @@ extends State
 func enter():
 	playback.travel("kick_attack_1")
 	timer.start()
-	attack_face()
+	attack_face(2)
 	stamina_drain()
 	
 	state.kick = true
@@ -39,14 +39,14 @@ func process_physics(deltae):
 	if(stamina_component.stamina < 0):
 		next_state = rest_state
 
-
+#
 func _on_animation_tree_animation_finished(anim_name):
 	if(anim_name == "kick_attack_1"):
 		if(timer.is_stopped()):
 			next_state = ground_state
 		else:
 			playback.travel("kick_attack_2")
-			attack_face()
+			attack_face(2)
 			stamina_drain()
 		
 	if(anim_name == "kick_attack_2"):

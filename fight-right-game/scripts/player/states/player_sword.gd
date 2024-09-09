@@ -9,6 +9,7 @@ extends State
 # Called when the node enters a state.
 func enter():
 	playback.travel("sword_attack_1")
+	stamina_drain()
 	#pass
 
 # Called when the node exit a state.
@@ -35,14 +36,16 @@ func _on_animation_tree_animation_finished(anim_name):
 			next_state = ground_state
 		else:
 			playback.travel("sword_attack_2")
-			attack_face()
+			attack_face(2)
+			stamina_drain()
 		
 	if(anim_name == "sword_attack_2"):
 		if(timer.is_stopped()):
 			next_state = ground_state
 		else:
 			playback.travel("sword_attack_3")
-			attack_face()
+			attack_face(2)
+			stamina_drain()
 	
 	if(anim_name == "sword_attack_3"):
 		if(timer.is_stopped()):

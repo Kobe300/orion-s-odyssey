@@ -5,6 +5,7 @@ extends State
 @export var sword_state: State
 @export var melee_state: State
 @export var kick_state: State
+@export var hurt_state: State
 
 #@export var sprint_speed = 250.0
 @export var JUMP_FORCE: float = -300.0
@@ -53,6 +54,12 @@ func process_physics(delta: float):
 	#print(state.sword)
 	if (!character.is_on_floor()):
 		next_state = jump_state
-		
+	
+	if (state.hurt == true):
+		next_state = hurt_state
+
 	if (regen_timer.is_stopped()):
 		stamina_gain()
+	
+	
+		
