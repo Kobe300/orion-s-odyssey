@@ -23,8 +23,9 @@ func damage_taken(attack : Attack):
 
 func print_damage(amount):
 	var damage = damage_taken_text.instantiate() # instantiate damage text scene in scene of damaged 
+	var parent_position = get_parent().position
 	damage.find_child("Label").text = str(amount) # find Label Node in scene and adjust to text equal amount
-	damage.position = get_parent().position # instantiated positon will be the position of position of Node
+	damage.position = Vector2(parent_position.x, parent_position.y + -15) # instantiated positon will be the position of position of Node
 	get_tree().current_scene.add_child(damage)
 	
 	print(str(amount) + " of health lost by " + str(get_parent().name))
