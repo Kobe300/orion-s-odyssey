@@ -1,4 +1,4 @@
-#class_Name Kick
+#class_Name Hurt
 extends State
 
 @export var ground_state : State

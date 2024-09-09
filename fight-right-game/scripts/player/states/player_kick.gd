@@ -4,7 +4,7 @@ extends State
 @export var ground_state : State
 @export var sword_state: State
 @export var melee_state: State
-@export var rest_state: State
+@export var collapse_state: State
 
 @onready var timer : Timer = $AttackTimer
 
@@ -36,18 +36,22 @@ func process_input(event : InputEvent):
 
 
 func process_physics(deltae):
-	if(stamina_component.stamina < 0):
-		next_state = rest_state
+	if (stamina_component.stamina <= 0):
+		next_state = collapse_state
 
 #
 func _on_animation_tree_animation_finished(anim_name):
 	if(anim_name == "kick_attack_1"):
 		if(timer.is_stopped()):
 			next_state = ground_state
+			
 		else:
-			playback.travel("kick_attack_2")
-			attack_face(2)
-			stamina_drain()
+			if (stamina_component.stamina <= 0):
+				next_state = collapse_state
+			else :
+				playback.travel("kick_attack_2")
+				attack_face(2)
+				stamina_drain()
 		
 	if(anim_name == "kick_attack_2"):
 		if(timer.is_stopped()):

@@ -8,7 +8,6 @@ class_name State
 
 @export var can_move : bool = true
 
-#var hit : bool = false
 var sword : bool = false #temporary varible put on players
 var kick : bool = false #temporary variable put on players
 var hurt: bool = false
