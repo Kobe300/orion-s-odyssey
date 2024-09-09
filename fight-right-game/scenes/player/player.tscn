@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://bo7pvfcttnrnc"]
+[gd_scene load_steps=99 format=3 uid="uid://bo7pvfcttnrnc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ckxua1icgj7wk" path="res://assets/characters/Ben/Sword/Ben-sword-attack-1.png" id="2_u8oah"]
 [ext_resource type="Texture2D" uid="uid://pglt1fn74hcr" path="res://assets/characters/Ben/Hurt/Ben-hurt-1.png" id="3_0tspf"]
 [ext_resource type="Texture2D" uid="uid://rbfti1st5n6o" path="res://assets/characters/Ben/Idle.png" id="3_8kber"]
+[ext_resource type="Texture2D" uid="uid://d16q6d7yyfjbs" path="res://assets/characters/Ben/Ben-rest.png" id="3_a684a"]
 [ext_resource type="Texture2D" uid="uid://bh6kmwd042a1e" path="res://assets/characters/Ben/Kick/Ben-kick-attack-2.png" id="3_ayq56"]
 [ext_resource type="Texture2D" uid="uid://bhlghb0jx7l76" path="res://assets/characters/Ben/Kick/Ben-kick-attack-1.png" id="3_s5h18"]
 [ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
@@ -32,6 +33,8 @@
 [ext_resource type="Script" path="res://scripts/player/states/player_sword.gd" id="15_r2te3"]
 [ext_resource type="Script" path="res://scripts/player/states/player_melee.gd" id="16_kprbr"]
 [ext_resource type="Texture2D" uid="uid://bib4itw5hk321" path="res://assets/characters/Ben/Sword/Ben-sword-attack-3-fx.png" id="17_b1yj7"]
+[ext_resource type="Texture2D" uid="uid://r5vt4a0u7yg2" path="res://assets/characters/Ben/Ben-collapse.png" id="25_41w4u"]
+[ext_resource type="Texture2D" uid="uid://b1dgdeq8yucal" path="res://assets/characters/Ben/Ben-stand.png" id="27_v6s1b"]
 [ext_resource type="Script" path="res://scripts/player/states/player_kick.gd" id="28_7t5yu"]
 [ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 [ext_resource type="PackedScene" uid="uid://mq7fqi2wpdfg" path="res://scenes/components/health_component.tscn" id="29_orejo"]
@@ -40,6 +43,8 @@
 [ext_resource type="Script" path="res://scripts/player/states/player_hurt.gd" id="32_2fv5y"]
 [ext_resource type="PackedScene" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
 [ext_resource type="PackedScene" uid="uid://dqkv21vefioh8" path="res://scenes/components/attack_component.tscn" id="33_tb2bv"]
+[ext_resource type="Script" path="res://scripts/player/states/player_collapse.gd" id="34_thrn7"]
+[ext_resource type="Script" path="res://scripts/player/states/player_stand.gd" id="37_of3j4"]
 [ext_resource type="PackedScene" uid="uid://cnobiuuaefxph" path="res://scenes/player/PlayerInfo.tscn" id="38_ec4e7"]
 [ext_resource type="PackedScene" uid="uid://bf8jo58lkx7ja" path="res://scenes/components/stamina_component.tscn" id="39_e5the"]
 
@@ -220,6 +225,83 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-3.92699]
+}
+
+[sub_resource type="Animation" id="Animation_kkjb1"]
+resource_name = "hurt_1"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_0tspf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/BodySprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/BodySprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites/Sword/SwordSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-3.504, 4.735), Vector2(-1.504, 4.735), Vector2(-0.504, 4.735)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprites/Sword/SwordSprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-3.40339]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerSprites/Sword/SwordSprite2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_arf4t"]
@@ -1584,9 +1666,9 @@ tracks/5/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_kkjb1"]
-resource_name = "hurt_1"
-length = 0.3
+[sub_resource type="Animation" id="Animation_rdnd6"]
+resource_name = "collapse"
+length = 0.7
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1598,7 +1680,85 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_0tspf")]
+"values": [ExtResource("25_41w4u")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/BodySprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/BodySprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites/Sword/SwordSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-2, 4), Vector2(-7.15256e-07, 4), Vector2(1, 4), Vector2(2, 5), Vector2(2, 8), Vector2(2, 9), Vector2(2, 8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprites/Sword/SwordSprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-3.11611]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerSprites/Sword/SwordSprite2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_scfxo"]
+resource_name = "rest"
+length = 0.9
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_a684a")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1619,7 +1779,7 @@ tracks/2/path = NodePath("PlayerSprites/BodySprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
@@ -1631,10 +1791,10 @@ tracks/3/path = NodePath("PlayerSprites/Sword/SwordSprite2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(-3.504, 4.735), Vector2(-1.504, 4.735), Vector2(-0.504, 4.735)]
+"values": [Vector2(2, 8), Vector2(2, 9), Vector2(2, 8)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1646,7 +1806,84 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [-3.40339]
+"values": [-3.11611]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerSprites/Sword/SwordSprite2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tb1no"]
+resource_name = "stand"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites/BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_v6s1b")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites/BodySprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites/BodySprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites/Sword/SwordSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2, 8), Vector2(2, 9), Vector2(2, 8), Vector2(2, 5), Vector2(1, 4), Vector2(-7.15256e-07, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerSprites/Sword/SwordSprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-3.11611]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1664,6 +1901,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn768"]
 _data = {
 "RESET": SubResource("Animation_pjysu"),
+"collapse": SubResource("Animation_rdnd6"),
 "fall": SubResource("Animation_v38yb"),
 "hurt_1": SubResource("Animation_kkjb1"),
 "idle": SubResource("Animation_arf4t"),
@@ -1673,12 +1911,17 @@ _data = {
 "melee_attack_1": SubResource("Animation_kojbg"),
 "melee_attack_2": SubResource("Animation_r8yjl"),
 "melee_attack_3": SubResource("Animation_da3t2"),
+"rest": SubResource("Animation_scfxo"),
 "sprint": SubResource("Animation_r47f1"),
+"stand": SubResource("Animation_tb1no"),
 "sword_attack_1": SubResource("Animation_v53yu"),
 "sword_attack_2": SubResource("Animation_qdaa2"),
 "sword_attack_3": SubResource("Animation_25m37"),
 "walk": SubResource("Animation_25r06")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ku4o"]
+animation = &"collapse"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xogc2"]
 animation = &"death"
@@ -1737,6 +1980,12 @@ min_space = -2.0
 max_space = 2.0
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kywos"]
+animation = &"rest"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2as5u"]
+animation = &"stand"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xijry"]
 animation = &"sword_attack_1"
 
@@ -1774,7 +2023,10 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62fma"]
+states/End/position = Vector2(1062, 170.654)
 states/Start/position = Vector2(-29.5, 97.75)
+states/collapse/node = SubResource("AnimationNodeAnimation_6ku4o")
+states/collapse/position = Vector2(596.489, 170.423)
 states/death/node = SubResource("AnimationNodeAnimation_xogc2")
 states/death/position = Vector2(725.025, 264.37)
 states/fall/node = SubResource("AnimationNodeAnimation_psi0b")
@@ -1795,6 +2047,10 @@ states/melee_attack_3/node = SubResource("AnimationNodeAnimation_h4b3t")
 states/melee_attack_3/position = Vector2(531.958, -233.036)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_2qetk")
 states/move/position = Vector2(331.217, 100.003)
+states/rest/node = SubResource("AnimationNodeAnimation_kywos")
+states/rest/position = Vector2(713.59, 170.885)
+states/stand/node = SubResource("AnimationNodeAnimation_2as5u")
+states/stand/position = Vector2(828.59, 170.654)
 states/sword_attack_1/node = SubResource("AnimationNodeAnimation_xijry")
 states/sword_attack_1/position = Vector2(111.411, -64.3798)
 states/sword_attack_2/node = SubResource("AnimationNodeAnimation_soj2n")
@@ -1802,7 +2058,7 @@ states/sword_attack_2/position = Vector2(112.251, -149.632)
 states/sword_attack_3/node = SubResource("AnimationNodeAnimation_dg47p")
 states/sword_attack_3/position = Vector2(110.572, -233.635)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_3g1tx"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_eronr"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_n2krc"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_l1iap"), "sword_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_5csmg"), "melee_attack_1", "kick_attack_1", SubResource("AnimationNodeStateMachineTransition_1qfsn"), "kick_attack_1", "melee_attack_1", SubResource("AnimationNodeStateMachineTransition_hmh0x"), "kick_attack_1", "sword_attack_1", SubResource("AnimationNodeStateMachineTransition_nr73j")]
-graph_offset = Vector2(-12.9605, 163.035)
+graph_offset = Vector2(202.215, 90.855)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbtvl"]
 size = Vector2(28.5, 25)
@@ -1825,7 +2081,7 @@ rotation = -3.11611
 texture = ExtResource("2_g4txm")
 
 [node name="BodySprite2D" type="Sprite2D" parent="PlayerSprites"]
-texture = ExtResource("3_0tspf")
+texture = ExtResource("3_a684a")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 hframes = 3
 frame = 1
@@ -1867,13 +2123,14 @@ current_state = NodePath("Ground")
 script = ExtResource("11_qcao1")
 ground_state = NodePath("../Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state", "kick_state", "hurt_state", "stamina_component")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "sword_state", "melee_state", "kick_state", "hurt_state", "collapse_state", "stamina_component")]
 script = ExtResource("5_apiqb")
 jump_state = NodePath("../Jump")
 sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
 kick_state = NodePath("../Kick")
 hurt_state = NodePath("../Hurt")
+collapse_state = NodePath("../Collapse")
 stamina_component = NodePath("../../StaminaComponent")
 energy_loss = 1.0
 energy_gain = 0.025
@@ -1887,11 +2144,12 @@ one_shot = true
 script = ExtResource("7_2f50p")
 fall_state = NodePath("../Fall")
 
-[node name="Kick" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "sword_state", "melee_state", "stamina_component")]
+[node name="Kick" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "sword_state", "melee_state", "collapse_state", "stamina_component")]
 script = ExtResource("28_7t5yu")
 ground_state = NodePath("../Ground")
 sword_state = NodePath("../Sword")
 melee_state = NodePath("../Melee")
+collapse_state = NodePath("../Collapse")
 stamina_component = NodePath("../../StaminaComponent")
 energy_loss = 15.0
 can_move = false
@@ -1900,10 +2158,11 @@ can_move = false
 wait_time = 0.3
 one_shot = true
 
-[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state", "stamina_component")]
+[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state", "collapse_state", "stamina_component")]
 script = ExtResource("16_kprbr")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
+collapse_state = NodePath("../Collapse")
 stamina_component = NodePath("../../StaminaComponent")
 energy_loss = 10.0
 can_move = false
@@ -1914,10 +2173,11 @@ one_shot = true
 
 [node name="Magic" type="Node" parent="StateMachine"]
 
-[node name="Sword" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state", "stamina_component")]
+[node name="Sword" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "kick_state", "collapse_state", "stamina_component")]
 script = ExtResource("15_r2te3")
 ground_state = NodePath("../Ground")
 kick_state = NodePath("../Kick")
+collapse_state = NodePath("../Collapse")
 stamina_component = NodePath("../../StaminaComponent")
 energy_loss = 15.0
 can_move = false
@@ -1928,10 +2188,17 @@ one_shot = true
 
 [node name="Grapple" type="Node" parent="StateMachine"]
 
-[node name="Rest" type="Node" parent="StateMachine"]
+[node name="Rest" type="Node" parent="StateMachine" node_paths=PackedStringArray("stand_state", "stamina_component")]
 script = ExtResource("31_hk0fo")
+stand_state = NodePath("../Stand")
+stamina_component = NodePath("../../StaminaComponent")
+energy_gain = 0.25
+can_move = false
 
-[node name="Collapse" type="Node" parent="StateMachine"]
+[node name="Collapse" type="Node" parent="StateMachine" node_paths=PackedStringArray("rest_state")]
+script = ExtResource("34_thrn7")
+rest_state = NodePath("../Rest")
+can_move = false
 
 [node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
 script = ExtResource("32_2fv5y")
@@ -1941,6 +2208,11 @@ can_move = false
 [node name="Timer" type="Timer" parent="StateMachine/Hurt"]
 wait_time = 0.3
 one_shot = true
+
+[node name="Stand" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
+script = ExtResource("37_of3j4")
+ground_state = NodePath("../Ground")
+can_move = false
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 layer = 2
@@ -2006,4 +2278,6 @@ stamina_component = NodePath("../../StaminaComponent")
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Kick" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Sword" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Collapse" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Hurt" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Stand" method="_on_animation_tree_animation_finished"]
