@@ -1,19 +1,19 @@
 [gd_scene load_steps=43 format=3 uid="uid://1ghtnf3m8r5e"]
 
-[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_6eixy"]
+[ext_resource type="Script" uid="uid://dbfacfmsx7hmo" path="res://scripts/enemy/enemy.gd" id="1_6eixy"]
 [ext_resource type="Texture2D" uid="uid://bfrnwf3cakuyk" path="res://assets/characters/Maldrives/maldrives-idle.png" id="3_v2dlu"]
 [ext_resource type="Texture2D" uid="uid://b4fgl8vltvdne" path="res://assets/characters/Maldrives/maldrives-death.png" id="4_x6gms"]
 [ext_resource type="Texture2D" uid="uid://cqjq00e8cpwb3" path="res://assets/characters/Maldrives/maldrives-run.png" id="5_34wkh"]
 [ext_resource type="Texture2D" uid="uid://cs7spqq483xd6" path="res://assets/characters/Maldrives/maldrives-walk.png" id="6_15ivo"]
 [ext_resource type="Texture2D" uid="uid://df8xgj05nilc6" path="res://assets/characters/Maldrives/Sword/maldrives-sword-attack-1.png" id="6_d4bjk"]
-[ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="7_h17g1"]
-[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_ground.gd" id="7_kk825"]
-[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_attack.gd" id="8_1mpwo"]
-[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_jump.gd" id="9_42goc"]
-[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_fall.gd" id="10_x3tcj"]
-[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_chase.gd" id="11_m5v6i"]
-[ext_resource type="Script" path="res://scripts/enemy/maldrives/states/maldrive_roam.gd" id="12_xcr6r"]
-[ext_resource type="Script" path="res://scenes/statelabel.gd" id="13_2syjt"]
+[ext_resource type="Script" uid="uid://b8usaoiuvmedi" path="res://scripts/state_Machine/state_machine.gd" id="7_h17g1"]
+[ext_resource type="Script" uid="uid://cokqo2h5d3f3w" path="res://scripts/enemy/maldrives/states/maldrive_ground.gd" id="7_kk825"]
+[ext_resource type="Script" uid="uid://crcnkvr0qdjva" path="res://scripts/enemy/maldrives/states/maldrive_attack.gd" id="8_1mpwo"]
+[ext_resource type="Script" uid="uid://ceawu3srd8vj" path="res://scripts/enemy/maldrives/states/maldrive_jump.gd" id="9_42goc"]
+[ext_resource type="Script" uid="uid://122bd4b783ky" path="res://scripts/enemy/maldrives/states/maldrive_fall.gd" id="10_x3tcj"]
+[ext_resource type="Script" uid="uid://u5w3m1lquex2" path="res://scripts/enemy/maldrives/states/maldrive_chase.gd" id="11_m5v6i"]
+[ext_resource type="Script" uid="uid://b5trnel71l32i" path="res://scripts/enemy/maldrives/states/maldrive_roam.gd" id="12_xcr6r"]
+[ext_resource type="Script" uid="uid://ds1qsloqrotln" path="res://scenes/statelabel.gd" id="13_2syjt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obox3"]
 radius = 14.0
@@ -324,14 +324,14 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn768"]
 _data = {
-"RESET": SubResource("Animation_pjysu"),
-"death": SubResource("Animation_7sxt2"),
-"fall": SubResource("Animation_v38yb"),
-"idle": SubResource("Animation_arf4t"),
-"jump": SubResource("Animation_mfck1"),
-"run": SubResource("Animation_r47f1"),
-"sword_attack_1": SubResource("Animation_v53yu"),
-"walk": SubResource("Animation_hhagx")
+&"RESET": SubResource("Animation_pjysu"),
+&"death": SubResource("Animation_7sxt2"),
+&"fall": SubResource("Animation_v38yb"),
+&"idle": SubResource("Animation_arf4t"),
+&"jump": SubResource("Animation_mfck1"),
+&"run": SubResource("Animation_r47f1"),
+&"sword_attack_1": SubResource("Animation_v53yu"),
+&"walk": SubResource("Animation_hhagx")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xogc2"]

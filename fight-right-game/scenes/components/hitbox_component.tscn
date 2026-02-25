@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bi7ixx7s7khoh"]
 
-[ext_resource type="Script" path="res://scripts/components/hitboxcomponent.gd" id="1_wgvkm"]
+[ext_resource type="Script" uid="uid://dxnl1wmsbf5k0" path="res://scripts/components/hitboxcomponent.gd" id="1_wgvkm"]
 
 [node name="HitBoxComponent" type="Area2D"]
 position = Vector2(2.08165e-12, 0)

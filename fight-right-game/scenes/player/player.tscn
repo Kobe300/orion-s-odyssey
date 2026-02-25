@@ -1,6 +1,6 @@
 [gd_scene load_steps=100 format=3 uid="uid://bo7pvfcttnrnc"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2h6oh"]
+[ext_resource type="Script" uid="uid://dhpip3oxb3vbg" path="res://scripts/player/player.gd" id="1_2h6oh"]
 [ext_resource type="Texture2D" uid="uid://cp2a32ag7qkml" path="res://assets/characters/Ben/Ben-sprint.png" id="2_6o3l8"]
 [ext_resource type="Texture2D" uid="uid://cruwq5kr8ntu" path="res://assets/items/item4.png" id="2_g4txm"]
 [ext_resource type="PackedScene" uid="uid://kmeci7ndyvn3" path="res://scenes/components/damage_taken_text.tscn" id="2_inuyb"]
@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://d16q6d7yyfjbs" path="res://assets/characters/Ben/Ben-rest.png" id="3_a684a"]
 [ext_resource type="Texture2D" uid="uid://bh6kmwd042a1e" path="res://assets/characters/Ben/Kick/Ben-kick-attack-2.png" id="3_ayq56"]
 [ext_resource type="Texture2D" uid="uid://bhlghb0jx7l76" path="res://assets/characters/Ben/Kick/Ben-kick-attack-1.png" id="3_s5h18"]
-[ext_resource type="Script" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
+[ext_resource type="Script" uid="uid://b8usaoiuvmedi" path="res://scripts/state_Machine/state_machine.gd" id="3_ycxh5"]
 [ext_resource type="Texture2D" uid="uid://b0h53u7ilmv5" path="res://assets/characters/Ben/Ben-jump.png" id="4_anuog"]
 [ext_resource type="Texture2D" uid="uid://k4lpwi08boei" path="res://assets/characters/Ben/Kick/Ben-kick-attack-2-fx.png" id="4_fgq8x"]
 [ext_resource type="Texture2D" uid="uid://ctagon3gr1gf8" path="res://assets/characters/Ben/Kick/Ben-kick-attack-1-fx.png" id="4_oyw2e"]
-[ext_resource type="Script" path="res://scripts/player/states/player_ground.gd" id="5_apiqb"]
-[ext_resource type="Script" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
+[ext_resource type="Script" uid="uid://cvoy58ws3fe8j" path="res://scripts/player/states/player_ground.gd" id="5_apiqb"]
+[ext_resource type="Script" uid="uid://bx3yql0m2csb3" path="res://scripts/player/states/player_jump.gd" id="7_2f50p"]
 [ext_resource type="Texture2D" uid="uid://31ii5exw26aw" path="res://assets/characters/Ben/Melee/Ben-punch-attack-1.png" id="9_hjlvy"]
 [ext_resource type="Texture2D" uid="uid://dtspwr67yna7c" path="res://assets/characters/Ben/Melee/Ben-punch-attack-1-fx.png" id="9_uaaf7"]
 [ext_resource type="Texture2D" uid="uid://8ww7l6nd4psc" path="res://assets/characters/Ben/Melee/Ben-punch-attack-2.png" id="10_1si14"]
@@ -25,26 +25,26 @@
 [ext_resource type="Texture2D" uid="uid://dga58m52stblw" path="res://assets/characters/Ben/Sword/Ben-sword-attack-2.png" id="11_drqwd"]
 [ext_resource type="Texture2D" uid="uid://c66rcr75cxig5" path="res://assets/characters/Ben/Melee/Ben-punch-attack-3.png" id="11_e0d2f"]
 [ext_resource type="Texture2D" uid="uid://dqdcsv1wgtkg6" path="res://assets/characters/Ben/Melee/Ben-punch-attack-2-fx.png" id="11_pb1kt"]
-[ext_resource type="Script" path="res://scripts/player/states/player_fall.gd" id="11_qcao1"]
+[ext_resource type="Script" uid="uid://d063d8yodr5e4" path="res://scripts/player/states/player_fall.gd" id="11_qcao1"]
 [ext_resource type="Texture2D" uid="uid://ba7td2ay8jjbc" path="res://assets/characters/Ben/Sword/Ben-sword-attack-3.png" id="12_h5yxl"]
 [ext_resource type="Texture2D" uid="uid://chi2jhe5bkt8w" path="res://assets/characters/Ben/Melee/Ben-punch-attack-3-fx.png" id="12_lbotp"]
 [ext_resource type="Texture2D" uid="uid://sct5e0c6rkay" path="res://assets/characters/Ben/Sword/Ben-sword-attack-2-fx.png" id="14_sejuo"]
 [ext_resource type="Texture2D" uid="uid://dmuqnki5cv76q" path="res://assets/characters/Ben/Sword/Ben-sword-attack-1-fx.png" id="15_pybsr"]
-[ext_resource type="Script" path="res://scripts/player/states/player_sword.gd" id="15_r2te3"]
-[ext_resource type="Script" path="res://scripts/player/states/player_melee.gd" id="16_kprbr"]
+[ext_resource type="Script" uid="uid://8ox3lqoi24kr" path="res://scripts/player/states/player_sword.gd" id="15_r2te3"]
+[ext_resource type="Script" uid="uid://dbqw51t6xklxu" path="res://scripts/player/states/player_melee.gd" id="16_kprbr"]
 [ext_resource type="Texture2D" uid="uid://bib4itw5hk321" path="res://assets/characters/Ben/Sword/Ben-sword-attack-3-fx.png" id="17_b1yj7"]
 [ext_resource type="Texture2D" uid="uid://r5vt4a0u7yg2" path="res://assets/characters/Ben/Ben-collapse.png" id="25_41w4u"]
 [ext_resource type="Texture2D" uid="uid://b1dgdeq8yucal" path="res://assets/characters/Ben/Ben-stand.png" id="27_v6s1b"]
-[ext_resource type="Script" path="res://scripts/player/states/player_kick.gd" id="28_7t5yu"]
-[ext_resource type="Script" path="res://scenes/statelabel.gd" id="29_h0ihm"]
+[ext_resource type="Script" uid="uid://bdrps8agpyue6" path="res://scripts/player/states/player_kick.gd" id="28_7t5yu"]
+[ext_resource type="Script" uid="uid://ds1qsloqrotln" path="res://scenes/statelabel.gd" id="29_h0ihm"]
 [ext_resource type="PackedScene" uid="uid://mq7fqi2wpdfg" path="res://scenes/components/health_component.tscn" id="29_orejo"]
 [ext_resource type="PackedScene" uid="uid://bi7ixx7s7khoh" path="res://scenes/components/hitbox_component.tscn" id="31_2h16e"]
-[ext_resource type="Script" path="res://scripts/player/states/player_rest.gd" id="31_hk0fo"]
-[ext_resource type="Script" path="res://scripts/player/states/player_hurt.gd" id="32_2fv5y"]
+[ext_resource type="Script" uid="uid://btygmxowfcqh7" path="res://scripts/player/states/player_rest.gd" id="31_hk0fo"]
+[ext_resource type="Script" uid="uid://t226sbhgm58c" path="res://scripts/player/states/player_hurt.gd" id="32_2fv5y"]
 [ext_resource type="PackedScene" uid="uid://cstlvyeyqsv3j" path="res://scenes/inventory_hot_bar.tscn" id="33_8ibjo"]
 [ext_resource type="PackedScene" uid="uid://dqkv21vefioh8" path="res://scenes/components/attack_component.tscn" id="33_tb2bv"]
-[ext_resource type="Script" path="res://scripts/player/states/player_collapse.gd" id="34_thrn7"]
-[ext_resource type="Script" path="res://scripts/player/states/player_stand.gd" id="37_of3j4"]
+[ext_resource type="Script" uid="uid://cf67rncl6jy1f" path="res://scripts/player/states/player_collapse.gd" id="34_thrn7"]
+[ext_resource type="Script" uid="uid://bv6us7y58bky5" path="res://scripts/player/states/player_stand.gd" id="37_of3j4"]
 [ext_resource type="PackedScene" uid="uid://cnobiuuaefxph" path="res://scenes/player/PlayerInfo.tscn" id="38_ec4e7"]
 [ext_resource type="PackedScene" uid="uid://bf8jo58lkx7ja" path="res://scenes/components/stamina_component.tscn" id="39_e5the"]
 [ext_resource type="PackedScene" uid="uid://ct6hgmjy32ncq" path="res://scenes/menu/pause_menu.tscn" id="40_mfhvh"]
@@ -1901,24 +1901,24 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn768"]
 _data = {
-"RESET": SubResource("Animation_pjysu"),
-"collapse": SubResource("Animation_rdnd6"),
-"fall": SubResource("Animation_v38yb"),
-"hurt_1": SubResource("Animation_kkjb1"),
-"idle": SubResource("Animation_arf4t"),
-"jump": SubResource("Animation_mfck1"),
-"kick_attack_1": SubResource("Animation_vbrle"),
-"kick_attack_2": SubResource("Animation_7os7v"),
-"melee_attack_1": SubResource("Animation_kojbg"),
-"melee_attack_2": SubResource("Animation_r8yjl"),
-"melee_attack_3": SubResource("Animation_da3t2"),
-"rest": SubResource("Animation_scfxo"),
-"sprint": SubResource("Animation_r47f1"),
-"stand": SubResource("Animation_tb1no"),
-"sword_attack_1": SubResource("Animation_v53yu"),
-"sword_attack_2": SubResource("Animation_qdaa2"),
-"sword_attack_3": SubResource("Animation_25m37"),
-"walk": SubResource("Animation_25r06")
+&"RESET": SubResource("Animation_pjysu"),
+&"collapse": SubResource("Animation_rdnd6"),
+&"fall": SubResource("Animation_v38yb"),
+&"hurt_1": SubResource("Animation_kkjb1"),
+&"idle": SubResource("Animation_arf4t"),
+&"jump": SubResource("Animation_mfck1"),
+&"kick_attack_1": SubResource("Animation_vbrle"),
+&"kick_attack_2": SubResource("Animation_7os7v"),
+&"melee_attack_1": SubResource("Animation_kojbg"),
+&"melee_attack_2": SubResource("Animation_r8yjl"),
+&"melee_attack_3": SubResource("Animation_da3t2"),
+&"rest": SubResource("Animation_scfxo"),
+&"sprint": SubResource("Animation_r47f1"),
+&"stand": SubResource("Animation_tb1no"),
+&"sword_attack_1": SubResource("Animation_v53yu"),
+&"sword_attack_2": SubResource("Animation_qdaa2"),
+&"sword_attack_3": SubResource("Animation_25m37"),
+&"walk": SubResource("Animation_25r06")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ku4o"]

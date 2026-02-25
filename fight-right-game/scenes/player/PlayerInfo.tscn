@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cnobiuuaefxph"]
 
-[ext_resource type="Script" path="res://scripts/player/PlayerInfoUI.gd" id="1"]
+[ext_resource type="Script" uid="uid://b7aqvpp3e8ema" path="res://scripts/player/PlayerInfoUI.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bfemdxsu0k6ni" path="res://assets/Health bar Ui/Update/essence_border.png" id="2_civk4"]
 [ext_resource type="Texture2D" uid="uid://ckuu8v7mjdjl5" path="res://assets/Health bar Ui/Update/essence_bar.png" id="3_e2tmh"]
 [ext_resource type="Texture2D" uid="uid://dyx63kpurwi27" path="res://assets/Health bar Ui/Update/stamina_bar.png" id="3_gw77u"]

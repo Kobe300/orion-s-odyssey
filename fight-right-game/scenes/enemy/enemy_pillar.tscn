@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dyd5ysyn2pv5y"]
 
-[ext_resource type="Script" path="res://scripts/enemy/enemy_pillar.gd" id="1_nc7qv"]
+[ext_resource type="Script" uid="uid://cg68hwwpf4jxx" path="res://scripts/enemy/enemy_pillar.gd" id="1_nc7qv"]
 [ext_resource type="Texture2D" uid="uid://b80eso1sy3cvt" path="res://assets/characters/pillar/FlyingObelisk_no_lightnings_no_letter.png" id="1_r5oq8"]
 [ext_resource type="PackedScene" uid="uid://kmeci7ndyvn3" path="res://scenes/components/damage_taken_text.tscn" id="2_j1ygq"]
 [ext_resource type="PackedScene" uid="uid://mq7fqi2wpdfg" path="res://scenes/components/health_component.tscn" id="4_eoe6r"]

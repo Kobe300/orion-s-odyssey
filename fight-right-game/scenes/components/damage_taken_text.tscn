@@ -94,8 +94,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_02f1b"]
 _data = {
-"RESET": SubResource("Animation_ibu5i"),
-"float": SubResource("Animation_wynpo")
+&"RESET": SubResource("Animation_ibu5i"),
+&"float": SubResource("Animation_wynpo")
 }
 
 [node name="DamageTextMarker2D" type="Marker2D"]
